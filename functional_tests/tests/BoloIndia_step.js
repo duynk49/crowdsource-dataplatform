@@ -430,8 +430,8 @@ step("When user clicks on the Feedback icon, user should see the feedback popup"
     assert.ok(await text("What is your opinion of this page").isVisible());
     assert.ok(await text("Please select your feedback category").isVisible());
     assert.ok(await text("Share your feedback below").isVisible());
-    assert.ok(await text("Would you recommend Bhasha Daan to your friends & family?").isVisible());
-    assert.ok(await text("Would you revisit Bhasha Daan?").isVisible());
+    assert.ok(await text("Would you recommend Title_1 Title_2 to your friends & family?").isVisible());
+    assert.ok(await text("Would you revisit Title_1 Title_2?").isVisible());
 });
 
 step("Submit button should be disbaled, When user selects an opinion, submit button should be enabled", async function () {
@@ -466,7 +466,7 @@ step("when user clicks on the submit button , user should see thankyou popup", a
 step("When user clicks on the close button , user should see the home page", async function () {
     assert.ok(await taiko.button({ id: "feedback_thanku_close_btn" }).exists());
     await click(taiko.button({ id: "feedback_thanku_close_btn" }))
-    assert.ok(await text("Bolo India").exists());
+    assert.ok(await text("Initiative_2").exists());
 });
 
 step("When user clicks on Report Button, user should see Report Content Dialog Box & Submit button should be disabled", async function () {
@@ -496,11 +496,11 @@ step("When user submits , Thank you pop up should come & close button should clo
     await taiko.waitFor(500);
 });
 
-step("Validate Thank you page content for Bolo India", async function () {
+step("Validate Thank you page content for Text Initiative", async function () {
     await taiko.waitFor(1000)
-    assert.ok(await text('Bolo India Target Achieved').isVisible())
+    assert.ok(await text('Initiative_2 Target Achieved').isVisible())
     assert.ok(await text('Recordings (in hours)').isVisible())
-    assert.ok(await text('Contribute 5 recording(s) to earn your Bronze Badge.').isVisible())
+    assert.ok(await text('Contribute 5 recording(s) to earn your Badge_1 Badge.').isVisible())
     assert.ok(await text('Hour(s)').isVisible())
 });
 
@@ -519,13 +519,13 @@ step("User clicks back button", async function () {
     }
 });
 
-step("Validate Bolo India content", async function () {
+step("Validate Text Initiative content", async function () {
     assert.ok(await text('Enrich your language by donating your voice').exists());
     assert.ok(await text('Speak').exists());
     assert.ok(await text('Validate').exists());
     assert.ok(await text('Contribution Tracker').isVisible());
     assert.ok(await text('Overall Summary').isVisible());
-    assert.ok(await text('Contributions made to Bolo India').isVisible());
+    assert.ok(await text('Contributions made to Initiative_2').isVisible());
     assert.ok(await text('Your language and top 3 contributed languages').isVisible());
     assert.ok(await text('Total recordings').isVisible());
 });

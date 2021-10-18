@@ -1,16 +1,16 @@
-# Test SunoIndia
+# Test Asr Initiative
 Tags: component
 
 * Open Website
 * Select "asr_initiative_tab" from header
 
 ## Check Home Page
-* Validate Suno India content
+* Validate Asr Initiative content
 * User should see the top Language graph and other stats
 
 
 ## Validate Transcribe card should be enabled when the data is not contributed for Odia language
-* User should store the progress bar for "Suno India"
+* User should store the progress bar for "Initiative_1"
 * Select Contribution Language as "ଓଡିଆ"
 * Navigate to "Transcribe" and add username "T User" then click Lets go
 //* When user clicks on Data Source button, popup should open and they should see source information
@@ -46,8 +46,8 @@ Tags: component
 * When user skips the rest of the "3" sentences , User should see Thank you Page
 * when user clicks on the Contribute More button, user should not see the Instructions page again
 * When user skips the rest of the "1" sentences , User should see Thank you Page
-* Validate Thank you page content for Suno India
-* When user clicks on Contribute more button , user should see no data available message for "Suno" India
+* Validate Thank you page content for Asr Initiative
+* When user clicks on Contribute more button , user should see no data available message for "asr"
 * When user clicks on back button, user should land on home page
 
 ## Validate Validate flow
@@ -70,7 +70,7 @@ Tags: component
 * User click on "edit" field "submit-edit-button" should be enabled
 * User skips the next "4" sentences user should land on Thank you page in "English"
 * User should see the "Validate More" button
-* When user clicks on Validate more button , user should see no data available message for "Suno" India
+* When user clicks on Validate more button , user should see no data available message for "asr"
 * When user clicks on back button, user should land on home page
 
 ## Check the Validate flow for new user
@@ -87,7 +87,7 @@ Tags: component
 * User skips the next "3" sentences user should land on Thank you page in "English"
 * User should see the "Validate More" button
 * Navigate to "Know more" button and click "Know more" button
-* should select "" radio button, "Validate 5 sentences in Kannada and earn Suno India Bronze Bhasha Samarthak badge" text & "badge_1","badge_2","badge_3","badge_4" image exist by default
+* should select "" radio button, "Validate 5 sentences in Kannada and earn Initiative_1 Badge_1 Brand_Contributor badge" text & "badge_1","badge_2","badge_3","badge_4" image exist by default
 * When user clicks on back button, user should land on home page
 
 
@@ -111,4 +111,4 @@ Tags: component
 * when user navigates to "ocr-tab" tab user should see badges 
 * when user navigates to "asr-tab" tab user should see badges 
 * when user navigates to "parallel-tab" tab user should see badges 
-* When user clicks on back button, user should land on Bhasha Daan home page
+* When user clicks on back button, user should land on generic home page

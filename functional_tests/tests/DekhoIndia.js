@@ -14,16 +14,16 @@ const {
 
 var initialProgressValue;
 
-step("Validate Dekho India content", async function () {
+step("Validate Ocr Initiative content", async function () {
 	assert.ok(await text('Enrich your language by typing the text you see').exists());
 	assert.ok(await text('Validate').exists());
 	assert.ok(await text('Label').exists());
 	assert.ok(await text('Contribution Tracker').isVisible());
     assert.ok(await text('Overall Summary').isVisible());
-    assert.ok(await text('Contributions made to Dekho India').isVisible());
+    assert.ok(await text('Contributions made to Initiative_4').isVisible());
 });
 
-step("User should see the top Language graph and other stats for Dekho India", async function () {
+step("User should see the top Language graph and other stats for Ocr Initiative", async function () {
 	assert.ok(await text("Your language and top 3 most contributed languages").exists());
 	assert.ok(await text("Images labelled and validated").exists());
 	assert.ok(await text("Languages").exists());
@@ -32,7 +32,7 @@ step("User should see the top Language graph and other stats for Dekho India", a
 	assert.ok(await text("Images validated ").exists());
 });
 
-step("When user clicks on back button, user should land on Dekho India home page", async function () {
+step("When user clicks on back button, user should land on Ocr Initiative home page", async function () {
 	if (await taiko.text('Home').exists()) {
 		assert.ok('Home button exists')
 		await click(taiko.text("Home"))
@@ -79,7 +79,7 @@ step("User should see the text <text>", async function (text) {
 	assert.ok(taiko.text(text).isVisible())
 });
 
-step("When user clicks on Contribute more button , user should see no data available message for <flow> India", async function (flow) {
+step("When user clicks on Contribute more button , user should see no data available message for <flow>", async function (flow) {
 	await taiko.waitFor(500)
 	await click(link('Contribute More'))
 	await taiko.waitFor(2000)
@@ -96,7 +96,7 @@ step("When user clicks on Contribute more button , user should see no data avail
 });
 
 
-step("When user clicks on Validate more button , user should see no data available message for <flow> India", async function (flow) {
+step("When user clicks on Validate more button , user should see no data available message for <flow>", async function (flow) {
 	await taiko.waitFor(500)
 	await click(link('Validate More'))
 	await taiko.waitFor(2000)
@@ -138,11 +138,11 @@ step("User clicks on <arg0> , he should see next sentence and <arg1> <arg2> butt
 	await taiko.waitFor(1000);
 });
 
-step("User clicks on <arg0> he should see thank you page and should be able to see bronze Badge", async function (arg0) {
+step("User clicks on <arg0> he should see thank you page and should be able to see Badge_1 Badge", async function (arg0) {
 	await click(taiko.button({ id: arg0 }))
 	await taiko.waitFor(2000)
 	assert.ok(await text("Congratulations on winning a new badge!").isVisible());
-	assert.ok(await text("You’ve earned your Dekho India Bronze Bhasha Samarthak Badge").isVisible());
+	assert.ok(await text("You’ve earned your Initiative_4 Badge_1 Brand_Contributor Badge").isVisible());
 	assert.ok(await text("Validated 5 image(s) in Kannada").isVisible());
 	assert.ok(await text("Share on").isVisible());
 	assert.ok(await text("Download").isVisible());
@@ -154,20 +154,6 @@ step("User should see add extension and watch video link", async function () {
 	await taiko.waitFor(1000)
 	assert.ok(await button('Install Now').exists())
 	assert.ok(await link({ id: "extension_video_button" }).exists());
-});
-
-step("Validate the updated progress bar value with <contributedValue> for <initiative>", async function (contributedValue,  initiative) {
-   await taiko.waitFor(2000);
-   const updatedContributionMade = await taiko.$("#contribution-made").text();
-   const updatedContributedValue = updatedContributionMade.split('/');
-   const updatedValue = Number(updatedContributedValue[0]);
-   const aggregatedValue = Number(initialProgressValue) + Number(contributedValue);
-	if (initiative == "Dekho India") {
-		assert.ok(updatedValue == aggregatedValue);
-	} else if (initialProgressValue != updatedValue) {
-		assert.ok(true);
-	}
-   assert.ok(await text(`${initiative} Target Achieved`).isVisible());
 });
 
 step("User should store the progress bar for <initiative>", async function (initiative) {
@@ -190,8 +176,8 @@ step("Clicking watch video link should open video", async function () {
 	//taiko.waitFor(2000);
 });
 
-step("Validate Thank you page content for Dekho India", async function () {
-	assert.ok(await text('Dekho India Target Achieved').exists())
+step("Validate Thank you page content for Ocr Initiative", async function () {
+	assert.ok(await text('Initiative_4 Target Achieved').exists())
 	assert.ok(await text('Image(s)').exists())
 	assert.ok(await text('Labelled (in images)').isVisible())
 });
@@ -216,11 +202,11 @@ step("Check Data Source button should not be visible", async () => {
 	assert.ok(! await taiko.button({ id: 'show_source_button' }).isVisible());
 });
 
-step("User should be able to see bronze Badge after winning with <contributionLeft> <label> contribution left", async function(contributionLeft, label) {
-	assert.ok(await text("You are a Bronze Validator").isVisible());
+step("User should be able to see Badge_1 Badge after winning with <contributionLeft> <label> contribution left", async function(contributionLeft, label) {
+	assert.ok(await text("You are a Badge_1 Validator").isVisible());
 	assert.ok(await text("Your Badge").isVisible());
 	assert.ok(await text("Share on").isVisible());
-	assert.ok(await text(`Validate ${contributionLeft} ${label} to earn your Silver Badge.`).isVisible());
+	assert.ok(await text(`Validate ${contributionLeft} ${label} to earn your Badge_2 Badge.`).isVisible());
 	assert.ok(await image({ id: "thankyou-last-badge" }).isVisible());
 });
 

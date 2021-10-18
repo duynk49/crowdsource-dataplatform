@@ -1,4 +1,4 @@
-# Test BoloIndia
+# Test Text Initiative
 Tags: component
 
 * Open Website
@@ -31,7 +31,7 @@ Tags: component
 * Navigate to "Contribute" button and click "Contribute" button
 * user should "" see instructions to record
 * When user skips all the rest of the "5" sentences , User should see Thank you Page
-* Validate Thank you page content for Bolo India
+* Validate Thank you page content for Text Initiative
 * when user clicks on the Contribute More button, user should not see the Instructions page again
 
 ## Validate Validator flow
@@ -65,7 +65,7 @@ Tags: component
 * When user submits , Thank you pop up should come & close button should close the pop up
 
 ## Validate Home page content
-* Validate Bolo India content
+* Validate Text Initiative content
 
 ## Check Terms and Condition links from Footer
 * Navigate to "Terms & Conditions" button and click "Terms & Conditions" button

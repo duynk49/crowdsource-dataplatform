@@ -19,15 +19,11 @@ Tags: page
 ## Validate Badge Section
 * Click "Know More" Link
 * "Badges" page should be displayed
-* Clicking "Suno India" should navigate to "Asr Initiative" Page
-* Clicking "Bolo India" should navigate to "Text Initiative" Page
-* Clicking "Likho India" should navigate to "Parallel Initiative" Page
-* Clicking "Dekho India" should navigate to "Ocr Initiative" Page
+* Clicking "INITIATIVE_1" should navigate to "Asr Initiative" Page
+* Clicking "INITIATIVE_2" should navigate to "Text Initiative" Page
+* Clicking "INITIATIVE_3" should navigate to "Parallel Initiative" Page
+* Clicking "INITIATIVE_4" should navigate to "Ocr Initiative" Page
 
 ## Validate Localisation
 * Should select "हिंदी" from localisation dropdown "localeDropdownMenuButton"
-* Section should have text "भाषा दान"
-//* Clicking "देखो इंडिया" should navigate to "Dekho India" Page
-//* Select "likho_india_tab" from header
-//* Validate contribution language should be selected "हिंदी" from "from-language"
-//* Localisation "localeDropdownMenuButton" dropdown should have "English" & "हिंदी" value
+* Section should have text "अपनी भाषा को डिज़िटल रूप से समृद्ध करने के लिए डेटा की ओपन रिपॉज़िटरी बनाने में मदद करें"

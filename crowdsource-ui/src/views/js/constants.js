@@ -1,4 +1,4 @@
-const config = require('../../../brand/meity.json')
+const config = require('../../../brand/vakyansh.json')
 const { getEnabledLanguages, getAllLanguages } = require('./language-filter')
 const { enabled_languages } = require('./env-api')
 

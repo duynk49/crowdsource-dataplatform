@@ -72,17 +72,17 @@ step("when user navigates to <tab> tab user should see badges", async function(t
     {   await scrollUp(5000);
         await click(link({id:tab}))
         await taiko.waitFor(300)
-        assert.ok(await text('No badge earned for Suno India').isVisible())
+        assert.ok(await text('No badge earned for Initiative_1').isVisible())
 
     }
 });
 
-step("When user clicks on back button, user should land on Bhasha Daan home page", async function() {
+step("When user clicks on back button, user should land on generic home page", async function() {
     await scrollUp(5000);
     if (await taiko.text('Home').exists()) {
         assert.ok('Home button exists')
         await click(taiko.text("Home"))
         await taiko.waitFor(1500)
     }
-    assert.ok(await text("Contribute and become a Bhasha Samarthak").isVisible());
+    assert.ok(await text("Contribute and become a Brand_Contributor").isVisible());
 });

@@ -78,10 +78,8 @@ step("Move tab to <tabName>", async function (tabName) {
 	assert.ok(await button("Start Participating").exists())
 	await taiko.waitFor(1200);
 	await scrollUp(5000);
-	//await click(taiko.$({id : tabName}))
 	await click(taiko.$('#'+tabName));
 
-	//await click(taiko.$('#'+tabName, taiko.below(text('Help to build an open repository of data to digitally enrich your language '))));
 	await taiko.waitFor(500);
 });
 
@@ -104,32 +102,15 @@ step("Validate contribution language should be selected <lang> from <dropdown_id
 	await taiko.waitFor(2000)
 	const selectLanguageDropDown = taiko.dropDown({ id: dropdown_id })
 	assert.ok(await selectLanguageDropDown.exists());
-	// Need to check the selected value in dropdown
-
-	
-	// const selectedValue = await taiko.dropDown(dropdown_id).value();
-	// console.log(selectedValue);
-	// if(selectedValue == lang) {
-	// 	assert.ok(true);
-	// } else {
-	// 	assert.fail();
-	// }
 });
-
-// step("Localisation <id> dropdown should have <lang1> & <lang2> value", async function (id, lang1, lang2) {
-// 	await taiko.waitFor(2000)
-// 	await click(taiko.link({ id: id }));
-// 	assert.ok(await text(lang1).exists());
-// 	assert.ok(await text(lang2).exists());
-// });
 
 step("Validate participation section content", async function() {
 	await taiko.waitFor(1500)
 	const titleText = 'Total Participation'
-	const asrText = text('SUNO INDIA',taiko.below(titleText))
-	const textText = text('BOLO INDIA',taiko.toRightOf(asrText))
-	const parallelText = text('LIKHO INDIA',taiko.toRightOf(textText))
-	const ocrText = text('DEKHO INDIA',taiko.toRightOf(parallelText))
+	const asrText = text('INITIATIVE_1',taiko.below(titleText))
+	const textText = text('INITIATIVE_2',taiko.toRightOf(asrText))
+	const parallelText = text('INITIATIVE_3',taiko.toRightOf(textText))
+	const ocrText = text('INITIATIVE_4',taiko.toRightOf(parallelText))
 	await taiko.waitFor(1500)
 	assert.ok(await text(titleText).exists())
 	assert.ok(await textText.exists())

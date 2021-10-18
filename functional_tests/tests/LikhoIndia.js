@@ -12,16 +12,16 @@ const {
   into
 } = require('taiko');
 
-step("Validate Likho India content", async function() {
+step("Validate Parallel Initiative content", async function() {
   assert.ok(await text('Enrich your language by translating text').exists());
   assert.ok(await text('Validate').exists());
   assert.ok(await text('Translate').exists());
   assert.ok(await text('Contribution Tracker').isVisible());
   assert.ok(await text('Overall Summary').isVisible());
-  assert.ok(await text('Contributions made to Likho India').isVisible());
+  assert.ok(await text('Contributions made to Initiative_3').isVisible());
 });
 
-step("User should see the top Language graph and other stats for Likho India", async function() {
+step("User should see the top Language graph and other stats for Parallel Initiative", async function() {
   assert.ok(await text("Your language pair and top 3 contributed language pairs").exists());
   assert.ok(await text("Total translations").exists());
   assert.ok(await text("Language pairs").exists());
@@ -37,7 +37,7 @@ step("Select <lang> Language from <dropdown_id>", async function (lang, dropdown
   await selectLanguageDropDown.select(lang);
 });
 
-step("Close button should close the pop up and user should see Likho India Home page", async function() {
+step("Close button should close the pop up and user should see Parallel Initiative Home page", async function() {
   if (await taiko.text('User Details').exists()) {
     assert.ok('user details pop-up exists')
     await taiko.waitFor(700)
@@ -47,7 +47,7 @@ step("Close button should close the pop up and user should see Likho India Home 
   assert.ok(await text("Enrich your language by translating text").exists());
 });
 
-step("Validate Thank you page content for Likho India", async function() {
+step("Validate Thank you page content for Initiative_3", async function() {
   assert.ok(await text('Thank you for contributing!').exists())
   assert.ok(await text('10000 translations').exists())
 });
@@ -74,7 +74,7 @@ step("<arg0> should not visible", async function(arg0) {
     }
 });
 
-step("When user clicks on back button, user should land on Likho India home page", async function() {
+step("When user clicks on back button, user should land on Parallel Initiative home page", async function() {
 	if (await taiko.text('Home').exists()) {
     assert.ok('Home button exists')
     await click(taiko.text("Home"))
@@ -82,25 +82,7 @@ step("When user clicks on back button, user should land on Likho India home page
 }
 assert.ok(await text("Enrich your language by translating text").isVisible());
 });
-
-step("When user clicks on Contribute more button , user should see no data available message for Likho India", async function() {
-	await taiko.waitFor(500)
-    await click(link('Contribute More'))
-    await taiko.waitFor(2000)
-    assert.ok(await text('Thank you for your enthusiasm to translate the sentences').exists())
-});
-
-step("when user clicks on the Validate more button user should no data available message for Likho", async function() {
-    await taiko.waitFor(1000)
-      assert.ok(await text('Thank you for your enthusiasm to validate the translations').exists())
-});
-
-step("User should see no data available message for Likho India", async function() {
-	await taiko.waitFor(1000)
-      assert.ok(await text('Thank you for your enthusiasm to validate the translations').exists())
-});
-
-step("User skips all <count> sentences user should land on Likho India Thank you page", async function(count) {
+step("User skips all <count> sentences user should land on Parallel Initiative Thank you page", async function(count) {
   const skipbutton = taiko.button({ id: 'skip_button' })
   for (let i = 0; i < count; i++) {
     await click(skipbutton)
@@ -108,9 +90,9 @@ step("User skips all <count> sentences user should land on Likho India Thank you
   }
     await taiko.waitFor(1000)
 	  assert.ok(await text('Contribute to your language!').isVisible())
-	  assert.ok(await text('Odia Likho India Target Achieved').isVisible())
+	  assert.ok(await text('Odia Initiative_3 Target Achieved').isVisible())
     assert.ok(await text('Validation (in sentences)').isVisible())
-    assert.ok(await text('Validate 5 sentence(s) to earn your Bronze Badge.').isVisible())
+    assert.ok(await text('Validate 5 sentence(s) to earn your Badge_1 Badge.').isVisible())
     assert.ok(await text('Share on').isVisible())
     assert.ok(await link('Know More').isVisible())
 });

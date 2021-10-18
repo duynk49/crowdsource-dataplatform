@@ -11,7 +11,7 @@ const {
 
 step("Validate language dropdown, initiative tab, badges level & participation radios exist", async function () {
     await taiko.waitFor(1000);
-    await text("How can you win Bhasha Samarthak Badges").exists();
+    await text("How can you win Brand_Contributor Badges").exists();
     assert.ok(await taiko.dropDown({ id: 'languages' }).exists());
 
     assert.ok(await taiko.link({ id: 'asr' }).exists());
@@ -49,7 +49,7 @@ step("User should select <arg> initiative from tab", async function (arg) {
     //await scrollTo(taiko.link({ id: arg }))
     await click(taiko.link({ id: arg }));
 });
-step("should select <radioButton> radio button, <contributionMsg> text & <bronzeImg>,<silverImg>,<goldImg>,<platinumImg> image exist by default", async function(radioButton, contributionMsg, bronzeImg, silverImg, goldImg, platinumImg) {
+step("should select <radioButton> radio button, <contributionMsg> text & <badge_1_Img>,<badge_2_Img>,<badge_3_Img>,<badge_4_Img> image exist by default", async function(radioButton, contributionMsg, badge_1_Img, badge_2_Img, badge_3_Img, badge_4_Img) {
 	await taiko.waitFor(1000);
     if(radioButton== ""){
 
@@ -60,14 +60,14 @@ step("should select <radioButton> radio button, <contributionMsg> text & <bronze
     }
 
     assert.ok(await taiko.text(contributionMsg).isVisible());
-    const bronzeBadge = taiko.image({ id: bronzeImg });
-    assert.ok(await bronzeBadge.exists());
-    const silverBadge = taiko.image({ id: silverImg });
-    assert.ok(await silverBadge.exists());
-    const goldBadge = taiko.image({ id: goldImg });
-    assert.ok(await goldBadge.exists());
-    const platinumBadge = taiko.image({ id: platinumImg });
-    assert.ok(await platinumBadge.exists());
+    const badge_1_Badge = taiko.image({ id: badge_1_Img });
+    assert.ok(await badge_1_Badge.exists());
+    const badge_2_Badge = taiko.image({ id: badge_2_Img });
+    assert.ok(await badge_2_Badge.exists());
+    const badge_3_Badge = taiko.image({ id: badge_3_Img });
+    assert.ok(await badge_3_Badge.exists());
+    const badge_4_Badge = taiko.image({ id: badge_4_Img });
+    assert.ok(await badge_4_Badge.exists());
 });
 
 step("User select <badgeLevel> badge level", async function(badgeLevel) {

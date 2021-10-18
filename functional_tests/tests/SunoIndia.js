@@ -20,13 +20,13 @@ step("Select <HeaderLink> from header", async function (HeaderLink) {
     await click(taiko.link({id: HeaderLink}));
 });
 
-step("Validate Suno India content", async function () {
+step("Validate Asr Initiative content", async function () {
     assert.ok(await text('Enrich your language by typing the audio that you hear').exists());
     assert.ok(await text('Validate').exists());
     assert.ok(await text('Transcribe').exists());
     assert.ok(await text('Contribution Tracker').isVisible());
     assert.ok(await text('Overall Summary').isVisible());
-    assert.ok(await text('Contributions made to Suno India').isVisible());
+    assert.ok(await text('Contributions made to Initiative_1').isVisible());
     assert.ok(await text('Your language and top 3 contributed languages').isVisible());
 });
 
@@ -231,9 +231,9 @@ step("User clicks on Play button, and then on pause button, then clicks on <need
     await click(taiko.button({ id: 'skip_button' }))
 });
 
-step("Validate Thank you page content for Suno India", async function () {
+step("Validate Thank you page content for Asr Initiative", async function () {
     await taiko.waitFor(1000)
-    assert.ok(await text('Suno India Target Achieved').isVisible())
+    assert.ok(await text('Initiative_1 Target Achieved').isVisible())
     assert.ok(await text('Transcription (in sentences)').isVisible())
     assert.ok(await text('Hour(s)').isVisible())
 });
