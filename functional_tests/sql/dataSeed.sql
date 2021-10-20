@@ -496,7 +496,7 @@ Union values('medium', 'text', '{
 }'::jsonb, null);
 
 
---- Profanity Data for dekho india
+--- Profanity Data for ocr initiative
 
 
 delete from validations where contribution_id in (
@@ -615,7 +615,7 @@ Union values('medium', 'ocr', '{
 }'::jsonb, null);
 
 
--- Profanity data for Suno India
+-- Profanity data for Asr Initiative
 
 delete from validations where contribution_id in (
 select contribution_id from contributions where dataset_row_id in (
@@ -752,7 +752,7 @@ Union values('medium', 'asr', '{
 }'::jsonb, null);
 
 
--- Profanity data for Likho india
+-- Profanity data for parallel initiative
 
 delete from validations where contribution_id in (
 select contribution_id from contributions where dataset_row_id in (
@@ -868,7 +868,7 @@ Union values('medium', 'parallel', '{
     "language": "Hindi"
 }'::jsonb, null);
 
--- Boolo India INsertions
+-- text initiative Insertions
 
 insert into dataset_row ( difficulty_level, type, media, state,is_profane ) 
 values('medium', 'text', '{

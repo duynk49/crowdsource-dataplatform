@@ -639,7 +639,7 @@ describe('test common js', () => {
       localStorage.clear();
     });
 
-    test('should show card with Platinum badge after user achieved a Platinum badge when language is in top', () => {
+    test('should show card with badge_4 badge after user achieved a badge_4 badge when language is in top', () => {
       mockLocalStorage();
       localStorage.setItem(CURRENT_MODULE, INITIATIVES.text.value);
       localStorage.setItem(CONTRIBUTION_LANGUAGE, 'hindi');
@@ -697,7 +697,7 @@ describe('test common js', () => {
       localStorage.clear();
     });
 
-    test('should show card with Platinum badge after user achieved a Platinum badge for the language that is not in top', () => {
+    test('should show card with badge_4 badge after user achieved a badge_4 badge for the language that is not in top', () => {
       mockLocalStorage();
       localStorage.setItem(CURRENT_MODULE, INITIATIVES.asr.value);
       localStorage.setItem(CONTRIBUTION_LANGUAGE, 'punjabi');
