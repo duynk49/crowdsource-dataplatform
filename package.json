@@ -19,7 +19,7 @@
     "gulp": "cd crowdsource-ui && npm run gulp",
     "db-migrate": "cd crowdsource-api && npx db-migrate up --config migrations/config/migration_config.json -e dev",
     "prepare": "husky install",
-    "install": "run-p install:api install:ui install:ft",
+    "install": "run-p install:api install:ui",
     "install:api": "cd crowdsource-api && npm i",
     "install:ui": "cd crowdsource-ui && npm i",
     "preinstall": "npx npm-force-resolutions"
