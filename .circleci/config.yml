@@ -266,112 +266,112 @@ workflows:
             - node/test
           filters:
             branches:
-              only: [master, test_translation_scripts]
+              only: [open_source_config]
 
-      - db_migrate_azure:
-          name: migrate_dev_azure
-          db_name: ${AZURE_DEV_DB_NAME}
-          db_host: ${AZURE_DB_HOST}
-          db_user: ${AZURE_DB_USER}
-          requires:
-            - create-workspace
+      # - db_migrate_azure:
+      #     name: migrate_dev_azure
+      #     db_name: ${AZURE_DEV_DB_NAME}
+      #     db_host: ${AZURE_DB_HOST}
+      #     db_user: ${AZURE_DB_USER}
+      #     requires:
+      #       - create-workspace
 
-      - build_ui_push_to_blob_storage:
-          name: build_dev_ui
-          env_name: dev
-          azure_acc_url: ${AZURE_ACC_URL}
-          requires:
-            - migrate_dev_azure
+      # - build_ui_push_to_blob_storage:
+      #     name: build_dev_ui
+      #     env_name: dev
+      #     azure_acc_url: ${AZURE_ACC_URL}
+      #     requires:
+      #       - migrate_dev_azure
 
-      - cdn_invalidation:
-          name: cdn_invalidation_dev
-          azure_resource_group: ${AZURE_RESOURCE_GROUP}
-          azure_profile_name: ${AZURE_PROFILE_NAME}
-          azure_endpoint_name: dev-vakyansh
-          requires:
-            - build_dev_ui
+      # - cdn_invalidation:
+      #     name: cdn_invalidation_dev
+      #     azure_resource_group: ${AZURE_RESOURCE_GROUP}
+      #     azure_profile_name: ${AZURE_PROFILE_NAME}
+      #     azure_endpoint_name: dev-vakyansh
+      #     requires:
+      #       - build_dev_ui
 
-      - azure-acr/build-and-push-image:
-          pre-steps:
-            - *fast-checkout
-          name: push_dev_image
-          login-server-name: ${AZURE_LOGIN_SERVER_NAME}
-          registry-name: ${AZURE_REGISTRY}
-          path: ./crowdsource-api
-          extra-build-args: --build-arg NODE_CONFIG_ENV=dev
-          repo: ${AZURE_REPO}
-          tag: dev
-          checkout: false
-          requires:
-            - build_dev_ui
+      # - azure-acr/build-and-push-image:
+      #     pre-steps:
+      #       - *fast-checkout
+      #     name: push_dev_image
+      #     login-server-name: ${AZURE_LOGIN_SERVER_NAME}
+      #     registry-name: ${AZURE_REGISTRY}
+      #     path: ./crowdsource-api
+      #     extra-build-args: --build-arg NODE_CONFIG_ENV=dev
+      #     repo: ${AZURE_REPO}
+      #     tag: dev
+      #     checkout: false
+      #     requires:
+      #       - build_dev_ui
 
-      - azure-acr/build-and-push-image:
-          name: push_db_refresher_image
-          login-server-name: ${AZURE_LOGIN_SERVER_NAME}
-          registry-name: ${AZURE_REGISTRY}
-          dockerfile: Dockerfile-dbRefresh
-          path: ./db-refresher
-          extra-build-args: --build-arg NODE_CONFIG_ENV=dev
-          repo: ${DB_REFRESHER_REPO}
-          tag: "dev,test,prod,uat"
-          requires:
-            - migrate_dev_azure
+      # - azure-acr/build-and-push-image:
+      #     name: push_db_refresher_image
+      #     login-server-name: ${AZURE_LOGIN_SERVER_NAME}
+      #     registry-name: ${AZURE_REGISTRY}
+      #     dockerfile: Dockerfile-dbRefresh
+      #     path: ./db-refresher
+      #     extra-build-args: --build-arg NODE_CONFIG_ENV=dev
+      #     repo: ${DB_REFRESHER_REPO}
+      #     tag: "dev,test,prod,uat"
+      #     requires:
+      #       - migrate_dev_azure
 
-      - aks_deployment:
-          name: dev_deployment_aks
-          cluster-name: ${AZURE_CLUSTER_NAME}
-          env-name: dev
-          azure_resource_group: ${AZURE_RESOURCE_GROUP}
-          azure_login_server_name: ${AZURE_LOGIN_SERVER_NAME}
-          azure_repo_api: ${AZURE_REPO}
-          requires:
-            - push_dev_image
-            - push_db_refresher_image
+      # - aks_deployment:
+      #     name: dev_deployment_aks
+      #     cluster-name: ${AZURE_CLUSTER_NAME}
+      #     env-name: dev
+      #     azure_resource_group: ${AZURE_RESOURCE_GROUP}
+      #     azure_login_server_name: ${AZURE_LOGIN_SERVER_NAME}
+      #     azure_repo_api: ${AZURE_REPO}
+      #     requires:
+      #       - push_dev_image
+      #       - push_db_refresher_image
 
-      - setup_functional_tests:
-          name: setup_ft_dev
-          cluster-name: ${AZURE_CLUSTER_NAME}
-          env_name: dev
-          db_name: ${AZURE_DEV_DB_NAME}
-          requires:
-            - dev_deployment_aks
-            - build_dev_ui
+      # - setup_functional_tests:
+      #     name: setup_ft_dev
+      #     cluster-name: ${AZURE_CLUSTER_NAME}
+      #     env_name: dev
+      #     db_name: ${AZURE_DEV_DB_NAME}
+      #     requires:
+      #       - dev_deployment_aks
+      #       - build_dev_ui
 
-      - run_functional_tests:
-          name: functional_tests_dev
-          env_name: dev
-          db_name: ${AZURE_DEV_DB_NAME}
-          requires:
-            - setup_ft_dev
+      # - run_functional_tests:
+      #     name: functional_tests_dev
+      #     env_name: dev
+      #     db_name: ${AZURE_DEV_DB_NAME}
+      #     requires:
+      #       - setup_ft_dev
 
-      - failed-notification:
-          name: dev-failed-notification
-          requires:
-            - functional_tests_dev
+      # - failed-notification:
+      #     name: dev-failed-notification
+      #     requires:
+      #       - functional_tests_dev
 
-      - success-notification:
-          name: dev-success-notification
-          requires:
-            - functional_tests_dev
+      # - success-notification:
+      #     name: dev-success-notification
+      #     requires:
+      #       - functional_tests_dev
 
-      - approve_to_deploy:
-          name: approve_test_deployment_aks
-          type: approval
-          requires:
-            - dev_deployment_aks
-            - build_dev_ui
-            # - functional_tests_dev
-          filters:
-            branches:
-              only: master
+      # - approve_to_deploy:
+      #     name: approve_test_deployment_aks
+      #     type: approval
+      #     requires:
+      #       - dev_deployment_aks
+      #       - build_dev_ui
+      #       # - functional_tests_dev
+      #     filters:
+      #       branches:
+      #         only: master
 
       - db_migrate_azure:
           name: migrate_test_azure
           db_name: ${AZURE_TEST_DB_NAME}
           db_host: ${AZURE_DB_HOST}
           db_user: ${AZURE_DB_USER}
-          requires:
-            - approve_test_deployment_aks
+          # requires:
+          #   - approve_test_deployment_aks
 
       - build_ui_push_to_blob_storage:
           name: build_test_ui
@@ -412,21 +412,21 @@ workflows:
           requires:
             - push_test_image
 
-      - setup_functional_tests:
-          name: setup_ft_test
-          cluster-name: ${AZURE_CLUSTER_NAME}
-          env_name: test
-          db_name: ${AZURE_TEST_DB_NAME}
-          requires:
-            - test_deployment_aks
-            - build_test_ui
+      # - setup_functional_tests:
+      #     name: setup_ft_test
+      #     cluster-name: ${AZURE_CLUSTER_NAME}
+      #     env_name: test
+      #     db_name: ${AZURE_TEST_DB_NAME}
+      #     requires:
+      #       - test_deployment_aks
+      #       - build_test_ui
 
-      - run_functional_tests:
-          name: functional_tests_test
-          env_name: test
-          db_name: ${AZURE_TEST_DB_NAME}
-          requires:
-            - setup_ft_test
+      # - run_functional_tests:
+      #     name: functional_tests_test
+      #     env_name: test
+      #     db_name: ${AZURE_TEST_DB_NAME}
+      #     requires:
+      #       - setup_ft_test
 
       - approve_to_deploy:
           name: approve_uat_deployment_aks
