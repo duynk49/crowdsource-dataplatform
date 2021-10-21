@@ -435,6 +435,7 @@ step("When user clicks on the Feedback icon, user should see the feedback popup"
     assert.ok(await text("Share your feedback below").isVisible());
     assert.ok(await text("Would you recommend Title_1 Title_2 to your friends & family?").isVisible());
     assert.ok(await text("Would you revisit Title_1 Title_2?").isVisible());
+    assert.ok(await text("Only 1000 characters allowed").isVisible());
 });
 
 step("Submit button should be disbaled, When user selects an opinion, submit button should be enabled", async function () {
@@ -478,6 +479,7 @@ step("When user clicks on Report Button, user should see Report Content Dialog B
     await click(taiko.button({ id: "report_btn" }))
     await taiko.waitFor(1000);
     assert.ok(await text("Report Content").exists());
+    assert.ok(await text("Only 1000 characters allowed").isVisible());
     assert.ok(await taiko.button({ id: "report_submit_id" }).isDisabled());
 });
 
