@@ -64,28 +64,7 @@ const generateLocalisedHtmlFromEjs = function (inputPath, outPath, moduleName, e
 
   const i18n = new I18n({
     locales: [
-      'as',
-      'bn',
       'en',
-      'gu',
-      'hi',
-      'kn',
-      'ml',
-      'mr',
-      'or',
-      'pa',
-      'ta',
-      'te',
-      'doi',
-      'mai',
-      'ur',
-      'kr',
-      'kd',
-      'mnibn',
-      'mnimm',
-      'satol',
-      'satdv',
-      'sa',
     ],
     directory: 'locales',
   });

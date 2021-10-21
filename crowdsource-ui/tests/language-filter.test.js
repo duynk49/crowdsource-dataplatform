@@ -11,9 +11,9 @@ describe('Test language filter', () => {
                 "hi"
             ]
             const expected = [
-                { value: "Assamese", id: "as", text: "অসমীয়া", hasLocaleText: true, data: true },
-                { value: "Bengali", id: "bn", text: "বাংলা", hasLocaleText: true, data: true },
-                { value: "Hindi", id: "hi", text: "हिंदी", hasLocaleText: true, data: true }]
+                { value: "Assamese", id: "as", text: "অসমীয়া", hasLocaleText: false, data: true },
+                { value: "Bengali", id: "bn", text: "বাংলা", hasLocaleText: false, data: true },
+                { value: "Hindi", id: "hi", text: "हिंदी", hasLocaleText: false, data: true }]
             const languages = getEnabledLanguages(enabled_languages)
             expect(languages).toEqual(expected)
         });
