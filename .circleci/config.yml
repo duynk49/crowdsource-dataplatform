@@ -370,8 +370,8 @@ workflows:
           db_name: ${AZURE_TEST_DB_NAME}
           db_host: ${AZURE_DB_HOST}
           db_user: ${AZURE_DB_USER}
-          # requires:
-          #   - approve_test_deployment_aks
+          requires:
+            - create-workspace
 
       - build_ui_push_to_blob_storage:
           name: build_test_ui
