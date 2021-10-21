@@ -11,16 +11,16 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "https://bhashini.gov.in"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://prod.vakyansh.in"
     nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
 
 spec:
   tls:
     - hosts:
-        - bhashadaan-api.bhashini.gov.in
+        - prod-api.vakyansh.in
       secretName: aks-ingress-tls-prod
   rules:
-    - host: bhashadaan-api.bhashini.gov.in
+    - host: prod-api.vakyansh.in
       http:
         paths:
           - path: /

@@ -136,13 +136,7 @@ jobs:
 
             ./azcopy login --tenant-id ${TENANT_ID} --service-principal --application-id ${APP_ID}
 
-            if [ << parameters.env_name >> == 'prod' ]
-            then
-              echo "Deploying to prod"
-              ./azcopy copy "crowdsource-ui/target/*" "<< parameters.azure_acc_url >>/${AZURE_STATIC_CONTENT}-<< parameters.env_name >>/bhashadaan/" --cache-control "max-age=1200" --recursive
-            else
-              ./azcopy copy "crowdsource-ui/target/*" "<< parameters.azure_acc_url >>/${AZURE_STATIC_CONTENT}-<< parameters.env_name >>/" --cache-control "max-age=1200" --recursive
-            fi
+            ./azcopy copy "crowdsource-ui/target/*" "<< parameters.azure_acc_url >>/${AZURE_STATIC_CONTENT}-<< parameters.env_name >>/" --cache-control "max-age=1200" --recursive
 
   db_migrate_azure:
     parameters:
@@ -520,7 +514,7 @@ workflows:
           name: cdn_invalidation_prod
           azure_resource_group: ${AZURE_RESOURCE_GROUP_PROD} 
           azure_profile_name: ${AZURE_PROFILE_NAME_PROD}
-          azure_endpoint_name: bhashadaan
+          azure_endpoint_name: prod-vakyansh
           requires:
             - build_prod_ui
 

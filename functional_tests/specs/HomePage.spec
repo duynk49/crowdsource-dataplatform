@@ -23,3 +23,5 @@ Tags: page
 * Clicking "INITIATIVE_2" should navigate to "Text Initiative" Page
 * Clicking "INITIATIVE_3" should navigate to "Parallel Initiative" Page
 * Clicking "INITIATIVE_4" should navigate to "Ocr Initiative" Page
+
+* Section should have text "अपनी भाषा को डिज़िटल रूप से समृद्ध करने के लिए डेटा की ओपन रिपॉज़िटरी बनाने में मदद करें"
