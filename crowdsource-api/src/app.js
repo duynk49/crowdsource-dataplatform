@@ -617,7 +617,7 @@ router.post('/feedback', validateUserInputForFeedback, (req, res) => {
             "category": "Complaint",
             "language": "Hindi",
             "email": "email@mail.com",
-            "module": "Bolo India",
+            "module": "test_Key_2",
             "target_page": "Home page",
             "opinion_rating": "5",
             "recommended": "Yes",

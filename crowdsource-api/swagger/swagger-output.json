@@ -649,7 +649,7 @@
                 },
                 "module": {
                   "type": "string",
-                  "example": "Bolo India"
+                  "example": "test_Key_2"
                 },
                 "target_page": {
                   "type": "string",

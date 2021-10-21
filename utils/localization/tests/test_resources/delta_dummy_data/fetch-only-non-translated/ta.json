@@ -12,8 +12,5 @@
 	"TO ": "பெறுபவர்",
 	"TO": "பெறுபவர்",
 	"Validate More": "மேலும் சரிபார்க்கவும்",
-	"You’ve earned a <span id=\"current_badge_name_1\"></span> Bhasha Samarthak Badge by validating <span id=\"current_badge_count\"></span> Images.": "<span id=\"current_badge_count\"></span> படங்கள் சரிபார்த்ததன் மூலம் <span id=\"current_badge_name_1\"></span> பாஷா சமர்த்தக் பேட்ஜைப் பெற்றுள்ளீர்கள்.",
-	"image label(s) validated": "பட லேபிள் (கள்) சரிபார்க்கப்பட்டது",
-	"social sharing text with rank": "https://bhashini.gov.in/bhashadaan இல் இந்தியாவுக்கான திறந்த மொழி களஞ்சியத்தை உருவாக்குவதில் நான் பங்களித்துள்ளேன். நம் குரல்கள் மூலம் பங்களித்து, மெஷின்கள் நம் மொழியைக் கற்பதற்கு உதவுவதில், நீங்களும் நானும் நிச்சயமாக ஒரு வித்தியாசத்தை உருவாக்க முடியும். போலோ இந்தியாவில் நம் <x> மொழியின் தரவரிசை <y> ஆக உள்ளது. உங்கள் மொழியை மேம்படுத்த, உங்கள் பங்களிப்பை தருகிறீர்களா?",
-	"Your next goal is to reach <span id=\"next_badge_count\"></span> images to earn your <span id=\"next_badge_name_1\"></span> Bhasha Samarthak Badge.": "உங்கள் <span id=\"next_badge_name_1\"></span> பாஷா சமர்தக் பேட்ஜைப் பெற <span id=\"next_badge_count\"></span> படங்களை அடைவதே உங்கள் அடுத்த குறிக்கோள்."
+	"image label(s) validated": "பட லேபிள் (கள்) சரிபார்க்கப்பட்டது"
 }

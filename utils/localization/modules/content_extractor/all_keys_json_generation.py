@@ -103,7 +103,7 @@ def read_excels_as_df(file):
 
 def read_manually_generated_excel_file(excel_file):
     sheet_df_list = read_excels_as_df(excel_file)
-    main_columns = ['Suno India', 'Likho India', 'Bolo India', 'Dekho India', 'English Content']
+    main_columns = ['Asr Initiative', 'Text Initiative', 'Parallel Initiative', 'Ocr Initiative', 'English Content']
 
     final_df = pd.DataFrame([], columns=[key_column, english_col])
 

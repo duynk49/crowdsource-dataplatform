@@ -126,7 +126,7 @@ logs
 
 crowdsource-ui/build/*
 crowdsource-ui/target/*
-!crowdsource-ui/target/img/
+!crowdsource-ui/target/img/vakyansh
 !crowdsource-ui/target/favicon.png
 !crowdsource-ui/target/sitemap.xml
 !crowdsource-ui/target/aud/

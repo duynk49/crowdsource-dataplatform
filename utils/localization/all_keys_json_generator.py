@@ -16,8 +16,8 @@ def main():
                 python all_keys_json_generator.py -i ./../../crowdsource-ui/locales 
                 -e ./out/en.xlsx -o ./all_keys_json_out 
 
-            To run with manually generated excel with the 4 categories('Suno India', 'Bolo India', 'Likho India', 
-            'Dekho India'): 
+            To run with manually generated excel with the 4 categories('Asr Initiative', 'Text Initiative', 'Parallel Initiative', 
+            'Ocr Initiative'): 
                 python all_keys_json_generator.py -i ./../../crowdsource-ui/locales
                 -e resources/test_data/all_keys_json_input/English_content.xlsx -o ./all_keys_json_out -c manual 
 

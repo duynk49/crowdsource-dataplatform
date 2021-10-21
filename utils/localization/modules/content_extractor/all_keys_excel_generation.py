@@ -34,8 +34,8 @@
 # 10. Keys differing by just one word.
 # (
 #       Eg: {
-#           "Back to Bolo India Home": "Back to Bolo India Home",
-#           "Back to Dekho India Home": "Back to Dekho India Home"
+#           "Back to Text Initiative Home": "Back to Text Initiative Home",
+#           "Back to Ocr Initiative Home": "Back to Ocr Initiative Home"
 #       }
 # )
 

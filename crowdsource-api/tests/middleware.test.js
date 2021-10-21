@@ -226,7 +226,7 @@ describe('middleware test', function () {
          Aliquam tempor auctor felis quis dapibus. Donec at lacus ullamcorper, tincidunt nibh non, commodo elit. Ut cursus lorem at nibh hendrerit bibendum. Nam feugiat mauris at 
          eros varius auctor. Vivamus blandit turpis et dignissim tincidunt. Morbi bibendum dignissim sapien, sit amet blandit massa rhoncus a quam   .
         `;
-        const testModule = 'bolo';
+        const testModule = 'test_Key_2';
         const testTargetPage = 'Landing Page';
         const testOpinionRating = 4;
         const testEmail = 'example@gmail.com';
