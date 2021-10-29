@@ -49,7 +49,7 @@ const getFormattedTime = totalSeconds => {
 const updateShareContent = function (language, rank) {
   const localeStrings = JSON.parse(localStorage.getItem(LOCALE_STRINGS));
   const localisedLanguage = sessionStorage.getItem('i18n');
-  const textTitle = `${config.title_1} ${config.title_2}: A crowdsourcing initiative for Indian languages`;
+  const textTitle = `${config.title_1} ${config.title_2}: An initiative for Indian languages`;
   let localeText = '';
   if (rank === 0) {
     localeText = localeStrings['social sharing text without rank'];
