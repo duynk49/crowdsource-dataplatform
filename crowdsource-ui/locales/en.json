@@ -396,14 +396,6 @@
 	"test_badge_2": "test_badge_2",
 	"test_badge_3": "test_badge_3",
 	"test_badge_4": "test_badge_4",
-	"Back to test_2 Home": "Back to test_2 Home",
-	"Your feedback helps us keep test_2 relevant, we appreciate you taking time to leave the feedback.": "Your feedback helps us keep test_2 relevant, we appreciate you taking time to leave the feedback.",
-	"<span id=\"totalAverage\"></span> of test_2 Target Achieved": "<span id=\"totalAverage\"></span> of test_2 Target Achieved",
-	"Contributions made to test_2": "Contributions made to test_2",
-	"<span id=\"totalAverage\"></span> of <span id=\"metric-language\"></span> test_2 Target Achieved": "<span id=\"totalAverage\"></span> of <span id=\"metric-language\"></span> test_2 Target Achieved",
-	"You’ve earned your test_2 <span id=\"current_badge_name\"></span> <span>Brand_Contributor</span> Badge": "You’ve earned your test_2 <span id=\"current_badge_name\"></span> <span>Brand_Contributor</span> Badge",
-	"Contribute <b id=\"sentence-away-count\"></b> <b>recording(s)</b> to earn your\n    <span id=\"sentence_away_badge\"></span> Badge.": "Contribute <b id=\"sentence-away-count\"></b> <b>recording(s)</b> to earn your\n    <span id=\"sentence_away_badge\"></span> Badge.",
-	"Validate <b id=\"sentence-away-count\"></b> <b>sentence(s)</b> to earn your\n    <span id=\"sentence_away_badge\"></span> Badge.": "Validate <b id=\"sentence-away-count\"></b> <b>sentence(s)</b> to earn your\n    <span id=\"sentence_away_badge\"></span> Badge.",
 	"<span id=\"totalAverage\"></span> of <span id=\"metric-language\"></span> test_1 Target Achieved": "<span id=\"totalAverage\"></span> of <span id=\"metric-language\"></span> test_1 Target Achieved",
 	"You’ve earned your test_1 <span id=\"current_badge_name\"></span> <span>Brand_Contributor</span> Badge": "You’ve earned your test_1 <span id=\"current_badge_name\"></span> <span>Brand_Contributor</span> Badge",
 	"Contribute <b id=\"sentence-away-count\"></b> <b>sentence(s)</b> to earn your\n    <span id=\"sentence_away_badge\"></span> Badge.": "Contribute <b id=\"sentence-away-count\"></b> <b>sentence(s)</b> to earn your\n    <span id=\"sentence_away_badge\"></span> Badge.",
@@ -462,5 +454,6 @@
 	"<span id=\"totalAverage\"></span> of OCR Target Achieved": "<span id=\"totalAverage\"></span> of OCR Target Achieved",
 	"Contributions made to OCR": "Contributions made to OCR",
 	"<span id=\"totalAverage\"></span> of <span id=\"metric-language\"></span> OCR Target Achieved": "<span id=\"totalAverage\"></span> of <span id=\"metric-language\"></span> OCR Target Achieved",
-	"You’ve earned your OCR <span id=\"current_badge_name\"></span> <span>Brand_Contributor</span> Badge": "You’ve earned your OCR <span id=\"current_badge_name\"></span> <span>Brand_Contributor</span> Badge"
+	"You’ve earned your OCR <span id=\"current_badge_name\"></span> <span>Brand_Contributor</span> Badge": "You’ve earned your OCR <span id=\"current_badge_name\"></span> <span>Brand_Contributor</span> Badge",
+	"State Wise distribution": "State Wise distribution"
 }
