@@ -1,4 +1,5 @@
 const { getEnabledLanguages } = require('../../src/views/js/language-filter');
+const { INITIATIVES } = require('../../src/views/js/constants');
 
 const fs = require('fs');
 const ejs = require('ejs');
@@ -73,7 +74,8 @@ const generateLocalisedHtmlFromEjs = function (inputPath, outPath, moduleName, e
   i18n.getLocales().forEach(async locale => {
     let outputPath, ejsPath;
     if (moduleName) {
-      outputPath = `${outPath}/${locale}/${moduleName}`;
+      const toModule = INITIATIVES[moduleName].url ;
+      outputPath = `${outPath}/${locale}/${toModule}`;
       ejsPath = `${inputPath}/${moduleName}`;
     } else {
       outputPath = `${outPath}/${locale}`;

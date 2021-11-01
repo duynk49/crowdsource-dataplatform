@@ -10,7 +10,7 @@ describe("changeLocale", () => {
     localStorage.setItem(CURRENT_MODULE, INITIATIVES.text.value);
     changeLocale('en');
     const localeValue = sessionStorage.getItem("i18n");
-    expect(location.href).toEqual("/en/text/home.html")
+    expect(location.href).toEqual(`/en/${INITIATIVES.text.url}/home.html`)
     expect(localeValue).toEqual("en")
     localStorage.clear();
 
@@ -22,7 +22,7 @@ describe("changeLocale", () => {
     localStorage.setItem(CURRENT_MODULE, INITIATIVES.asr.value);
     changeLocale('en');
     const localeValue = sessionStorage.getItem("i18n");
-    expect(location.href).toEqual("/en/asr/home.html")
+    expect(location.href).toEqual(`/en/${INITIATIVES.asr.url}/home.html`)
     expect(localeValue).toEqual("en")
     localStorage.clear();
   })
@@ -33,7 +33,7 @@ describe("changeLocale", () => {
     localStorage.setItem(CURRENT_MODULE, INITIATIVES.ocr.value);
     changeLocale('en');
     const localeValue = sessionStorage.getItem("i18n");
-    expect(location.href).toEqual("/en/ocr/home.html")
+    expect(location.href).toEqual(`/en/${INITIATIVES.ocr.url}/home.html`)
     expect(localeValue).toEqual("en")
     localStorage.clear();
   })
@@ -44,7 +44,7 @@ describe("changeLocale", () => {
     localStorage.setItem(CURRENT_MODULE, INITIATIVES.parallel.value);
     changeLocale('en');
     const localeValue = sessionStorage.getItem("i18n");
-    expect(location.href).toEqual("/en/parallel/home.html")
+    expect(location.href).toEqual(`/en/${INITIATIVES.parallel.url}/home.html`)
     expect(localeValue).toEqual("en")
     localStorage.clear();
   })
@@ -68,7 +68,7 @@ describe("changeLocale", () => {
     localStorage.setItem('i18n', 'hi');
     changeLocale('hi');
     const localeValue = sessionStorage.getItem("i18n");
-    expect(location.href).toEqual("/hi/text/home.html")
+    expect(location.href).toEqual(`/hi/${INITIATIVES.text.url}/home.html`)
     expect(localeValue).toEqual("hi")
     localStorage.clear();
   })
@@ -81,7 +81,7 @@ describe("changeLocale", () => {
     localStorage.setItem('i18n', 'hi');
     changeLocale('hi');
     const localeValue = sessionStorage.getItem("i18n");
-    expect(location.href).toEqual("/hi/text/dashboard.html")
+    expect(location.href).toEqual(`/hi/${INITIATIVES.text.url}/dashboard.html`)
     expect(localeValue).toEqual("hi")
     localStorage.clear();
   })
@@ -94,7 +94,7 @@ describe("changeLocale", () => {
     localStorage.setItem('i18n', 'hi');
     changeLocale('hi');
     const localeValue = localStorage.getItem("i18n");
-    expect(location.href).toEqual("/hi/asr/dashboard.html")
+    expect(location.href).toEqual(`/hi/${INITIATIVES.asr.url}/dashboard.html`)
     expect(localeValue).toEqual("hi")
     localStorage.clear();
   })
@@ -107,7 +107,7 @@ describe("changeLocale", () => {
     localStorage.setItem('i18n', 'hi');
     changeLocale('hi');
     const localeValue = localStorage.getItem("i18n");
-    expect(location.href).toEqual("/hi/ocr/dashboard.html")
+    expect(location.href).toEqual(`/hi/${INITIATIVES.ocr.url}/dashboard.html`)
     expect(localeValue).toEqual("hi")
     localStorage.clear();
   })
@@ -120,7 +120,7 @@ describe("changeLocale", () => {
     localStorage.setItem('i18n', 'hi');
     changeLocale('hi');
     const localeValue = localStorage.getItem("i18n");
-    expect(location.href).toEqual("/hi/parallel/record.html")
+    expect(location.href).toEqual(`/hi/${INITIATIVES.parallel.url}/record.html`)
     expect(localeValue).toEqual("hi")
     localStorage.clear();
   })

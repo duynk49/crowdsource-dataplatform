@@ -16,8 +16,8 @@
 </head>
 
 <body>
-    <%- include('common/header/header.ejs',{home:"./home.html", text:"./text/home.html",
-        asr:"./asr/home.html",parallel:"./parallel/home.html",ocr:"./ocr/home.html",path:"./"}); %>
+    <%- include('common/header/header.ejs',{home:"./home.html", text:`./${config.initiativeUrl_2}/home.html`,
+        asr:`./${config.initiativeUrl_1}/home.html`,parallel:`./${config.initiativeUrl_3}/home.html`,ocr:`./${config.initiativeUrl_4}/home.html`,path:"./"}); %>
         <div class="container-fluid">
             <div class="row justify-content-center bg-secondary">
                 <div class="col-12 col-sm-10 col-md-8 px-1 py-0 text-light text-center mt-0 mt-sm-2 mt-3">

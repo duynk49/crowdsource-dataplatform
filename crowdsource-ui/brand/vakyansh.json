@@ -16,5 +16,9 @@
   "initiativeKey_1" :"test_Key_1",
   "initiativeKey_2" :"test_Key_2",
   "initiativeKey_3" :"test_Key_3",
-  "initiativeKey_4" :"test_Key_4"
+  "initiativeKey_4" :"test_Key_4",
+  "initiativeUrl_1" :"tts",
+  "initiativeUrl_2" :"asr",
+  "initiativeUrl_3" :"translation",
+  "initiativeUrl_4" :"ocr"
 }

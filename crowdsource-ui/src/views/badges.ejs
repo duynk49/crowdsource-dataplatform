@@ -17,8 +17,8 @@
 </head>
 
 <body class="bg-secondary">
-    <%- include('common/header/header.ejs',{home:"./home.html", text:"./text/home.html",
-        asr:"./asr/home.html",parallel:"./parallel/home.html",ocr:"./ocr/home.html",path:"./"}); %>
+    <%- include('common/header/header.ejs',{home:"./home.html", text:`./${config.initiativeUrl_2}/home.html`,
+        asr:`./${config.initiativeUrl_1}/home.html`,parallel:`./${config.initiativeUrl_3}/home.html`,ocr:`./${config.initiativeUrl_4}/home.html`,path:"./"}); %>
         <div id="content-wrapper" class="content-wrapper container-fluid padding-top-107 bg-tri-color pb-2 px-lg-3 px-md-3 px-0">
             <div class="row px-0 m-0">
                 <%- include('common/buttons/back-btn/back-btn.ejs',{url:"#"}) %>

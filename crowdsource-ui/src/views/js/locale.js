@@ -1,5 +1,5 @@
 const { updateLocaleLanguagesDropdown, getCookie,getInitiativeType } = require('./utils');
-const { ALL_LANGUAGES,CONTRIBUTION_LANGUAGE ,CURRENT_MODULE, DEFAULT_CON_LANGUAGE} = require("./constants");
+const { ALL_LANGUAGES,CONTRIBUTION_LANGUAGE ,CURRENT_MODULE, DEFAULT_CON_LANGUAGE, INITIATIVES} = require("./constants");
 const { base_url, context_root } = require('./env-api');
 
 const registerEvents = function () {
@@ -39,7 +39,8 @@ const changeLocale = function (locale) {
     }
     else {
         const initiativeType = getInitiativeType(module);
-        location.href = `${context_root}/${locale}/${initiativeType}/${currentPage}`;
+        const initiativeUrl = INITIATIVES[initiativeType].url ;
+        location.href = `${context_root}/${locale}/${initiativeUrl}/${currentPage}`;
     }
 }
 

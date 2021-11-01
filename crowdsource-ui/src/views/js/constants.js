@@ -75,10 +75,10 @@ const OPINION_RATING_MAPPING = [
 
 
 const INITIATIVES = {
-  asr: {type: 'asr', value: config.initiativeKey_1,name :config.initiative_1, url:'tts'},
-  text: {type: 'text', value: config.initiativeKey_2, name :config.initiative_2, url:'asr'},
-  parallel: {type: 'parallel', value: config.initiativeKey_3,name :config.initiative_3, url:'translation'},
-  ocr: { type: 'ocr', value: config.initiativeKey_4,name :config.initiative_4,url:'ocr'}
+  asr: {type: 'asr', value: config.initiativeKey_1,name :config.initiative_1, url:config.initiativeUrl_1},
+  text: {type: 'text', value: config.initiativeKey_2, name :config.initiative_2, url:config.initiativeUrl_2},
+  parallel: {type: 'parallel', value: config.initiativeKey_3,name :config.initiative_3, url:config.initiativeUrl_3},
+  ocr: { type: 'ocr', value: config.initiativeKey_4,name :config.initiative_4,url:config.initiativeUrl_4}
 };
 
 const ALL_MODULES = [
