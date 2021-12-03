@@ -67,7 +67,10 @@ const TestSpeakerMic = ({ showSpeaker, showMic }: TestSpeakerProps) => {
         analyser.current = null;
         media.current = null;
         mediaAudio.current?.pause();
-        mediaAudio.current.currentTime = 0;
+        const audio = mediaAudio.current;
+        if (audio) {
+          audio.currentTime = 0;
+        }
         micAudio.current = null;
         clearInterval(audioCountIntreval);
         setRemainingSec(5);
