@@ -149,7 +149,7 @@ const DekhoContribute = () => {
 
   const hideErrorModal = () => {
     setShowErrorModal(false);
-    if (currentDataIndex === contributionData.length) {
+    if (contributionData.length && currentDataIndex === contributionData.length) {
       router.push(`/${currentLocale}${routePaths.dekhoIndiaContributeThankYou}`, undefined, {
         locale: currentLocale,
       });

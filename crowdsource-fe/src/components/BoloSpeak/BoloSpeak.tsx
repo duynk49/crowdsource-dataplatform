@@ -184,7 +184,7 @@ const BoloSpeak = () => {
   /* istanbul ignore next */
   const hideErrorModal = () => {
     setShowErrorModal(false);
-    if (currentDataIndex === contributionData.length) {
+    if (contributionData.length && currentDataIndex === contributionData.length) {
       router.push(`/${currentLocale}${routePaths.boloIndiaContributeThankYou}`, undefined, {
         locale: currentLocale,
       });

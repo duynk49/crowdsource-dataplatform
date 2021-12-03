@@ -149,7 +149,7 @@ const LikhoTranslate = () => {
 
   const hideErrorModal = () => {
     setShowErrorModal(false);
-    if (currentDataIndex === contributionData.length) {
+    if (contributionData.length && currentDataIndex === contributionData.length) {
       router.push(`/${currentLocale}${routePaths.likhoIndiaContributeThankYou}`, undefined, {
         locale: currentLocale,
       });
@@ -350,7 +350,11 @@ const LikhoTranslate = () => {
         </div>
       )}
       {(error || skipError || submitError) && (
-        <ErrorPopup show={showErrorModal} errorMsg={getErrorMsg(error)} onHide={() => hideErrorModal()} />
+        <ErrorPopup
+          show={showErrorModal}
+          errorMsg={getErrorMsg(error || skipError || submitError)}
+          onHide={() => hideErrorModal()}
+        />
       )}
     </Fragment>
   );

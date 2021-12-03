@@ -184,7 +184,7 @@ const SunoTranscribe = () => {
 
   const hideErrorModal = () => {
     setShowErrorModal(false);
-    if (currentDataIndex === contributionData.length) {
+    if (contributionData.length && currentDataIndex === contributionData.length) {
       router.push(`/${currentLocale}${routePaths.sunoIndiaContributeThankYou}`, undefined, {
         locale: currentLocale,
       });

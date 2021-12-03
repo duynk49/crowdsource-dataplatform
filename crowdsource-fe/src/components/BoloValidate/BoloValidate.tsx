@@ -152,7 +152,7 @@ const BoloValidate = () => {
 
   const hideErrorModal = () => {
     setShowErrorModal(false);
-    if (currentDataIndex === contributionData.length) {
+    if (contributionData.length && currentDataIndex === contributionData.length) {
       router.push(`/${currentLocale}${routePaths.dekhoIndiaValidateThankYou}`, undefined, {
         locale: currentLocale,
       });
