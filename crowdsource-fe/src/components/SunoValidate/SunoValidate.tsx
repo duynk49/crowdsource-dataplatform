@@ -148,11 +148,15 @@ const SunoValidate = () => {
   useEffect(() => {
     const reportRef = document.getElementById('report');
     const testSpeakerRef = document.getElementById('testSpeaker');
+    const userOptionRef = document.getElementById('userOptions');
+    const languageSwitcherRef = document.getElementById('languageSwitcher');
     const feedbackRef = document.getElementById('feedback');
     function handleDocumentClick(event: Event) {
       if (
         (showPauseButton && reportRef?.contains(event.target as Node)) ||
         testSpeakerRef?.contains(event.target as Node) ||
+        userOptionRef?.contains(event.target as Node) ||
+        languageSwitcherRef?.contains(event.target as Node) ||
         feedbackRef?.contains(event.target as Node)
       ) {
         setShowPauseButton(false);
