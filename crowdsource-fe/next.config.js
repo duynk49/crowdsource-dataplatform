@@ -79,16 +79,6 @@ const nextConfig = {
           },
         ],
       },
-      {
-        source: '/(.*)',
-        locale: false,
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-cache, no-store, max-age=0, must-revalidate',
-          },
-        ],
-      },
       // {
       //   source: '/(.*)(svg|jpg|png)',
       //   locale: false,
