@@ -3,12 +3,8 @@
 exports[`BadgeDetail should render the component and matches it against stored snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="bg-secondary"
     data-testid="BadgeDetail"
   >
-    <span>
-      Validate Cache
-    </span>
     <header>
       <h2
         class="mb-5 mb-md-8"

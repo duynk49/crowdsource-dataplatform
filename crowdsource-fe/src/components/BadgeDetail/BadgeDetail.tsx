@@ -76,8 +76,7 @@ const BadgeDetail = () => {
   }, []);
 
   return (
-    <div data-testid="BadgeDetail" className="bg-secondary">
-      <span>Validate Cache</span>
+    <div data-testid="BadgeDetail">
       <header>
         <h2 className="mb-5 mb-md-8">{t('badgesDetailPageHeading')}</h2>
         <LanguageDropDown
