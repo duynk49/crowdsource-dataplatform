@@ -106,8 +106,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(express.static('../crowdsource-ui/target', { redirect: false }));
-
 router.get('/get-userid', (req, res) => {
   res.sendStatus(200);
 });

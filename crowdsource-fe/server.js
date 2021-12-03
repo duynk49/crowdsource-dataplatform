@@ -9,6 +9,7 @@ require('dotenv').config({
 });
 
 const chalk = require('chalk');
+const express = require('express');
 const next = require('next');
 
 const app = require('../crowdsource-api/src/app');
@@ -20,6 +21,8 @@ const handle = nextApp.getRequestHandler();
 
 nextApp.prepare().then(() => {
   app.disable('x-powered-by');
+
+  app.use(express.static('./public', { redirect: false }));
 
   app.all('*', (req, res) => handle(req, res));
 
