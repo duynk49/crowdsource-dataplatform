@@ -7,7 +7,7 @@ const getContributionInfo = async (contributionId: number) : Promise<dbResult | 
                     ELSE d.media ->> 'language'::text END AS language
                     from contributions c
                     inner join dataset_row d on d.dataset_row_id=c.dataset_row_id
-                    inner join contributions con on d.dataset_row_id=con.dataset_row_id and con.is_system=true
+                    inner join contributions con on d.dataset_row_id=con.dataset_row_id and con.is_system=true and c.media->>'language'=con.media->>'language'
                     where c.contribution_id=$1;`, [contributionId]);
 }
 
