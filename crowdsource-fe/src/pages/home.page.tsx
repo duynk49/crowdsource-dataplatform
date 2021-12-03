@@ -13,6 +13,7 @@ import ParticipationStats from 'components/ParticipationStats';
 import { DEFAULT_LOCALE } from 'constants/localesConstants';
 
 const Home: NextPage = () => {
+  console.log("testing")
   return (
     <Fragment>
       <HomePageBackground>

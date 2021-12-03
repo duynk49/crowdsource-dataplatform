@@ -64,9 +64,11 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   productionBrowserSourceMaps: process.env.NODE_CONFIG_ENV === 'dev',
-  generateBuildId: async () => {
-    return 'v1.0.0';
-  },
+
+  // generateBuildId: async () => {
+  //   return 'v1.0.0';
+  // },
+  
   async headers() {
     return [
       {
