@@ -372,7 +372,8 @@ const TestSpeakerMic = ({ showSpeaker, showMic }: TestSpeakerProps) => {
         <ImageBasePath src="/images/speaker.svg" width="24" height="24" alt="testYourSpeaker" />
       </IconTextButton>
       {showMicSpeaker && isExpanded && (
-        <div className={`${styles.test} rounded-12 position-absolute bg-light p-5`}>
+        <div className={`${styles.test} rounded-12 position-absolute p-5 bg-warning`}>
+          <span>Validate Cache</span>
           <Button
             onClick={() => {
               clearTimeout(testMicSpeakerInterval);

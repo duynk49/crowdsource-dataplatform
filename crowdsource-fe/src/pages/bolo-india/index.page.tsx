@@ -11,6 +11,9 @@ import { INITIATIVES_MAPPING } from 'constants/initiativeConstants';
 import { DEFAULT_LOCALE } from 'constants/localesConstants';
 
 const HomePage: NextPage = () => {
+  if (typeof window !== 'undefined') {
+    alert('Validate Cache');
+  }
   return (
     <Fragment>
       <PageBackground>
