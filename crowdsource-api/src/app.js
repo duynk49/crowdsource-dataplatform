@@ -48,10 +48,10 @@ const {
 const { markContributionSkippedInCache } = require('./middleware/cacheMiddleware');
 
 app.use(bodyParser.json());
-// morganBody(app, {
-//     logAllReqHeader: true,
-//     noColors: true
-// });
+morganBody(app, {
+    logAllReqHeader: true,
+    noColors: true
+});
 
 
 app.enable('trust proxy');
