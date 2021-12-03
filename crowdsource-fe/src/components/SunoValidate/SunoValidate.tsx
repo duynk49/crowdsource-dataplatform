@@ -155,6 +155,7 @@ const SunoValidate = () => {
         testSpeakerRef?.contains(event.target as Node) ||
         feedbackRef?.contains(event.target as Node)
       ) {
+        setShowPauseButton(false);
         audio?.pause();
         audio.currentTime = 0;
         setShowPlayButton(true);
