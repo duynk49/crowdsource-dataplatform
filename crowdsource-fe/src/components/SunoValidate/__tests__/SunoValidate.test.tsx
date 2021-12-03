@@ -93,6 +93,9 @@ describe('SunoValidate', () => {
     const renderResult = render(
       <SWRConfig value={{ provider: () => new Map() }}>
         <SunoValidate />
+        <div id="report">
+          <button>Stop Audio</button>
+        </div>
       </SWRConfig>
     );
 
@@ -113,6 +116,18 @@ describe('SunoValidate', () => {
 
     expect(screen.getByRole('button', { name: 'Play Icon play' })).toBeEnabled();
     expect(screen.getByRole('button', { name: 'skip' })).toBeEnabled();
+  });
+
+  it('should abort the audio when user clicks on report, test speaker, feedback button', async () => {
+    await setup();
+
+    userEvent.click(screen.getByRole('img', { name: 'Play Icon' }));
+
+    userEvent.click(screen.getByRole('button', { name: /Stop Audio/ }));
+
+    await waitFor(() => {
+      expect(screen.getByRole('img', { name: 'Play Icon' })).toBeInTheDocument();
+    });
   });
 
   it('play button click should play audio and pause button should be enabled', async () => {

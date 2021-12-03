@@ -101,6 +101,8 @@ const LineChart = (props: ChartProps) => {
     lineSeries1.tooltip.autoTextColor = false;
     lineSeries1.tooltip.background.fill = am4core.color('rgba(252,194,50,1)');
     lineSeries1.tooltip.label.fill = am4core.color('#000000');
+
+    /* istanbul ignore next */
     if (isMobileDevice()) {
       lineSeries1.tooltip.label.maxWidth = 150;
       lineSeries1.tooltip.label.wrap = true;
@@ -120,6 +122,8 @@ const LineChart = (props: ChartProps) => {
     lineSeries2.tooltip.autoTextColor = false;
     lineSeries2.tooltip.background.fill = am4core.color('rgba(131,230,97,1)');
     lineSeries2.tooltip.label.fill = am4core.color('#000000');
+
+    /* istanbul ignore next */
     if (isMobileDevice()) {
       lineSeries2.tooltip.label.maxWidth = 150;
       lineSeries2.tooltip.label.wrap = true;

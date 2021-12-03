@@ -15,6 +15,7 @@ exports[`Float should render the component and matches it against stored snapsho
         <button
           class="root ms-auto shadow-grey d-inline-flex justify-content-center align-items-center bg-light border border-1 border-primary-40 rounded-circle info normal btn btn-link"
           data-testid="Button"
+          id="feedback"
           type="button"
         >
           <div

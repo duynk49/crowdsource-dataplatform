@@ -133,6 +133,26 @@ const BoloSpeak = () => {
 
   /* istanbul ignore next */
   useEffect(() => {
+    const reportRef = document.getElementById('report');
+    const testSpeakerRef = document.getElementById('testSpeaker');
+    const feedbackRef = document.getElementById('feedback');
+    function handleDocumentClick(event: Event) {
+      if (
+        (showStopRecording && reportRef?.contains(event.target as Node)) ||
+        testSpeakerRef?.contains(event.target as Node) ||
+        feedbackRef?.contains(event.target as Node)
+      ) {
+        resetState();
+      }
+    }
+    document.addEventListener('click', handleDocumentClick);
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  });
+
+  /* istanbul ignore next */
+  useEffect(() => {
     if ((storeData || skipData) && !(skipError || submitError)) {
       if (currentDataIndex === contributionData.length) {
         router.push(`/${currentLocale}${routePaths.boloIndiaContributeThankYou}`, undefined, {

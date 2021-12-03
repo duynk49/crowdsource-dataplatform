@@ -146,6 +146,27 @@ const SunoValidate = () => {
   }, [currentDataIndex, result]);
 
   useEffect(() => {
+    const reportRef = document.getElementById('report');
+    const testSpeakerRef = document.getElementById('testSpeaker');
+    const feedbackRef = document.getElementById('feedback');
+    function handleDocumentClick(event: Event) {
+      if (
+        (showPauseButton && reportRef?.contains(event.target as Node)) ||
+        testSpeakerRef?.contains(event.target as Node) ||
+        feedbackRef?.contains(event.target as Node)
+      ) {
+        audio?.pause();
+        audio.currentTime = 0;
+        setShowPlayButton(true);
+      }
+    }
+    document.addEventListener('click', handleDocumentClick);
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  });
+
+  useEffect(() => {
     if (speakerDetails) {
       setCurrentDataIndex(0);
     }

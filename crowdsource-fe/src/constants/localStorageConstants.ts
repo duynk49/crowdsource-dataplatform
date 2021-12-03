@@ -3,7 +3,6 @@ const localStorageConstants = {
   lastSpeakerDetails: 'lastSpeakerDetails',
   contributionLanguage: 'contributionLanguage',
   translatedLanguage: 'likho_to-language',
-  currentModule: 'selectedModule',
   locationInfo: 'locationInfo',
 };
 

@@ -72,7 +72,14 @@ describe('SunoTranscribe', () => {
       .mockImplementation(() => JSON.stringify(speakerDetails));
 
     fetchMock.doMockOnceIf('/media/asr').mockResponseOnce(JSON.stringify(resultData));
-    const renderResult = render(<SunoTranscribe />);
+    const renderResult = render(
+      <>
+        <SunoTranscribe />
+        <div id="report">
+          <button>Stop Audio</button>
+        </div>
+      </>
+    );
 
     await waitFor(() => {
       expect(fetchMock).toBeCalledWith('/media/asr', {
@@ -189,6 +196,18 @@ describe('SunoTranscribe', () => {
     userEvent.click(screen.getByRole('img', { name: 'Pause Icon' }));
 
     expect(screen.getByRole('img', { name: 'Play Icon' })).toBeInTheDocument();
+  });
+
+  it('should abort the audio when user clicks on report, test speaker, feedback button', async () => {
+    await setup(resultData);
+
+    userEvent.click(screen.getByRole('img', { name: 'Play Icon' }));
+
+    userEvent.click(screen.getByRole('button', { name: /Stop Audio/ }));
+
+    await waitFor(() => {
+      expect(screen.getByRole('img', { name: 'Play Icon' })).toBeInTheDocument();
+    });
   });
 
   it('should test the textarea text with valid language', async () => {

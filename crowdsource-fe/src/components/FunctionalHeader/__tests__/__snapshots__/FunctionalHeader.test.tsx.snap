@@ -68,6 +68,7 @@ exports[`FunctionalHeader should render the component and matches it against sto
           <button
             class="root rounded d-flex align-items-center px-3 text-primary text-decoration-none info normal btn btn-link"
             data-testid="reportIconAlt_button"
+            id="report"
             type="button"
           >
             <div
@@ -108,6 +109,7 @@ exports[`FunctionalHeader should render the component and matches it against sto
             <button
               class="root rounded d-flex align-items-center px-3 text-primary text-decoration-none info normal btn btn-link"
               data-testid="testYourSpeaker_button"
+              id="testSpeaker"
               type="button"
             >
               <div

@@ -13,6 +13,7 @@ interface IconTextButtonProps {
   altText: string;
   children: ReactNode;
   active?: boolean;
+  id?: string;
 }
 
 const IconTextButton = ({
@@ -21,10 +22,12 @@ const IconTextButton = ({
   onClick,
   altText,
   children,
+  id,
   active = false,
 }: IconTextButtonProps) => {
   return (
     <Button
+      id={id}
       data-testid={`${altText}_button`}
       className={classNames(
         `${styles.root} rounded d-flex align-items-center px-3 text-primary text-decoration-none`,

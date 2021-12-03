@@ -54,7 +54,7 @@ const Report = ({ onSuccess, action, initiative }: ReportProps) => {
 
   return (
     <Fragment>
-      <IconTextButton textDesktop={t('report')} onClick={showModal} altText="reportIconAlt">
+      <IconTextButton id="report" textDesktop={t('report')} onClick={showModal} altText="reportIconAlt">
         <ImageBasePath src="/images/report.svg" width="24" height="24" alt="reportIconAlt" />
       </IconTextButton>
       {modalShow && (

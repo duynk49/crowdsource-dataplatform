@@ -341,6 +341,7 @@ const TestSpeakerMic = ({ showSpeaker, showMic }: TestSpeakerProps) => {
   return (
     <div className="position-relative" ref={navBarRef}>
       <IconTextButton
+        id="testSpeaker"
         textMobile={t('test')}
         textDesktop={
           router.asPath === routePaths.boloIndiaContribute
