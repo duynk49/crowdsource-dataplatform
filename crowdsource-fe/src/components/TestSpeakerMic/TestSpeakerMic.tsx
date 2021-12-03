@@ -66,7 +66,8 @@ const TestSpeakerMic = ({ showSpeaker, showMic }: TestSpeakerProps) => {
         mediaElementSrc.current = null;
         analyser.current = null;
         media.current = null;
-        mediaAudio.current = null;
+        mediaAudio.current?.pause();
+        mediaAudio.current.currentTime = 0;
         micAudio.current = null;
         clearInterval(audioCountIntreval);
         setRemainingSec(5);
@@ -285,6 +286,9 @@ const TestSpeakerMic = ({ showSpeaker, showMic }: TestSpeakerProps) => {
         const play = () => {
           micAudio.current?.play();
         };
+        const pause = () => {
+          micAudio.current?.pause();
+        };
         const clearContext = () => {
           cnvs_cntxt.clearRect(0, 0, cnvs.width, cnvs.height);
         };
@@ -293,6 +297,7 @@ const TestSpeakerMic = ({ showSpeaker, showMic }: TestSpeakerProps) => {
           audioUrl,
           play,
           clearContext,
+          pause,
         };
       } else {
         console.log('No blob present');
