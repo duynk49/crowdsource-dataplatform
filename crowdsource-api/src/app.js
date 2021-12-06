@@ -107,6 +107,7 @@ app.use(function (req, res, next) {
 });
 
 router.get('/get-userid', (req, res) => {
+  // #swagger.ignore = true
   res.sendStatus(200);
 });
 

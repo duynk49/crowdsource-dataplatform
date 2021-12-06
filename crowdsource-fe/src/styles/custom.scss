@@ -542,8 +542,4 @@ $btn-line-height: 1;
   --header-z-index: 100;
 }
 
-/****************************/
-
-// TODO: Please optimize this before going to production. Pick only those components which are needed.
-// https://getbootstrap.com/docs/5.0/customize/optimize/
 @import '~bootstrap/scss/bootstrap';

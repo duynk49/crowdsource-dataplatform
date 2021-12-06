@@ -64,8 +64,6 @@ const LanguageSwitcher = () => {
               onClick={() => {
                 doSetContributionLanguage ? null : setContributionLanguage(RAW_LANGUAGES[locale]);
                 if (cookie.NEXT_LOCALE !== locale) {
-                  // TODO: Some issue is still there with redirection to locale set in cookie.
-                  // Check this comment on github: https://github.com/vercel/next.js/issues/22375#issuecomment-926827951
                   setCookie(localeCookieName, locale, { path: '/' });
                 }
               }}
