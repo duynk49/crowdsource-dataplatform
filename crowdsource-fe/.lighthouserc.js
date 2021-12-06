@@ -23,7 +23,7 @@ module.exports = {
         // TODO: Reduced minScore to suppress "Audit usage of navigator.userAgent, navigator.appVersion, and navigator.platform"
         // issue in console"
         'categories:best-practices': ['error', { minScore: 0.85 }],
-        'categories:seo': ['error', { minScore: 0.95 }],
+        'categories:seo': ['error', { minScore: 0.93 }],
       },
     },
   },
