@@ -124,20 +124,6 @@ logs
 */node_modules
 .terraform
 
-crowdsource-ui/build/*
-crowdsource-ui/target/*
-
-!crowdsource-ui/target/video/
-!crowdsource-ui/target/img/
-!crowdsource-ui/target/favicon.png
-!crowdsource-ui/target/sitemap.xml
-!crowdsource-ui/target/aud/
-
 crowdsource-api/.env
 # ignore the upload files
 crowdsource-api/uploads
-# ignore api locales folder
-crowdsource-api/locales
-
-public 
-build
