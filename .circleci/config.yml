@@ -533,7 +533,7 @@ workflows:
           tag: dev
           checkout: false
           requires:
-            - build_dev_ui
+            - migrate_dev_azure
 
       - azure-acr/build-and-push-image:
           pre-steps:
@@ -547,7 +547,7 @@ workflows:
           tag: dev
           checkout: false
           requires:
-            - build_dev_ui
+            - migrate_dev_azure
 
       - azure-acr/build-and-push-image:
           name: push_db_refresher_image
@@ -579,7 +579,7 @@ workflows:
           db_name: ${AZURE_DEV_DB_NAME}
           requires:
             - dev_deployment_aks
-            - build_dev_ui
+            - migrate_dev_azure
 
       - run_functional_tests:
           name: functional_tests_dev
@@ -603,7 +603,7 @@ workflows:
           type: approval
           requires:
             - dev_deployment_aks
-            - build_dev_ui
+            - migrate_dev_azure
             # - functional_tests_dev
           # filters:
           #   branches:
@@ -630,7 +630,7 @@ workflows:
           tag: test
           checkout: false
           requires:
-            - build_test_ui
+            - migrate_test_azure
 
       - azure-acr/build-and-push-image:
           pre-steps:
@@ -644,7 +644,7 @@ workflows:
           tag: test
           checkout: false
           requires:
-            - build_test_ui
+            - migrate_test_azure
 
       - aks_deployment:
           name: test_deployment_aks
@@ -663,7 +663,7 @@ workflows:
           db_name: ${AZURE_TEST_DB_NAME}
           requires:
             - test_deployment_aks
-            - build_test_ui
+            - migrate_test_azure
 
       - run_functional_tests:
           name: functional_tests_test
@@ -677,7 +677,7 @@ workflows:
           type: approval
           requires:
             - test_deployment_aks
-            - build_test_ui
+            - migrate_test_azure
             #- functional_tests_test
           # filters:
           #   branches:
@@ -703,7 +703,7 @@ workflows:
           tag: uat
           checkout: false
           requires:
-            - build_uat_ui
+            - migrate_uat_azure
 
       - azure-acr/build-and-push-image:
           pre-steps:
@@ -717,7 +717,7 @@ workflows:
           tag: uat
           checkout: false
           requires:
-            - build_uat_ui
+            - migrate_uat_azure
 
       - aks_deployment:
           name: uat_deployment_aks
@@ -762,7 +762,7 @@ workflows:
           tag: "prod"
           checkout: false
           requires:
-            - cdn_invalidation_prod
+            - migrate_prod_azure
 
       - azure-acr/build-and-push-image:
           pre-steps:
@@ -776,7 +776,7 @@ workflows:
           tag: prod
           checkout: false
           requires:
-            - build_prod_ui
+            - migrate_prod_azure
 
       - azure-acr/build-and-push-image:
           pre-steps:
@@ -790,7 +790,7 @@ workflows:
           tag: prod
           checkout: false
           requires:
-            - build_prod_ui
+            - migrate_prod_azure
 
 
       - aks_deployment:
