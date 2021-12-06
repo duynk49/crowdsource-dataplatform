@@ -1,5 +1,0 @@
-target/*
-build/*
-src/views/js/platform.js
-src/assets/js/platform.js
-src/assets/js/notyf.min.js

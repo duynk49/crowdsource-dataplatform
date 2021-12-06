@@ -595,27 +595,6 @@
         "responses": {}
       }
     },
-    "/get-locale-strings/{locale}": {
-      "get": {
-        "tags": [
-          "Support"
-        ],
-        "description": "Endpoint to get translated string for locale",
-        "parameters": [
-          {
-            "name": "locale",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "schema": {
-              "type": "string",
-              "example": "hi"
-            }
-          }
-        ],
-        "responses": {}
-      }
-    },
     "/feedback": {
       "post": {
         "tags": [
