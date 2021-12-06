@@ -4,6 +4,6 @@
     "caching": "enabled",
     "autoValidation": "enabled",
     "validation_count": "5",
-    "cache_timeout": "1800",
-    "cache_batch_size": "3000"
+    "cache_timeout": "900",
+    "cache_batch_size": "1500"
 }
