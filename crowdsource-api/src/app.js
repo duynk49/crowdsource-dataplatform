@@ -92,7 +92,6 @@ app.use(helmet());
 app.disable('x-powered-by');
 app.use(compression());
 app.use(cookieParser());
-// app.use(i18n.init)
 app.use(function (req, res, next) {
   let cookie = req.cookies.userId;
   if (cookie === undefined) {
