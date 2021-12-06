@@ -5,4 +5,4 @@ fileignoreconfig:
     ignore_detectors: [filename, filesize, filecontent]
 
   - filename: src/components/Layout/Layout.tsx
-    checksum: 791bb4ebf507a32961d321a21b0f8c40ea87040237e526e5d00f1626c4d0d807
+    checksum: f416b9ad72bf92a61c6e2b9415871ce4f9595c8821b02411b2b64db966542716

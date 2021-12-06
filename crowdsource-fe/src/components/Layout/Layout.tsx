@@ -25,11 +25,15 @@ const Layout = ({ children }: LayoutProps) => {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="google-site-verification" content="WzZdl_-Ka4oElzowGxq3Y8knBPs31AOHFnEqSUtjGFU" />
         <meta name="description" content={t('metaDescription')} />
+        <link rel="canonical" href={`https://bhashini.gov.in/bhashadaan/${locale}/home`} />
         <meta property="og:title" content={t('metaOGTitle')} />
         <meta property="og:description" content={t('metaOGDescription')} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={`${t('bhasha')} ${t('daan')}`} />
         <meta property="og:url" content={`https://bhashini.gov.in/bhashadaan/${locale}/home`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content={`${t('bhasha')} ${t('daan')}`} />
+        <meta name="twitter:image" content="https://bhashini.gov.in/bhashadaan/images/favicon.png" />
         <meta name="twitter:image:src" content="https://bhashini.gov.in/bhashadaan/images/favicon.png" />
         <meta
           name="image"
