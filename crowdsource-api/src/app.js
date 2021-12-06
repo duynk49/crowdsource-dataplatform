@@ -33,7 +33,7 @@ const {
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const compression = require('compression');
-const { ONE_YEAR, WADASNR_BIN_PATH, MIN_SNR_LEVEL, ROLE_UAT } = require('./constants');
+const { ONE_YEAR, WADASNR_BIN_PATH, MIN_SNR_LEVEL, ROLE_UAT, VALID_ORIGINS } = require('./constants');
 const {
   validateUserInputAndFile,
   validateUserInfo,
@@ -46,6 +46,7 @@ const {
   validateReportInputs,
 } = require('./middleware/validateUserInputs');
 const { markContributionSkippedInCache } = require('./middleware/cacheMiddleware');
+const { checkOriginHeader } = require('./middleware/originMiddleware')
 
 app.use(bodyParser.json());
 morganBody(app, {
@@ -53,6 +54,7 @@ morganBody(app, {
     noColors: true
 });
 
+app.use(checkOriginHeader)
 
 app.enable('trust proxy');
 
@@ -81,7 +83,7 @@ const multerStorage = multer.diskStorage({
 });
 const upload = multer({ storage: multerStorage });
 const corsOptions = {
-  origin: [/vakyansh\.in$/, /nplt\.in$/, /azureedge\.net$/, /azurefd\.net$/, /gov\.in$/],
+  origin: VALID_ORIGINS,
   credentials: true,
 };
 app.use(cors(corsOptions));

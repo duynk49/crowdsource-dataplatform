@@ -80,6 +80,8 @@ const MEDIA_TYPES = ['parallel', 'ocr', 'text', 'asr'];
 
 const FEEDBACK_RESPONSES = ['yes', 'no', 'maybe'];
 
+const VALID_ORIGINS = [/vakyansh\.in$/, /nplt\.in$/, /gov\.in$/]
+
 module.exports = {
   MAX_SIZE,
   VALID_FILE_TYPE,
@@ -105,5 +107,6 @@ module.exports = {
   ROLE_UAT,
   BADGE_SEQUENCE,
   OPTIONAL_FIELD_MAX_LENGTH,
-  FEEDBACK_RESPONSES
+  FEEDBACK_RESPONSES,
+  VALID_ORIGINS
 };
