@@ -358,7 +358,7 @@
   "selectDropDownLanguagePrompt": "तुमची भाषा",
   "selectBadgeLevelPrompt": "बॅज स्तर निवडा",
   "participation": "भाग घ्या",
-  "badgeDetailText": "{{language}} मध्ये  <span>{{count}}</span> <span>{{sourceType}}</span> {{action}} आणि {{initiativeName}} {{badge}}  भाषा समर्थक बॅज मिळवा",
+  "badgeDetailText": "{{language}} मध्ये <span>{{count}}</span> <span>{{sourceType}}</span> {{action}} आणि {{initiativeName}} {{badge}} भाषा समर्थक बॅज मिळवा",
   "thousandCharLimitText": "फक्त 1000 वर्णांची अनुमती",
   "expandViewText": "विस्तारित दृश्य बघण्यासाठी क्लिक करा",
   "visitHome": "आमच्या <homepageLink /> भेट द्या",
