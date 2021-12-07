@@ -27,6 +27,8 @@ const TestSpeakerMic = ({ showSpeaker, showMic }: TestSpeakerProps) => {
 
   const [testMicSpeakerInterval, setTestMicSpeakerInterval] = useState<any>();
 
+  const [testMicSpeakerPlaybackInterval, setTestMicSpeakerPlaybackInterval] = useState<any>();
+
   const [audioCountIntreval, setAudioCountInterval] = useState<any>();
 
   const [speakerText, setSpeakerText] = useState('testSpeakers');
@@ -59,6 +61,7 @@ const TestSpeakerMic = ({ showSpeaker, showMic }: TestSpeakerProps) => {
         setIsExpanded(false);
         setShowMicSpeaker(false);
         clearTimeout(testMicSpeakerInterval);
+        clearTimeout(testMicSpeakerPlaybackInterval);
         setSpeakerText('testSpeakers');
         setShowTestMicText(true);
         setShowPlayingbackAudio(false);
@@ -83,7 +86,7 @@ const TestSpeakerMic = ({ showSpeaker, showMic }: TestSpeakerProps) => {
     return () => {
       document.removeEventListener('click', handleDocumentClick);
     };
-  }, [audioCountIntreval, isExpanded, testMicSpeakerInterval]);
+  }, [audioCountIntreval, isExpanded, testMicSpeakerInterval, testMicSpeakerPlaybackInterval]);
 
   const playSpeaker = () => {
     const speakerAudio: any = document.getElementById('test-speaker');
@@ -275,16 +278,18 @@ const TestSpeakerMic = ({ showSpeaker, showMic }: TestSpeakerProps) => {
         micAudio.current = new Audio(audioUrl);
         micAudio.current.onloadedmetadata = function () {
           const audioDuration = Math.ceil(micAudio.current?.duration * 1000);
-          setTimeout(() => {
-            setShowTestMicText(true);
-            setShowPlayBtn(false);
-            setShowPlayingbackAudio(true);
-            if (audioContext) {
-              audioContext.close();
-              audioContext = undefined;
-            }
-            cnvs_cntxt.clearRect(0, 0, cnvs.width, cnvs.height);
-          }, audioDuration);
+          setTestMicSpeakerPlaybackInterval(
+            setTimeout(() => {
+              setShowTestMicText(true);
+              setShowPlayBtn(false);
+              setShowPlayingbackAudio(true);
+              if (audioContext) {
+                audioContext.close();
+                audioContext = undefined;
+              }
+              cnvs_cntxt.clearRect(0, 0, cnvs.width, cnvs.height);
+            }, audioDuration)
+          );
         };
         const play = () => {
           micAudio.current?.play();
@@ -359,6 +364,24 @@ const TestSpeakerMic = ({ showSpeaker, showMic }: TestSpeakerProps) => {
         onClick={() => {
           setShowMicSpeaker(!showMicSpeaker);
           setIsExpanded(!isExpanded);
+          clearTimeout(testMicSpeakerInterval);
+          clearTimeout(testMicSpeakerPlaybackInterval);
+          setSpeakerText('testSpeakers');
+          setShowTestMicText(true);
+          setShowPlayingbackAudio(false);
+          context.current = null;
+          mediaElementSrc.current = null;
+          analyser.current = null;
+          media.current = null;
+          mediaAudio.current?.pause();
+          const audio = mediaAudio.current;
+          if (audio) {
+            audio.currentTime = 0;
+          }
+          micAudio.current = null;
+          clearInterval(audioCountIntreval);
+          setRemainingSec(5);
+          setShowPlayBtn(false);
         }}
         altText="testYourSpeaker"
         active={showMicSpeaker}
@@ -375,16 +398,22 @@ const TestSpeakerMic = ({ showSpeaker, showMic }: TestSpeakerProps) => {
         <div className={`${styles.test} rounded-12 position-absolute bg-light p-5`}>
           <Button
             onClick={() => {
-              clearTimeout(testMicSpeakerInterval);
-              setSpeakerText('testSpeakers');
+              setIsExpanded(false);
               setShowMicSpeaker(false);
+              clearTimeout(testMicSpeakerInterval);
+              clearTimeout(testMicSpeakerPlaybackInterval);
+              setSpeakerText('testSpeakers');
               setShowTestMicText(true);
               setShowPlayingbackAudio(false);
               context.current = null;
               mediaElementSrc.current = null;
               analyser.current = null;
               media.current = null;
-              mediaAudio.current = null;
+              mediaAudio.current?.pause();
+              const audio = mediaAudio.current;
+              if (audio) {
+                audio.currentTime = 0;
+              }
               micAudio.current = null;
               clearInterval(audioCountIntreval);
               setRemainingSec(5);
