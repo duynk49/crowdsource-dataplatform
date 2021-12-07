@@ -4,7 +4,7 @@ ARG NODE_CONFIG_ENV=default
 ENV NODE_CONFIG_ENV=${NODE_CONFIG_ENV}
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
-COPY crowdsource-fe/package*.json ./fe/
+COPY ./package*.json ./fe/
 # COPY crowdsource-ui/. ./ui/
 RUN cd fe && npm install && cd ..
 # RUN cd ui && npm install && npm run gulp -- --env=${NODE_CONFIG_ENV}
@@ -16,7 +16,7 @@ ENV NODE_CONFIG_ENV=${NODE_CONFIG_ENV}
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 WORKDIR /app
-COPY ./crowdsource-fe .
+COPY ./ .
 COPY --from=deps /app/fe/node_modules ./node_modules/
 # COPY --from=deps /app/ui/target ./target/
 RUN npm run build:docker
