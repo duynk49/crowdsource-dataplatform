@@ -46,16 +46,15 @@ const {
   validateReportInputs,
 } = require('./middleware/validateUserInputs');
 const { markContributionSkippedInCache } = require('./middleware/cacheMiddleware');
-const { checkOriginHeader } = require('./middleware/originMiddleware')
+const { checkOriginHeader } = require('./middleware/originMiddleware');
 
 app.use(bodyParser.json());
 morganBody(app, {
-    logAllReqHeader: true,
-    noColors: true
+  logAllReqHeader: true,
+  noColors: true,
 });
 
-process.env.NODE_ENV == 'production' && app.use(checkOriginHeader)
-console.log(process.env.NODE_ENV);
+process.env.NODE_CONFIG_ENV && process.env.NODE_CONFIG_ENV !== 'default' && app.use(checkOriginHeader);
 
 app.enable('trust proxy');
 
