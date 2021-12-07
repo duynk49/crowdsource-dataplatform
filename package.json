@@ -9,7 +9,7 @@
     "watch": "watch:nodemon",
     "watch:nodemon": "cd crowdsource-api && npm run watch",
     "start-cluster": "cd crowdsource-api && pm2 start src/server.js -i 2",
-    "test": "test:api",
+    "test": "cd crowdsource-api && npm run test",
     "test:api": "cd crowdsource-api && npm run test",
     "functional_test": "cd functional_tests && npm run test",
     "db-migrate": "cd crowdsource-api && npx db-migrate up --config migrations/config/migration_config.json -e dev",
