@@ -24,6 +24,7 @@
       "ki",
       "kok"
     ],
-    "autoValidation": false
+    "autoValidation": false,
+    "appUrl": "https://test-ui.vakyansh.in"
   }
 }

@@ -238,7 +238,13 @@
     "replacements": {
       "<x>": "{{language}}",
       "<y>": "{{rank}}",
-      "<initiative name>": "{{initiativeName}}"
+      "<initiative name>": "{{initiativeName}}",
+      "<url>": "{{url}}"
+    }
+  },
+  "socialSharingTextWithoutRank":{
+    "replacements": {
+      "<url>": "{{url}}"
     }
   },
   "badgeDetailText": {

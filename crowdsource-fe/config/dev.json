@@ -24,6 +24,7 @@
       "si",
       "kok"
     ],
-    "autoValidation": true
+    "autoValidation": true,
+    "appUrl": "https://dev-ui.vakyansh.in"
   }
 }

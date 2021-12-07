@@ -16,6 +16,9 @@ const Layout = ({ children }: LayoutProps) => {
   const { t } = useTranslation();
   const router = useRouter();
   const { locale } = useRouter();
+  const socialSharingTextWithRank = t('socialSharingTextWithoutRank', {
+    url: `${nodeConfig.appUrl}${nodeConfig.contextRoot}/${locale}/home`,
+  });
 
   return (
     <div data-testid="Layout" className="d-flex flex-column flex-fill">
@@ -25,20 +28,26 @@ const Layout = ({ children }: LayoutProps) => {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="google-site-verification" content="WzZdl_-Ka4oElzowGxq3Y8knBPs31AOHFnEqSUtjGFU" />
         <meta name="description" content={t('metaDescription')} />
-        <link rel="canonical" href={`https://bhashini.gov.in/bhashadaan/${locale}/home`} />
+        <link rel="canonical" href={`${nodeConfig.appUrl}${nodeConfig.contextRoot}/${locale}/home`} />
         <meta property="og:title" content={t('metaOGTitle')} />
-        <meta property="og:description" content={t('metaOGDescription')} />
+        <meta property="og:description" content={socialSharingTextWithRank} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={`${t('bhasha')} ${t('daan')}`} />
-        <meta property="og:url" content={`https://bhashini.gov.in/bhashadaan/${locale}/home`} />
+        <meta property="og:url" content={`${nodeConfig.appUrl}${nodeConfig.contextRoot}/${locale}/home`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={`${t('bhasha')} ${t('daan')}`} />
-        <meta name="twitter:image" content="https://bhashini.gov.in/bhashadaan/images/favicon.png" />
-        <meta name="twitter:image:src" content="https://bhashini.gov.in/bhashadaan/images/favicon.png" />
+        <meta
+          name="twitter:image"
+          content={`${nodeConfig.appUrl}${nodeConfig.contextRoot}/images/favicon.png`}
+        />
+        <meta
+          name="twitter:image:src"
+          content={`${nodeConfig.appUrl}${nodeConfig.contextRoot}/images/favicon.png`}
+        />
         <meta
           name="image"
           property="og:image"
-          content="https://bhashini.gov.in/bhashadaan/images/favicon.png"
+          content={`${nodeConfig.appUrl}${nodeConfig.contextRoot}/images/favicon.png`}
         />
         <link rel="icon" type="image/png" href={`${nodeConfig.contextRoot}/images/favicon.png`} />
       </Head>

@@ -11,6 +11,7 @@ interface CrowdsourceFENodeConfig {
     contextRoot: string;
     enabled_languages: string[];
     autoValidation: boolean;
+    appUrl: string;
   };
 }
 

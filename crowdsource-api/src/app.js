@@ -55,6 +55,7 @@ morganBody(app, {
 });
 
 process.env.NODE_ENV == 'production' && app.use(checkOriginHeader)
+console.log(process.env.NODE_ENV);
 
 app.enable('trust proxy');
 
