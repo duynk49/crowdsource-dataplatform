@@ -12,7 +12,6 @@ const checkOriginHeader = function (req, res, next) {
 function matchInArray(string, expressions) {
     var len = expressions.length,
         i = 0;
-    console.log(expressions)
     for (; i < len; i++) {
         if (string.match(expressions[i])) {
             console.log(i)

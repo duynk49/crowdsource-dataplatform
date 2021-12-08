@@ -242,11 +242,11 @@ const getDataForValidation = async (type, language, toLanguage, userId, userName
 			await setValidationDataForCaching(db, type, language, toLanguage)
 			console.log('EMPTYERROR: after set validation data')
 			cacheResponse = await cache.getAsync(`contributions_${type}_${language}_${toLanguage}`);
-			console.log('EMPTYERROR: now cache has ' + cacheResponse ? 0 : cacheResponse.length);
+			console.log('EMPTYERROR: now cache has ' + cacheResponse ? cacheResponse.length : 0);
 		}
 
 		const cacheData = JSON.parse(cacheResponse);
-		console.log('EMPTYERROR: cache item numbers ' + cacheData.length)
+		console.log('EMPTYERROR: cache item numbers ' + cacheData ? cacheData.length : 0)
 		return generateValidationResponse(cacheData, 5, userId, userName);
 	} catch (err) {
 		console.log("CACHING ERROR: " + err)
