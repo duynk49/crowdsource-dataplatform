@@ -58,6 +58,7 @@ const SunoValidate = () => {
   const [hasError, setHasError] = useState(false);
 
   const [showErrorModal, setShowErrorModal] = useState(false);
+  const [isAudioEnded, setIsAudioEnded] = useState(false);
 
   const [contributionData, setContributionData] = useState([]);
   const [currentDataIndex, setCurrentDataIndex] = useState<number>(0);
@@ -160,6 +161,7 @@ const SunoValidate = () => {
         feedbackRef?.contains(event.target as Node)
       ) {
         setShowPauseButton(false);
+        setShowReplayButton(false);
         audio?.pause();
         audio.currentTime = 0;
         setShowPlayButton(true);
@@ -252,6 +254,7 @@ const SunoValidate = () => {
     setShowReplayButton(false);
     setNeedsChangeDisable(true);
     setCorrectDisable(true);
+    setIsAudioEnded(false);
   };
 
   const onSubmitContribution = async () => {
@@ -355,6 +358,7 @@ const SunoValidate = () => {
     setShowPauseButton(false);
     setShowReplayButton(true);
     setCorrectDisable(false);
+    setIsAudioEnded(true);
   };
 
   const onNeedsChange = () => {
@@ -465,7 +469,7 @@ const SunoValidate = () => {
                       correctBtn={showCorrectButton}
                       cancelDisable={false}
                       submitDisable={
-                        !showReplayButton ||
+                        !isAudioEnded ||
                         !formDataStore.userInput ||
                         formDataStore.userInput.length < TEXT_INPUT_LENGTH.LENGTH ||
                         hasError

@@ -50,6 +50,7 @@ const SunoTranscribe = () => {
   const [closeKeyboard, setCloseKeyboard] = useState(false);
 
   const [showPlayButton, setShowPlayButton] = useState(true);
+  const [isAudioEnded, setIsAudioEnded] = useState(false);
   const [contributionData, setContributionData] = useState([]);
   const [currentDataIndex, setCurrentDataIndex] = useState<number>(0);
   const [hasError, setHasError] = useState(false);
@@ -116,6 +117,7 @@ const SunoTranscribe = () => {
         feedbackRef?.contains(event.target as Node)
       ) {
         setShowPauseButton(false);
+        setShowReplayButton(false);
         audio?.pause();
         audio.currentTime = 0;
         setShowPlayButton(true);
@@ -231,6 +233,7 @@ const SunoTranscribe = () => {
     setShowPauseButton(false);
     setShowPlayButton(true);
     setShowReplayButton(false);
+    setIsAudioEnded(false);
   };
 
   const onSubmitContribution = async () => {
@@ -316,6 +319,7 @@ const SunoTranscribe = () => {
     setShowPlayButton(false);
     setShowPauseButton(false);
     setShowReplayButton(true);
+    setIsAudioEnded(true);
   };
 
   if (!result && !error) {
@@ -389,7 +393,7 @@ const SunoTranscribe = () => {
                       cancelDisable={!formData.userInput}
                       skipDisable={currentDataIndex === contributionData.length}
                       submitDisable={
-                        !showReplayButton ||
+                        !isAudioEnded ||
                         !formData.userInput ||
                         formData.userInput.length < TEXT_INPUT_LENGTH.LENGTH ||
                         hasError
