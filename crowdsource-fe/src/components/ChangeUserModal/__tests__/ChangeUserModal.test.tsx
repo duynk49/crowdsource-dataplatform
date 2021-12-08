@@ -30,7 +30,7 @@ describe('ChangeUserModal', () => {
     expect(screen.getByRole('heading', { name: 'changeUserModalHeading' })).toBeInTheDocument();
     expect(screen.getByText('changeUserModalSubHeading')).toBeInTheDocument();
     expect(screen.getByTestId('ChangeUserModal')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Done' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'done' })).toBeInTheDocument();
     expect(screen.getByTestId('ChangeUserForm')).toBeInTheDocument();
 
     expect(onHide).toHaveBeenCalledTimes(0);
@@ -39,7 +39,7 @@ describe('ChangeUserModal', () => {
   it('should handle modal close/open behaviour', () => {
     const { onHide } = setup();
 
-    userEvent.click(screen.getByRole('button', { name: 'Done' }));
+    userEvent.click(screen.getByRole('button', { name: 'done' }));
 
     expect(onHide).toHaveBeenCalledTimes(1);
 
@@ -53,13 +53,13 @@ describe('ChangeUserModal', () => {
 
     expect(screen.queryByText('userNameError')).not.toBeInTheDocument();
     expect(screen.getByText('userNameHint')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Done' })).not.toBeDisabled();
+    expect(screen.getByRole('button', { name: 'done' })).not.toBeDisabled();
 
     userEvent.clear(screen.getByRole('textbox', { name: 'name' }));
     userEvent.type(screen.getByRole('textbox', { name: 'name' }), 'abc@abc.com');
 
     expect(screen.getByText('userNameError')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Done' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'done' })).toBeDisabled();
     expect(screen.queryByText('userNameHint')).not.toBeInTheDocument();
 
     userEvent.clear(screen.getByRole('textbox', { name: 'name' }));
@@ -81,7 +81,7 @@ describe('ChangeUserModal', () => {
     userEvent.clear(screen.getByRole('textbox', { name: 'name' }));
     userEvent.type(screen.getByRole('textbox', { name: 'name' }), 'abc@abc.com');
 
-    userEvent.click(screen.getByRole('button', { name: 'Done' }));
+    userEvent.click(screen.getByRole('button', { name: 'done' }));
 
     expect(localStorage.setItem).not.toHaveBeenCalledTimes(1);
     expect(onHide).not.toHaveBeenCalledTimes(1);
@@ -89,7 +89,7 @@ describe('ChangeUserModal', () => {
     userEvent.clear(screen.getByRole('textbox', { name: 'name' }));
     userEvent.type(screen.getByRole('textbox', { name: 'name' }), 'abc');
 
-    userEvent.click(screen.getByRole('button', { name: 'Done' }));
+    userEvent.click(screen.getByRole('button', { name: 'done' }));
 
     expect(localStorage.setItem).toHaveBeenCalledWith(
       'speakerDetails',
@@ -107,7 +107,7 @@ describe('ChangeUserModal', () => {
 
     jest.clearAllMocks();
 
-    userEvent.click(screen.getByRole('button', { name: 'Done' }));
+    userEvent.click(screen.getByRole('button', { name: 'done' }));
 
     expect(localStorage.setItem).toHaveBeenCalledWith(
       'speakerDetails',
@@ -145,7 +145,7 @@ describe('ChangeUserModal', () => {
     expect(screen.getByRole('radio', { name: 'ratherNotSayGender' })).toBeChecked();
 
     jest.clearAllMocks();
-    userEvent.click(screen.getByRole('button', { name: 'Done' }));
+    userEvent.click(screen.getByRole('button', { name: 'done' }));
     expect(localStorage.setItem).toHaveBeenCalledWith(
       'speakerDetails',
       '{"userName":"","motherTongue":"","age":"","gender":"Rather Not Say","language":"English","toLanguage":""}'
@@ -154,7 +154,7 @@ describe('ChangeUserModal', () => {
     userEvent.click(screen.getByRole('radio', { name: 'transgenderMale' }));
 
     jest.clearAllMocks();
-    userEvent.click(screen.getByRole('button', { name: 'Done' }));
+    userEvent.click(screen.getByRole('button', { name: 'done' }));
     expect(localStorage.setItem).toHaveBeenCalledWith(
       'speakerDetails',
       '{"userName":"","motherTongue":"","age":"","gender":"Transgender - He","language":"English","toLanguage":""}'
@@ -168,7 +168,7 @@ describe('ChangeUserModal', () => {
     expect(screen.queryByRole('radio', { name: 'ratherNotSayGender' })).not.toBeInTheDocument();
 
     jest.clearAllMocks();
-    userEvent.click(screen.getByRole('button', { name: 'Done' }));
+    userEvent.click(screen.getByRole('button', { name: 'done' }));
     expect(localStorage.setItem).toHaveBeenCalledWith(
       'speakerDetails',
       '{"userName":"","motherTongue":"","age":"","gender":"female","language":"English","toLanguage":""}'

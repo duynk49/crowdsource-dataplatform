@@ -95,7 +95,7 @@ const ChangeUserModal = ({ onHide, doRedirection, redirectionUrl, ...rest }: Cha
       subTitle={t('changeUserModalSubHeading')}
       footer={
         <Button disabled={!isButtonEnabled} type="submit" form="changeUserForm">
-          {t('Done')}
+          {t('done')}
         </Button>
       }
     >
