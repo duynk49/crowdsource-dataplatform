@@ -352,7 +352,7 @@ workflows:
             # - node/test
           filters:
             branches:
-              only: [master, nextjs-basic-setup, nextjs_open_source]
+              only: [master, nextjs_open_source]
 
       - azure-acr/build-and-push-image:
           pre-steps:
@@ -511,7 +511,7 @@ workflows:
             - node/test
           filters:
             branches:
-              only: [master, nextjs-basic-setup]
+              only: [master, nextjs_open_source]
 
       - db_migrate_azure:
           name: migrate_dev_azure
@@ -679,9 +679,9 @@ workflows:
             - test_deployment_aks
             - migrate_test_azure
             #- functional_tests_test
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
 
       - db_migrate_azure:
           name: migrate_uat_azure
@@ -735,9 +735,9 @@ workflows:
           type: approval
           requires:
             - uat_deployment_aks
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
 
 
       - db_migrate_azure:
