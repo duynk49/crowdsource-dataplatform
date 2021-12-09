@@ -23,8 +23,8 @@ const {
 } = require('taiko');
 const path = require('path');
 
-const headless = process.env.headless_chrome.toLowerCase() === 'false';
-const testUrl = process.env.test_url || 'https://dev-next.vakyansh.in';
+const headless = process.env.headless_chrome.toLowerCase() === 'true';
+const testUrl = process.env.test_url;
 
 beforeSuite(async () => {
     //setConfig( { waitForNavigation: false, navigationTimeout: 120000});
