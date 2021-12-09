@@ -131,50 +131,44 @@ const ButtonControls = ({
             {t('needsChange')}
           </Button>
         )}
-        {playButton && (
-          <Button
-            variant="normal"
-            onClick={onPlay}
-            className="position-relative d-flex flex-column align-items-center fw-bold mx-md-6 order-1 order-md-2 my-2 my-md-0"
+        <Button
+          variant="normal"
+          onClick={onPlay}
+          className={`${
+            playButton ? '' : 'd-none'
+          } position-relative d-flex flex-column align-items-center fw-bold mx-md-6 order-1 order-md-2 my-2 my-md-0`}
+        >
+          <ImageBasePath src="/images/play.svg" width="60" height="60" alt="Play Icon" />
+          <span className={`${styles.mainControl} display-3 position-absolute d-none d-md-block`}>
+            {t('play')}
+          </span>
+        </Button>
+        <Button
+          variant="normal"
+          onClick={onPause}
+          className={`${
+            pauseButton ? '' : 'd-none'
+          } position-relative d-flex flex-column align-items-center fw-bold mx-md-6 order-1 order-md-2 my-2 my-md-0`}
+        >
+          <ImageBasePath src="/images/pause.svg" width="60" height="60" alt="Pause Icon" />
+          <span className={`${styles.mainControl} display-3 position-absolute d-none d-md-block`}>
+            {t('pause')}
+          </span>
+        </Button>
+        <Button
+          variant="normal"
+          onClick={onReplay}
+          className={`${
+            replayButton ? '' : 'd-none'
+          } position-relative d-flex flex-column align-items-center fw-bold mx-md-6 order-1 order-md-2 my-2 my-md-0`}
+        >
+          <ImageBasePath src="/images/replay.svg" width="60" height="60" alt="Replay Icon" />
+          <span
+            className={`${styles.mainControl} ${styles.replayBtnText} display-3 position-absolute d-none d-md-block`}
           >
-            <ImageBasePath src="/images/play.svg" width="60" height="60" alt="Play Icon" priority={true} />
-            <span className={`${styles.mainControl} display-3 position-absolute d-none d-md-block`}>
-              {t('play')}
-            </span>
-          </Button>
-        )}
-        {pauseButton && (
-          <Button
-            variant="normal"
-            onClick={onPause}
-            className="position-relative d-flex flex-column align-items-center fw-bold mx-md-6 order-1 order-md-2 my-2 my-md-0"
-          >
-            <ImageBasePath src="/images/pause.svg" width="60" height="60" alt="Pause Icon" priority={true} />
-            <span className={`${styles.mainControl} display-3 position-absolute d-none d-md-block`}>
-              {t('pause')}
-            </span>
-          </Button>
-        )}
-        {replayButton && (
-          <Button
-            variant="normal"
-            onClick={onReplay}
-            className="position-relative d-flex flex-column align-items-center fw-bold mx-md-6 order-1 order-md-2 my-2 my-md-0"
-          >
-            <ImageBasePath
-              src="/images/replay.svg"
-              width="60"
-              height="60"
-              alt="Replay Icon"
-              priority={true}
-            />
-            <span
-              className={`${styles.mainControl} ${styles.replayBtnText} display-3 position-absolute d-none d-md-block`}
-            >
-              {t('replay')}
-            </span>
-          </Button>
-        )}
+            {t('replay')}
+          </span>
+        </Button>
         {correctBtn && (
           <Button
             variant="secondary"
