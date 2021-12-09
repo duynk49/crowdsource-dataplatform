@@ -482,22 +482,22 @@ workflows:
       #       - create-workspace
       #       - approve_prod_deploy
 
-      - aks_deployment_ui:
-          name: prod_ui_deployment_aks
-          cluster-name: ${AZURE_PROD_CLUSTER_NAME}
-          env-name: prod-ui
-          azure_resource_group: ${AZURE_RESOURCE_GROUP_PROD}
-          azure_login_server_name: ${AZURE_LOGIN_SERVER_NAME_PROD}
-          requires:
-            - push_prod_image_next_ui
+      # - aks_deployment_ui:
+      #     name: prod_ui_deployment_aks
+      #     cluster-name: ${AZURE_PROD_CLUSTER_NAME}
+      #     env-name: prod-ui
+      #     azure_resource_group: ${AZURE_RESOURCE_GROUP_PROD}
+      #     azure_login_server_name: ${AZURE_LOGIN_SERVER_NAME_PROD}
+      #     requires:
+      #       - push_prod_image_next_ui
 
-      - cdn_invalidation:
-          name: cdn_invalidation_ui_prod
-          env-name: prod-ui
-          resource-group: ${AZURE_RESOURCE_GROUP_PROD}
-          profile-name: ${AZURE_PROFILE_NAME_PROD}
-          requires:
-            - prod_ui_deployment_aks
+      # - cdn_invalidation:
+      #     name: cdn_invalidation_ui_prod
+      #     env-name: prod-ui
+      #     resource-group: ${AZURE_RESOURCE_GROUP_PROD}
+      #     profile-name: ${AZURE_PROFILE_NAME_PROD}
+      #     requires:
+      #       - prod_ui_deployment_aks
 
   build_api_deploy:
     when: << pipeline.parameters.build_api >>
