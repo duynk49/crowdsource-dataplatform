@@ -352,7 +352,7 @@ workflows:
             # - node/test
           filters:
             branches:
-              only: [master, nextjs-basic-setup]
+              only: [master, nextjs-basic-setup, nextjs_open_source]
 
       - azure-acr/build-and-push-image:
           pre-steps:
