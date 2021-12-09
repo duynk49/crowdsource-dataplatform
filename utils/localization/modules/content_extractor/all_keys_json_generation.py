@@ -27,32 +27,6 @@ def reformat_json(json_obj):
     return json_dict
 
 
-def set_variables(df_row):
-    try:
-        if "<s>" in df_row[english_col]:
-            df_row[english_col] = df_row[english_col].replace("<s>", "<span>")
-        if "</s>" in df_row[english_col]:
-            df_row[english_col] = df_row[english_col].replace("</s>", "</span>")
-    except:
-        pass
-    for value in allowed_values:
-        try:
-            if pd.notna(df_row[value]):
-                df_row[english_col] = df_row[english_col].replace('<' + value + '>', df_row[value])
-        except:
-            pass
-    try:
-        if pd.notna(df_row['a-tag-replacement']):
-            start_index = df_row[english_col].find('<a') + 2
-            end_index = df_row[english_col].find('>')
-            df_row[english_col] = df_row[english_col][:start_index] + df_row['a-tag-replacement'] + df_row[english_col][
-                                                                                                    end_index:]
-    except Exception as e:
-        print(e)
-
-    return df_row
-
-
 def write_df_to_json(df, output_json_path):
     json_file = df.to_json(orient='values')
     json_string = json.loads(json_file)
@@ -123,13 +97,14 @@ def read_manually_generated_excel_file(excel_file):
 
 def clean_old_translations(modified_content_keys, added_content_keys, languages, base_path, output_path):
     for language_code in languages.keys():
-        input_json_path = os.path.join(base_path, '{language_code}.json'.format(language_code=language_code))
+        input_json_path = os.path.join(base_path, '{language_code}/common.json'.format(language_code=language_code))
         language_data = read_json(input_json_path)
-        output_json_path = os.path.join(output_path, '{language_code}.json'.format(language_code=language_code))
+        output_json_path = os.path.join(output_path, '{language_code}/common.json'.format(language_code=language_code))
+        os.makedirs(os.path.join(output_path, '{language_code}'.format(language_code=language_code)), exist_ok=True)
         for key in modified_content_keys:
-            language_data[key] = key
+            language_data[key] = ""
         for key in added_content_keys:
-            language_data[key] = key
+            language_data[key] = ""
         with open(output_json_path, 'w') as f:
             f.write(json.dumps(language_data, indent=4, ensure_ascii=False))
 
@@ -196,13 +171,11 @@ def set_values(df_row):
 
 key_column = 'Key'
 english_col = 'English copy'
-allowed_values = ['x', 'y', 'z', 'u', 'v', 'w']
 
 
 def generate(input_excel_path, input_json_path, output_json_path, input_category):
     if input_category == 'auto-generated':
         excel_df = read_excel_as_df(input_excel_path)
-        excel_df = excel_df.apply(set_variables, axis=1)
     else:
         excel_df = read_manually_generated_excel_file(input_excel_path)
     existing_locale_json_data = read_json(input_json_path)
@@ -218,6 +191,7 @@ def generate(input_excel_path, input_json_path, output_json_path, input_category
 
     final_df = filtered_df.drop_duplicates(subset=[key_column], keep='first', inplace=False)
 
-    write_df_to_json(final_df, os.path.join(output_json_path, 'en.json'))
+    os.makedirs(os.path.join(output_json_path, 'en'), exist_ok=True)
+    write_df_to_json(final_df, os.path.join(output_json_path, 'en/common.json'))
 
     return clean_excel_df, clean_json_df

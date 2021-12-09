@@ -4,7 +4,6 @@ import os
 import pandas as pd
 
 from helper.unused_keys_cleaner import clean_locale_keys
-from helper.ejs_keys_parser import get_keys_with_path
 from modules.content_extractor.all_keys_excel_generation import generate_keys, generate_report, generate_output_for_sme, \
     export_report
 from helper.utils.utils import read_language_list
@@ -15,34 +14,28 @@ def main():
             Example commands:
 
             For only english content: 
-                python all_keys_excel_generator.py -j ./../../crowdsource-ui/locales -o 
-            ./out/en.xlsx --only-en -v ./../../crowdsource-ui/src/views 
+                python all_keys_excel_generator.py -j ./../../crowdsource-fe/public/locales -o 
+            ./out/en.xlsx --only-en
 
 
             For All language content: 
-                python all_keys_excel_generator.py -j ./../../crowdsource-ui/locales -o 
-            ./out/out.xlsx -v ./../../crowdsource-ui/src/views '''
+                python all_keys_excel_generator.py -j ./../../crowdsource-fe/public/locales -o 
+            ./out/out.xlsx '''
 
     parser = argparse.ArgumentParser(epilog=example,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("-j", "--input-json-path", required=True, help="Path of json folder with en keys present")
     parser.add_argument("-o", "--output-excel-path", required=True, help="Output path")
-    parser.add_argument("--only-en", action="store_true", help="Include only keys in en.json")
-    parser.add_argument("-v", "--views-folder-path",
-                        help="Source code path(views folder) to identify the location of "
-                             "keys in source code")
+    parser.add_argument("--only-en", action="store_true", help="Include only keys in en/common.json")
 
     args = parser.parse_args()
 
     input_json_path = args.input_json_path
     output_excel_path = args.output_excel_path
     only_en = args.only_en
-    ejs_files_base_path = args.views_folder_path
 
     if '/' in output_excel_path:
         os.makedirs(output_excel_path[:output_excel_path.rindex("/")], exist_ok=True)
-
-    keys_with_path_map = get_keys_with_path(ejs_files_base_path)
 
     tmp_cleaned_json_path = "cleaned_json_locales_for_all_keys_excel"
     languages = {}
@@ -51,17 +44,17 @@ def main():
         clean_locale_keys(languages, input_json_path, tmp_cleaned_json_path)
         input_json_path = tmp_cleaned_json_path
 
-    en_json_path = os.path.join(input_json_path, 'en.json')
+    en_json_path = os.path.join(input_json_path, 'en/common.json')
 
-    all_df = generate_keys(en_json_path, en_json_path, keys_with_path_map, 'en')
+    all_df = generate_keys(en_json_path, en_json_path, 'en')
 
     overall_report = {'args': vars(args), 'English': generate_report(list(all_df['Key']))}
     important_dict_keys = ['last_run_timestamp', 'args']
 
     if not only_en:
         for language_code, language_name in languages.items():
-            language_json_path = os.path.join(input_json_path, '{}.json'.format(language_code))
-            language_df = generate_keys(en_json_path, language_json_path, keys_with_path_map, language_code)
+            language_json_path = os.path.join(input_json_path, '{}/common.json'.format(language_code))
+            language_df = generate_keys(en_json_path, language_json_path, language_code)
             language_df = language_df.rename(columns={'English copy': language_name})
             language_df = language_df[['Key', language_name]]
             all_df = pd.merge(all_df, language_df, on='Key', how='outer')

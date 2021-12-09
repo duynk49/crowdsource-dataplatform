@@ -7,6 +7,8 @@ from helper.utils.utils import write_df_to_json, write_report, read_language_lis
 from modules.locale_generator.generator import LocaleGenerator
 from modules.locale_generator.excel_input import SingleExcelInput, MultiExcelInput
 
+from utils.localization.helper.unused_keys_cleaner import read_json
+
 
 def main():
     all_languages_list = read_language_list()
@@ -14,7 +16,7 @@ def main():
             Example commands:
 
             For specific languages taking single translation file that has all languages as input:
-                python locale_generator.py -j ./../../crowdsource_ui/locales 
+                python locale_generator.py -j ./../../crowdsource-fe/public/locales
                                            -e ./translation_excel_files 
                                            -m ./translation_meta_files 
                                            -o ./locale_output 
@@ -22,7 +24,7 @@ def main():
                                            -l gu pa
             
             For specific languages taking separate translation files for each language as input:
-                python locale_generator.py -j ./../../crowdsource_ui/locales 
+                python locale_generator.py -j ./../../crowdsource-fe/public/locales 
                                                -e ./translation_excel_files 
                                                -m ./translation_meta_files 
                                                -o ./locale_output 
@@ -30,7 +32,7 @@ def main():
                                                -l gu pa 
 
             For all languages taking single translation file that has all languages as input:
-                python locale_generator.py -j ./../../crowdsource_ui/locales 
+                python locale_generator.py -j ./../../crowdsource-fe/public/locales 
                                                -e ./translation_excel_files 
                                                -m ./translation_meta_files 
                                                -o ./locale_output 
@@ -38,7 +40,7 @@ def main():
                                                -a
                                                
             For all languages taking separate translation files for each language as input:
-                python locale_generator.py -j ./../../crowdsource_ui/locales 
+                python locale_generator.py -j ./../../crowdsource-fe/public/locales 
                                                -e ./translation_excel_files 
                                                -m ./translation_meta_files 
                                                -o ./locale_output 
@@ -88,6 +90,8 @@ def main():
 
     language_output_map = LocaleGenerator(excel_input, languages).generate()
 
+    en_json_path = '{}/en/common.json'.format(input_json_path)
+    en_data = read_json(en_json_path)
     os.makedirs(output_base_path, exist_ok=True)
     all_languages_report = {}
     for language_code, language_out_data in language_output_map.items():
@@ -97,7 +101,7 @@ def main():
 
         locale_report_generator = LocaleReportGenerator(languages[language_code], language_out_data.get_excel_df(),
                                                         language_out_data.get_json_df(),
-                                                        language_out_data.get_final_df())
+                                                        language_out_data.get_final_df(), en_data)
         report = locale_report_generator.generate_report()
         all_languages_report[languages[language_code]] = report
 

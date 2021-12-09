@@ -14,8 +14,7 @@ from datetime import datetime
 import pandas as pd
 
 # In[2]:
-from helper.ejs_keys_parser import get_keys_with_path
-from helper.utils.utils import extract_and_replace_tags, write_report, extract_and_replace_tags_for_lang, read_sheet_map_file
+from helper.utils.utils import write_report, read_sheet_map_file
 
 
 def move_column(dataframe, column_name, index):
@@ -45,15 +44,8 @@ def load_en_key_values(input_base_path):
 # In[5]:
 
 
-def get_dict_for_data(key, processed_text, replacement_mapping_dict, keys_with_path_map):
-    out_dict = {"Key": key, "English copy": [processed_text]}
-    path = ""
-    if key in keys_with_path_map:
-        path = keys_with_path_map[key]
-    out_dict["Url path"] = [path]
-    for replacement in sorted(replacement_mapping_dict.keys()):
-        out_dict[replacement] = [replacement_mapping_dict[replacement]]
-    return out_dict
+def get_dict_for_data(key, text):
+    return {"Key": key, "English copy": [text]}
 
 
 # In[6]:
@@ -71,32 +63,23 @@ def get_text_from_html_tag(tag):
     return string_matches
 
 
-def is_translation_not_present(key, value):
-    return key == value and value
+def is_translation_present(text, en_text):
+    return text and text != en_text
 
 
-def find_keys_without_translation(json_data):
+def get_data_without_translation(en_data, json_data):
     keys_without_translation = []
     for key, value in json_data.items():
-        if is_translation_not_present(key, value):
+        if not is_translation_present(value, en_data[key]):
             keys_without_translation.append(key)
     return keys_without_translation
 
 
-def get_data_without_translation(json_data, all_keys):
-    if all_keys:
-        keys_list = list(json_data.keys())
-    else:
-        keys_list = find_keys_without_translation(json_data)
-    return keys_list
-
-
-def process_tags(allowed_replacements, en_data, keys_list, keys_with_path_map, language_name):
+def process_tags(en_data, keys_list, language_name):
     language_df = pd.DataFrame([], columns=[])
     for key in keys_list:
         en_value = en_data[key]
-        processed_text, replacement_mapping_dict = extract_and_replace_tags(en_value, allowed_replacements)
-        data_dict = get_dict_for_data(key, processed_text, replacement_mapping_dict, keys_with_path_map)
+        data_dict = get_dict_for_data(key, en_value)
         try:
             tmp_df = pd.DataFrame.from_dict(data_dict, orient='columns')
             language_df = language_df.append(tmp_df, ignore_index=True)
@@ -107,38 +90,32 @@ def process_tags(allowed_replacements, en_data, keys_list, keys_with_path_map, l
     return language_df
 
 
-def process_tags_for_lang(language_df, json_data, language_name, allowed_replacements):
+def process_tags_for_lang(language_df, json_data, en_data, language_name):
     for i, row in language_df.iterrows():
         key = row['Key']
-        columns = list(row.index)
         if key not in json_data.keys():
             continue
-        if not is_translation_not_present(key, json_data[key]):
-            replacements = {}
-            for replacement in allowed_replacements:
-                if replacement in columns:
-                    replacements[replacement] = row[replacement]
-            out_txt = extract_and_replace_tags_for_lang(json_data[key], replacements)
-            row[language_name] = out_txt
+        if is_translation_present(json_data[key], en_data[key]):
+            row[language_name] = json_data[key]
     return language_df
 
 
-def process_delta(languages, input_base_path, all_keys, keys_without_translation,
-                  ejs_files_base_path):
-    allowed_replacements = ["u", "v", "w", "x", "y", "z"]
+def process_delta(languages, input_base_path, all_keys, keys_without_translation):
     en_data = load_en_key_values(input_base_path)
-    keys_with_path_map = get_keys_with_path(ejs_files_base_path)
     language_dfs = {}
     for language_code, language_name in languages.items():
         input_json_path = '{base_path}/{language}/common.json'.format(base_path=input_base_path, language=language_code)
         json_data = read_json(input_json_path)
 
-        keys_list = get_data_without_translation(json_data, all_keys)
-        keys_without_translation[language_name] = keys_list
-
-        language_df = process_tags(allowed_replacements, en_data, keys_list, keys_with_path_map, language_name)
         if all_keys:
-            language_df = process_tags_for_lang(language_df, json_data, language_name, allowed_replacements)
+            keys_list = list(json_data.keys())
+        else:
+            keys_list = get_data_without_translation(en_data, json_data)
+        keys_without_translation[language_name] = get_data_without_translation(en_data, json_data)
+
+        language_df = process_tags(en_data, keys_list, language_name)
+        if all_keys:
+            language_df = process_tags_for_lang(language_df, json_data, en_data, language_name)
         language_dfs[language_code] = language_df
     return language_dfs
 
@@ -157,14 +134,12 @@ def map_sheet(df):
     return df
 
 
-def gen_delta(languages, input_base_path, meta_out_base_path, sme_out_base_path, all_keys, keys_without_translation,
-              ejs_files_base_path, output_type):
+def gen_delta(languages, input_base_path, meta_out_base_path, sme_out_base_path, all_keys, keys_without_translation, output_type):
     os.makedirs(meta_out_base_path, exist_ok=True)
     os.makedirs(sme_out_base_path, exist_ok=True)
 
     language_dfs = process_delta(languages, input_base_path, all_keys,
-                                 keys_without_translation,
-                                 ejs_files_base_path)
+                                 keys_without_translation)
     if output_type == 'SEPARATE_SHEETS':
         for language_code, language_name in languages.items():
             language_df = language_dfs[language_code]
@@ -172,7 +147,7 @@ def gen_delta(languages, input_base_path, meta_out_base_path, sme_out_base_path,
                                                                      language=language_code)
             output_sme_excel_path = '{base_path}/{language}.xlsx'.format(base_path=sme_out_base_path,
                                                                          language=language_code)
-            cols_to_include_in_sme = ["English copy", language_name, "Url path"]
+            cols_to_include_in_sme = ["English copy", language_name]
             export_delta(language_df, cols_to_include_in_sme, output_excel_path, output_sme_excel_path)
     else:
         items = list(languages.items())

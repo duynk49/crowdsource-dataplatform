@@ -13,13 +13,13 @@ if __name__ == '__main__':
             Example commands:
             
             For only keys without translations on multiple excel sheets for each language:
-                python delta_generator.py -i ./../all_keys_json_out -o ./delta_out -v ./../../crowdsource-ui/src/views -a --output-type SEPARATE_SHEETS
+                python delta_generator.py -i ./../../crowdsource-fe/public/locales -o ./delta_out -a --output-type SEPARATE_SHEETS
 
             For all keys, all languages on a single excel sheet:
-                python delta_generator.py -i ./../all_keys_json_out -o ./delta_out -v ./../../crowdsource-ui/src/views -a --all-keys --output-type SINGLE_SHEET
+                python delta_generator.py -i ./../../crowdsource-fe/public/locales -o ./delta_out -a --all-keys --output-type SINGLE_SHEET
             
             For all keys, but specific languages on a single excel sheet:
-                python delta_generator.py -i ./../all_keys_json_out -o ./delta_out -v ./../../crowdsource-ui/src/views -l gu pa --all-keys --output-type SINGLE_SHEET
+                python delta_generator.py -i ./../../crowdsource-fe/public/locales -o ./delta_out -l gu pa --all-keys --output-type SINGLE_SHEET
         '''
 
     parser = argparse.ArgumentParser(epilog=example,
@@ -31,9 +31,6 @@ if __name__ == '__main__':
                        help="Generate delta for the languages mentioned by language codes(space separated)",
                        choices=list(all_languages_list.keys()))
     parser.add_argument("-i", "--input-folder-path", required=True, help="Input folder path with json files present")
-    parser.add_argument("-v", "--views-folder-path",
-                        help="Source code path(views folder) to identify the location of "
-                             "keys in source code")
     parser.add_argument("-o", "--output-folder-path", required=True,
                         help="Output folder path where excels are generated")
     parser.add_argument("--output-type", default='SEPARATE_SHEETS', help="Type of output excel file(s) for languages",
@@ -44,7 +41,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
     all_keys = args.all_keys
     output_type = args.output_type
-    ejs_files_base_path = args.views_folder_path
 
     languages = get_selected_languages(all_languages_list, args.all_languages, args.languages)
 
@@ -59,7 +55,7 @@ if __name__ == '__main__':
     input_base_path = tmp_cleaned_json_path
 
     gen_delta(languages, input_base_path, meta_out_base_path, sme_out_base_path, all_keys,
-              keys_without_translation, ejs_files_base_path, output_type)
+              keys_without_translation, output_type)
 
     generate_report(keys_without_translation)
 

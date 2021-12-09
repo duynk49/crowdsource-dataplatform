@@ -13,12 +13,12 @@ def main():
             Example commands:
 
             To run with auto-generated excel from all_keys_excel_generation.py: 
-                python all_keys_json_generator.py -i ./../../crowdsource-ui/locales 
+                python all_keys_json_generator.py -i ./../../crowdsource-fe/public/locales 
                 -e ./out/en.xlsx -o ./all_keys_json_out 
 
             To run with manually generated excel with the 4 categories('Suno India', 'Bolo India', 'Likho India', 
             'Dekho India'): 
-                python all_keys_json_generator.py -i ./../../crowdsource-ui/locales
+                python all_keys_json_generator.py -i ./../../crowdsource-fe/public/locales
                 -e resources/test_data/all_keys_json_input/English_content.xlsx -o ./all_keys_json_out -c manual 
 
         '''
@@ -35,7 +35,7 @@ def main():
 
     input_excel_path = args.input_excel_path
     input_base_path = args.input_base_path
-    input_json_path = os.path.join(input_base_path, 'en.json')
+    input_json_path = os.path.join(input_base_path, 'en/common.json')
     output_json_path = args.output_json_path
     input_category = args.input_category
 

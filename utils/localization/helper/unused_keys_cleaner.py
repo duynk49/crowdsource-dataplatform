@@ -25,7 +25,7 @@ def clean_locale_keys(languages, input_base_path, output_base_path):
     en_json_path = '{}/en/common.json'.format(input_base_path)
     if not os.path.exists(output_base_path + "/en/common.json"):
         os.makedirs(output_base_path+"/en", exist_ok=True)
-        os.system("cp {} {}".format(en_json_path, output_base_path+ "/en/common.json"))
+        os.system("cp {} {}".format(en_json_path, output_base_path + "/en/common.json"))
 
     en_data = read_json(en_json_path)
 
@@ -46,7 +46,7 @@ def clean_locale_keys(languages, input_base_path, output_base_path):
         for key, value in en_data.items():
             if key not in data_copy.keys():
                 data[key] = value
-                print(f'{language_code} is missing in {key}'.format(language_code=language_code, key=key))
+                print('{language_code} is missing in {key}'.format(language_code=language_code, key=key))
             else:
                 data[key] = data_copy[key]
 
@@ -67,10 +67,10 @@ def main():
                 Example commands:
 
                 For specific languages:
-                    python unused_keys_cleaner.py -i ./../../../crowdsource-ui/locales -o . -l gu pa
+                    python unused_keys_cleaner.py -i ./../../../crowdsource-fe/public/locales -o . -l gu pa
 
                 For all languages:
-                    python unused_keys_cleaner.py -i ./../../../crowdsource-ui/locales -o . -a
+                    python unused_keys_cleaner.py -i ./../../../crowdsource-fe/public/locales -o . -a
             '''
 
     parser = argparse.ArgumentParser(epilog=example,
@@ -84,8 +84,7 @@ def main():
     parser.add_argument("-o", "--output-folder-path", required=True,
                         help="Output folder path to save cleaned jsons files")
 
-    args = parser.parse_args(
-        "-i /Users/nireshkumarr/Documents/ekstep/crowdsource-dataplatform/crowdsource-ui/locales -o cleaned_jsons -a".split())
+    args = parser.parse_args()
     languages = {}
     if args.all_languages:
         languages = LANGUAGES.copy()

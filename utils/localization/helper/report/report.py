@@ -5,11 +5,12 @@ import pandas as pd
 
 class LocaleReportGenerator:
 
-    def __init__(self, language_name, excel_df: pd.DataFrame, json_df: pd.DataFrame, final_df: pd.DataFrame):
+    def __init__(self, language_name, excel_df: pd.DataFrame, json_df: pd.DataFrame, final_df: pd.DataFrame, en_data):
         self.language = language_name
         self.final_df = final_df
         self.json_df = json_df
         self.excel_df = excel_df
+        self.en_data = en_data
 
     def convert_excel_df_to_dict(self):
         content_dict = {}
@@ -17,13 +18,12 @@ class LocaleReportGenerator:
             content_dict[row['Key']] = {self.language: row[self.language], 'English copy': row['English copy']}
         return content_dict
 
-    @staticmethod
-    def find_translation_needed_content(df):
+    def find_translation_needed_content(self, df):
         translation_needed_content = {}
         for _, row in df.iterrows():
             key = row['Key']
             value = row['value']
-            if key == value or value == "":
+            if self.en_data[key] == value or value == "":
                 translation_needed_content[key] = value
         return translation_needed_content
 
@@ -32,7 +32,7 @@ class LocaleReportGenerator:
         for _, row in self.json_df.iterrows():
             key = row['Key']
             value = row['value']
-            if key != value:
+            if self.en_data[key] != value:
                 translation_needed_content[key] = value
         return translation_needed_content
 
@@ -54,9 +54,7 @@ class LocaleReportGenerator:
         for key, value in self.find_translation_not_needed_content().items():
             if key in excel_content.keys():
                 excel_content_value = excel_content[key][self.language]
-                excel_content_english_copy = excel_content[key]['English copy']
-                if pd.notnull(excel_content_value) and len(
-                        excel_content_value.strip()) != 0 and value != excel_content_value and value != excel_content_english_copy:
+                if pd.notnull(excel_content_value) and len(excel_content_value.strip()) != 0 and value != excel_content_value:
                     updated_translation_content[key] = {"old_value": value, "new_value": excel_content_value}
 
         return updated_translation_content
@@ -76,14 +74,6 @@ class LocaleReportGenerator:
             if key in keys_missing_in_excel:
                 keys.append(key)
         return keys
-
-    @staticmethod
-    def find_ones_with_span_tag(keys):
-        for key in keys:
-            if "<span" in key:
-                pass
-            elif "<b" in key:
-                pass
 
     def generate_report(self):
         # total_keys in sent json

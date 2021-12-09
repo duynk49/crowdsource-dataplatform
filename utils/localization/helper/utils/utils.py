@@ -107,12 +107,6 @@ def read_language_list():
     return languages_to_be_considered
 
 
-def read_html_ejs_mapping_file():
-    html_ejs_mapping_file_name = pkg_resources.resource_filename('resources', resource_name='html_ejs_mapping.json')
-    html_ejs_mapping = read_json(html_ejs_mapping_file_name)
-    return html_ejs_mapping
-
-
 def get_selected_languages(languages_to_be_considered, select_all_flag, selected_languages: list):
     languages = {}
     if select_all_flag:
@@ -129,59 +123,3 @@ def read_sheet_map_file():
     map_file = pkg_resources.resource_filename('resources', resource_name='sheet_mapping.json')
     maps = read_json(map_file)
     return maps
-
-
-def extract_and_replace_tags(text, allowed_replacements):
-    tag_identification_regex = r"<(\S*?)[^>]*>.*?<\/\1>|<.*?\/>"
-    out_txt = text
-    matched_tags = re.finditer(tag_identification_regex, out_txt, re.MULTILINE)
-    replacement_identifier_index = 0
-    replacement_mapping_dict = {}
-    # for match in matched_tags:
-    #     matched_tag = match.group()
-    #     if "<b>" in matched_tag:
-    #         continue
-    #     elif "<span>" in matched_tag:
-    #         replaced_matched_tag = matched_tag.replace("<span>", "<s>").replace("</span>", "</s>")
-    #         out_txt = out_txt.replace(matched_tag, replaced_matched_tag)
-    #     elif "<a" in matched_tag:
-    #         attributes_part_string = matched_tag[matched_tag.find('<a') + 2: matched_tag.find('>')]
-    #         replacement_mapping_dict['a-tag-replacement'] = attributes_part_string
-    #         matched_tag_replacement = matched_tag.replace(attributes_part_string, "")
-    #         out_txt = out_txt.replace(matched_tag, matched_tag_replacement)
-    #     else:
-    #         replacement = allowed_replacements[replacement_identifier_index]
-    #         replacement_mapping_dict[replacement] = matched_tag
-    #         replacement_identifier_index += 1
-    #         out_txt = out_txt.replace(matched_tag, '<{}>'.format(replacement))
-    return out_txt, replacement_mapping_dict
-
-
-def extract_and_replace_tags_for_lang(text, replacement_dict):
-    tag_identification_regex = r"<(\S*?)[^>]*>.*?<\/\1>|<.*?\/>"
-    out_txt = text
-    matched_tags = re.finditer(tag_identification_regex, out_txt, re.MULTILINE)
-    replacement_mapping_dict = {}
-    # for match in matched_tags:
-    #     matched_tag = match.group()
-    #     if "<b>" in matched_tag or "<b >" in matched_tag:
-    #         continue
-    #     elif "<span>" in matched_tag:
-    #         replaced_matched_tag = matched_tag.replace("<span>", "<s>").replace("</span>", "</s>")
-    #         out_txt = out_txt.replace(matched_tag, replaced_matched_tag)
-    #     elif "<a" in matched_tag:
-    #         attributes_part_string = matched_tag[matched_tag.find('<a') + 2: matched_tag.find('>')]
-    #         replacement_mapping_dict['a-tag-replacement'] = attributes_part_string
-    #         matched_tag_replacement = matched_tag.replace(attributes_part_string, "")
-    #         out_txt = out_txt.replace(matched_tag, matched_tag_replacement)
-    #     else:
-    #         flag = False
-    #         for replacement_tag, match_present in replacement_dict.items():
-    #             if matched_tag == match_present:
-    #                 replacement = replacement_tag
-    #                 out_txt = out_txt.replace(matched_tag, '<{}>'.format(replacement))
-    #                 flag = True
-    #                 break
-    #         if not flag:
-    #             raise ValueError(out_txt + " -> " + matched_tag + " -> Replacement not found")
-    return out_txt
