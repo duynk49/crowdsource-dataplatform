@@ -423,64 +423,64 @@ workflows:
           requires:
             - test_ui_deployment_aks
 
-      - approve_to_deploy:
-          name: approve_uat_deploy
-          type: approval
-          requires:
-            - test_ui_deployment_aks
+      # - approve_to_deploy:
+      #     name: approve_uat_deploy
+      #     type: approval
+      #     requires:
+      #       - test_ui_deployment_aks
 
-      - azure-acr/build-and-push-image:
-          pre-steps:
-            - *fast-checkout
-          name: push_uat_image_next_ui
-          login-server-name: ${AZURE_LOGIN_SERVER_NAME}
-          registry-name: ${AZURE_REGISTRY}
-          path: ./crowdsource-fe/
-          extra-build-args: --build-arg NODE_CONFIG_ENV=uat
-          repo: ${AZURE_REPO_UI}
-          tag: uat
-          checkout: false
-          requires:
-            - dev_ui_deployment_aks
-            - approve_uat_deploy
+      # - azure-acr/build-and-push-image:
+      #     pre-steps:
+      #       - *fast-checkout
+      #     name: push_uat_image_next_ui
+      #     login-server-name: ${AZURE_LOGIN_SERVER_NAME}
+      #     registry-name: ${AZURE_REGISTRY}
+      #     path: ./crowdsource-fe/
+      #     extra-build-args: --build-arg NODE_CONFIG_ENV=uat
+      #     repo: ${AZURE_REPO_UI}
+      #     tag: uat
+      #     checkout: false
+      #     requires:
+      #       - dev_ui_deployment_aks
+      #       - approve_uat_deploy
 
-      - aks_deployment_ui:
-          name: uat_ui_deployment_aks
-          cluster-name: ${AZURE_CLUSTER_NAME_UI}
-          env-name: uat
-          azure_resource_group: ${AZURE_RESOURCE_GROUP}
-          azure_login_server_name: ${AZURE_LOGIN_SERVER_NAME}
-          requires:
-            - push_uat_image_next_ui
+      # - aks_deployment_ui:
+      #     name: uat_ui_deployment_aks
+      #     cluster-name: ${AZURE_CLUSTER_NAME_UI}
+      #     env-name: uat
+      #     azure_resource_group: ${AZURE_RESOURCE_GROUP}
+      #     azure_login_server_name: ${AZURE_LOGIN_SERVER_NAME}
+      #     requires:
+      #       - push_uat_image_next_ui
 
-      - cdn_invalidation:
-          name: cdn_invalidation_ui_uat
-          env-name: next-uat-ui
-          resource-group: ${AZURE_RESOURCE_GROUP}
-          profile-name: ${AZURE_PROFILE_NAME}
-          requires:
-            - uat_ui_deployment_aks
+      # - cdn_invalidation:
+      #     name: cdn_invalidation_ui_uat
+      #     env-name: next-uat-ui
+      #     resource-group: ${AZURE_RESOURCE_GROUP}
+      #     profile-name: ${AZURE_PROFILE_NAME}
+      #     requires:
+      #       - uat_ui_deployment_aks
 
-      - approve_to_deploy:
-          name: approve_prod_deploy
-          type: approval
-          requires:
-            - uat_ui_deployment_aks
+      # - approve_to_deploy:
+      #     name: approve_prod_deploy
+      #     type: approval
+      #     requires:
+      #       - uat_ui_deployment_aks
 
-      - azure-acr/build-and-push-image:
-          pre-steps:
-            - *fast-checkout
-          name: push_prod_image_next_ui
-          login-server-name: ${AZURE_LOGIN_SERVER_NAME_PROD}
-          registry-name: ${AZURE_REGISTRY_PROD}
-          path: ./crowdsource-fe/
-          extra-build-args: --build-arg NODE_CONFIG_ENV=prod
-          repo: ${AZURE_REPO_UI}
-          tag: prod-ui
-          checkout: false
-          requires:
-            - create-workspace
-            - approve_prod_deploy
+      # - azure-acr/build-and-push-image:
+      #     pre-steps:
+      #       - *fast-checkout
+      #     name: push_prod_image_next_ui
+      #     login-server-name: ${AZURE_LOGIN_SERVER_NAME_PROD}
+      #     registry-name: ${AZURE_REGISTRY_PROD}
+      #     path: ./crowdsource-fe/
+      #     extra-build-args: --build-arg NODE_CONFIG_ENV=prod
+      #     repo: ${AZURE_REPO_UI}
+      #     tag: prod-ui
+      #     checkout: false
+      #     requires:
+      #       - create-workspace
+      #       - approve_prod_deploy
 
       - aks_deployment_ui:
           name: prod_ui_deployment_aks
