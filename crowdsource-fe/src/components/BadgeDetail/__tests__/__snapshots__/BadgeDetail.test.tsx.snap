@@ -207,6 +207,7 @@ exports[`BadgeDetail should render the component and matches it against stored s
         >
           <div
             class="py-5 row"
+            data-testid="badgeLevelRow"
           >
             <div
               class="d-flex align-items-center fw-light display-3 col-md-3"
@@ -224,6 +225,7 @@ exports[`BadgeDetail should render the component and matches it against stored s
                 >
                   <div
                     class="root active d-flex flex-column align-items-center text-center py-2 py-md-3"
+                    data-testid="medalbronze"
                     role="button"
                     tabindex="0"
                   >
@@ -269,6 +271,7 @@ exports[`BadgeDetail should render the component and matches it against stored s
                 >
                   <div
                     class="root  d-flex flex-column align-items-center text-center py-2 py-md-3"
+                    data-testid="medalsilver"
                     role="button"
                     tabindex="0"
                   >
@@ -314,6 +317,7 @@ exports[`BadgeDetail should render the component and matches it against stored s
                 >
                   <div
                     class="root  d-flex flex-column align-items-center text-center py-2 py-md-3"
+                    data-testid="medalgold"
                     role="button"
                     tabindex="0"
                   >
@@ -359,6 +363,7 @@ exports[`BadgeDetail should render the component and matches it against stored s
                 >
                   <div
                     class="root  d-flex flex-column align-items-center text-center py-2 py-md-3"
+                    data-testid="medalplatinum"
                     role="button"
                     tabindex="0"
                   >
@@ -400,6 +405,7 @@ exports[`BadgeDetail should render the component and matches it against stored s
           </div>
           <div
             class="py-5 row"
+            data-testid="participationRow"
           >
             <div
               class="d-flex align-items-center fw-light display-3 col-md-3"
@@ -459,6 +465,7 @@ exports[`BadgeDetail should render the component and matches it against stored s
           >
             <div
               class="root rounded-20"
+              data-testid="badgeDescriptionRow"
             >
               <div
                 class="rounded-20 bg-light p-5"

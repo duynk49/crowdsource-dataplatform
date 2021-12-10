@@ -112,10 +112,10 @@ const LikhoDashboard = () => {
               ))}
           </div>
           <Row className="mt-10">
-            <Col lg="6">
+            <Col lg="6" data-testid="StateWiseDistribution">
               <IndiaMapChart type={INITIATIVES_MEDIA_MAPPING.likho} language={languagePair} />
             </Col>
-            <Col lg="6" className="mt-8 mt-lg-0">
+            <Col lg="6" className="mt-8 mt-lg-0" data-testid="ProgressChart">
               <ProgressChart type={INITIATIVES_MEDIA_MAPPING.likho} language={languagePair} />
             </Col>
           </Row>

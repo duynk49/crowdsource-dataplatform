@@ -49,6 +49,7 @@ const Medal = ({ initiative, medal, action, language, selectedMedal, handleClick
   return (
     <div className="position-relative">
       <div
+        data-testid={`medal${medal}`}
         role="button"
         className={`${styles.root} ${
           hasMedalActive || selectedMedal == medal ? styles.active : ''

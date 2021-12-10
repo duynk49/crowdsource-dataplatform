@@ -19,6 +19,7 @@ exports[`ThankYou should render the component and matches it against stored snap
     >
       <div
         class="root rounded-20"
+        data-testid="badgeDescriptionRow"
       >
         <div
           class="rounded-20 bg-light p-5"

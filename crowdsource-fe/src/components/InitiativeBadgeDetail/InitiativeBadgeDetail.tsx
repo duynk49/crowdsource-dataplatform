@@ -64,7 +64,7 @@ const InitiativeBadgeDetail = ({
 
   return (
     <div data-testid="InitiativeBadgeDetail">
-      <Row className="py-5">
+      <Row className="py-5" data-testid="badgeLevelRow">
         <Col md="3" className="d-flex align-items-center fw-light display-3">
           {t('selectBadgeLevelPrompt')}
         </Col>
@@ -86,7 +86,7 @@ const InitiativeBadgeDetail = ({
           ))}
         </Col>
       </Row>
-      <Row className="py-5">
+      <Row className="py-5" data-testid="participationRow">
         <Col md="3" className="d-flex align-items-center fw-light display-3">
           {t('participation')}
         </Col>
