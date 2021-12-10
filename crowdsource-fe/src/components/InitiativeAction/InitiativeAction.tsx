@@ -31,7 +31,7 @@ const InitiativeAction = ({
           alt={t('initiativeAction')}
           width="160"
           height="160"
-          priority
+          priority={true}
         />
       </div>
       <div className="mt-4 text-break">{t(subText)}</div>
