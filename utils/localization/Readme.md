@@ -7,10 +7,11 @@ This utility allows users to generate excel file(with all keys / delta keys) fro
     Step 4: On receiving the excel files with translations, locale json files are updated with the respective translations.
 
 #### Setup:
+1. Note: Required python version >= 3
 
-1. Run the following command to install python libraries:  `pip install -r requirements.txt`
+2. Run the following command to install python libraries:  `pip install -r requirements.txt`
 
-2. `resources/languages.json` has list of all languages to be considered. If you want to add a new languages, add it in this json file.
+3. `resources/languages.json` has list of all languages to be considered. If you want to add a new languages, add it in this json file.
     ```
     eg: {"<language-code>":"<language-name>"}
     ```
