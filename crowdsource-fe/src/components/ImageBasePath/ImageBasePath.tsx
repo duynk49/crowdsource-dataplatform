@@ -10,6 +10,8 @@ interface ImageBasePathProps {
   className?: string;
   priority?: boolean;
   loading?: 'lazy' | 'eager' | undefined;
+  placeholder?: 'blur' | 'empty' | undefined;
+  blurDataURL?: string;
 }
 
 const ImageBasePath = ({ src, alt, ...rest }: ImageBasePathProps) => {
