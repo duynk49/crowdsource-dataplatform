@@ -138,7 +138,7 @@ const ButtonControls = ({
             playButton ? '' : 'd-none'
           } position-relative d-flex flex-column align-items-center fw-bold mx-md-6 order-1 order-md-2 my-2 my-md-0`}
         >
-          <ImageBasePath src="/images/play.svg" width="60" height="60" alt="Play Icon" priority={true} />
+          <ImageBasePath src="/images/play.svg" width="60" height="60" alt="Play Icon" loading="eager" />
           <span className={`${styles.mainControl} display-3 position-absolute d-none d-md-block`}>
             {t('play')}
           </span>
@@ -150,7 +150,7 @@ const ButtonControls = ({
             pauseButton ? '' : 'd-none'
           } position-relative d-flex flex-column align-items-center fw-bold mx-md-6 order-1 order-md-2 my-2 my-md-0`}
         >
-          <ImageBasePath src="/images/pause.svg" width="60" height="60" alt="Pause Icon" priority={true} />
+          <ImageBasePath src="/images/pause.svg" width="60" height="60" alt="Pause Icon" loading="eager" />
           <span className={`${styles.mainControl} display-3 position-absolute d-none d-md-block`}>
             {t('pause')}
           </span>
@@ -162,7 +162,7 @@ const ButtonControls = ({
             replayButton ? '' : 'd-none'
           } position-relative d-flex flex-column align-items-center fw-bold mx-md-6 order-1 order-md-2 my-2 my-md-0`}
         >
-          <ImageBasePath src="/images/replay.svg" width="60" height="60" alt="Replay Icon" priority={true} />
+          <ImageBasePath src="/images/replay.svg" width="60" height="60" alt="Replay Icon" loading="eager" />
           <span
             className={`${styles.mainControl} ${styles.replayBtnText} display-3 position-absolute d-none d-md-block`}
           >

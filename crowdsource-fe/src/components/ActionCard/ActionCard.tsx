@@ -81,7 +81,7 @@ const ActionCard = (props: ActionCardProps) => {
                       alt={`${props.altText} Icon`}
                       width="120"
                       height="120"
-                      priority={true}
+                      loading="eager"
                     />
                   </div>
                 </div>

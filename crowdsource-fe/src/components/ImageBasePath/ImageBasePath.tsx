@@ -9,6 +9,7 @@ interface ImageBasePathProps {
   alt: string;
   className?: string;
   priority?: boolean;
+  loading?: 'lazy' | 'eager' | undefined;
 }
 
 const ImageBasePath = ({ src, alt, ...rest }: ImageBasePathProps) => {
