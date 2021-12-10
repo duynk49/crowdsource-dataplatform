@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next';
 
 import Button from 'components/Button';
 import ImageBasePath from 'components/ImageBasePath';
+import nodeConfig from 'constants/nodeConfig';
 
 import styles from './ButtonControls.module.scss';
 
@@ -138,7 +139,15 @@ const ButtonControls = ({
             playButton ? '' : 'd-none'
           } position-relative d-flex flex-column align-items-center fw-bold mx-md-6 order-1 order-md-2 my-2 my-md-0`}
         >
-          <ImageBasePath src="/images/play.svg" width="60" height="60" alt="Play Icon" priority={true} />
+          <ImageBasePath
+            src="/images/play.svg"
+            width="60"
+            height="60"
+            alt="Play Icon"
+            priority={true}
+            placeholder="blur"
+            blurDataURL={`${nodeConfig.contextRoot}/images/play.svg`}
+          />
           <span className={`${styles.mainControl} display-3 position-absolute d-none d-md-block`}>
             {t('play')}
           </span>

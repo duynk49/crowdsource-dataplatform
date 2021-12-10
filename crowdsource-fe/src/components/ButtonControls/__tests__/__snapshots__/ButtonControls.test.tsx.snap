@@ -37,7 +37,7 @@ exports[`ButtonControls should render the component and matches it against store
           decoding="async"
           src="/_next/image?url=%2Fimages%2Fplay.svg&w=128&q=75"
           srcset="/_next/image?url=%2Fimages%2Fplay.svg&w=64&q=75 1x, /_next/image?url=%2Fimages%2Fplay.svg&w=128&q=75 2x"
-          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+          style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; filter: blur(20px); background-size: cover; background-image: url(/images/play.svg); background-position: 0% 0%;"
         />
         <noscript />
       </div>
