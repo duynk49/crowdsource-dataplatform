@@ -6,10 +6,11 @@ import numpy as np
 
 class TestLocaleGenerationReport(TestCase):
     def test_find_keys_with_translation_needed(self):
-        expected = {"Maybe": "Maybe"}
-        df = pd.DataFrame([{'Key': 'Maybe', 'value': 'Maybe'}, {'Key': 'upto 10 years', 'value': '10 वर्ष तक'}],
+        expected = {"maybe": "Maybe"}
+        df = pd.DataFrame([{'Key': 'maybe', 'value': 'Maybe'}, {'Key': 'upto10', 'value': '10 वर्ष तक'}],
                           columns=['Key', 'value'])
-        locale_generation_report = LocaleReportGenerator('Hindi', pd.DataFrame(), df, pd.DataFrame())
+        en_data = {'maybe': 'Maybe', 'upto10': 'upto 10 years'}
+        locale_generation_report = LocaleReportGenerator('Hindi', pd.DataFrame(), df, pd.DataFrame(), en_data)
 
         translation_needed_content = locale_generation_report.find_translation_needed_content(df)
 
@@ -17,64 +18,63 @@ class TestLocaleGenerationReport(TestCase):
 
     def test_convert_excel_df_to_dict(self):
         expected = {
-            "upto 10 years": {'English copy': 'upto 10 years', 'Hindi': '10 वर्ष तक'},
-            "May be": {'English copy': 'May be', 'Hindi': np.NAN}
+            "upto10": {'English copy': 'upto 10 years', 'Hindi': '10 वर्ष तक'},
+            "maybe": {'English copy': 'May be', 'Hindi': np.NAN}
         }
+        en_data = {'maybe': 'Maybe', 'upto10': 'upto 10 years'}
         excel_df = pd.DataFrame(
             [
-                {'Key': 'May be', 'English copy': 'May be', 'Hindi': np.NAN},
-                {'Key': 'upto 10 years', 'English copy': 'upto 10 years', 'Hindi': '10 वर्ष तक'}
+                {'Key': 'maybe', 'English copy': 'May be', 'Hindi': np.NAN},
+                {'Key': 'upto10', 'English copy': 'upto 10 years', 'Hindi': '10 वर्ष तक'}
             ],
             columns=['Key', 'English copy', 'Hindi']
         )
-        locale_generation_report = LocaleReportGenerator('Hindi', excel_df, pd.DataFrame(), pd.DataFrame())
+        locale_generation_report = LocaleReportGenerator('Hindi', excel_df, pd.DataFrame(), pd.DataFrame(), en_data)
 
         excel_content = locale_generation_report.convert_excel_df_to_dict()
 
         self.assertEqual(expected, excel_content)
 
     def test_find_keys_with_translation_not_needed(self):
-        expected = {"upto 10 years": "10 वर्ष तक"}
-        json_df = pd.DataFrame([{'Key': 'Maybe', 'value': 'Maybe'},
-                                {'Key': 'upto 10 years', 'value': '10 वर्ष तक'}],
+        expected = {"upto10": "10 वर्ष तक"}
+        json_df = pd.DataFrame([{'Key': 'maybe', 'value': 'Maybe'},
+                                {'Key': 'upto10', 'value': '10 वर्ष तक'}],
                                columns=['Key', 'value'])
-        locale_generation_report = LocaleReportGenerator('Hindi', pd.DataFrame(), json_df, pd.DataFrame())
+        en_data = {'maybe': 'Maybe', 'upto10': 'upto 10 years'}
+        locale_generation_report = LocaleReportGenerator('Hindi', pd.DataFrame(), json_df, pd.DataFrame(), en_data)
 
         translation_not_needed_content = locale_generation_report.find_translation_not_needed_content()
 
         self.assertEqual(expected, translation_not_needed_content)
 
     def test_find_new_translations_content(self):
-        expected = {"Maybe": "शायद"}
-        json_df = pd.DataFrame([{'Key': 'Maybe', 'value': 'Maybe'}, {'Key': 'May be', 'value': 'May be'},
-                                {'Key': 'upto 10 years', 'value': '10 वर्ष तक'}],
+        expected = {"maybe": "शायद"}
+        json_df = pd.DataFrame([{'Key': 'maybe', 'value': 'Maybe'},
+                                {'Key': 'upto10', 'value': '10 वर्ष तक'}],
                                columns=['Key', 'value'])
+        en_data = {'maybe': 'Maybe', 'upto10': 'upto 10 years'}
         excel_df = pd.DataFrame(
-            [{'Key': 'Maybe', 'English copy': 'Maybe', 'Hindi': 'शायद'},
-             {'Key': 'May be', 'English copy': 'May be', 'Hindi': np.NAN},
+            [{'Key': 'maybe', 'English copy': 'Maybe', 'Hindi': 'शायद'},
              {'Key': 'upto 10 years', 'English copy': 'upto 10 years', 'Hindi': '10 वर्ष तक'}],
             columns=['Key', 'English copy', 'Hindi'])
-        locale_generation_report = LocaleReportGenerator('Hindi', excel_df, json_df, pd.DataFrame())
+        locale_generation_report = LocaleReportGenerator('Hindi', excel_df, json_df, pd.DataFrame(), en_data)
 
         new_translation_content = locale_generation_report.find_new_translations_content()
 
         self.assertEqual(expected, new_translation_content)
 
     def test_find_updated_translations_content(self):
-        expected = {"upto 10 years": "10 वर्ष"}
-        json_df = pd.DataFrame([{'Key': 'Maybe', 'value': 'Maybe'}, {'Key': 'May be', 'value': 'May be'},
-                                {'Key': 'upto 10 years', 'value': '10 वर्ष तक'}],
+        expected = {"upto10": {"new_value": "10 वर्ष", "old_value": "10 वर्ष तक"}}
+        json_df = pd.DataFrame([{'Key': 'maybe', 'value': 'Maybe'},
+                                {'Key': 'upto10', 'value': '10 वर्ष तक'}],
                                columns=['Key', 'value'])
         excel_df = pd.DataFrame(
-            [{'Key': 'Maybe', 'English copy': 'Maybe', 'Hindi': 'शायद'},
-             {'Key': 'May be', 'English copy': 'May be', 'Hindi': np.NAN},
-             {'Key': 'upto 10 years', 'English copy': 'upto 10 years', 'Hindi': '10 वर्ष'}],
+            [{'Key': 'maybe', 'English copy': 'Maybe', 'Hindi': 'शायद'},
+             {'Key': 'upto10', 'English copy': 'upto 10 years', 'Hindi': '10 वर्ष'}],
             columns=['Key', 'English copy', 'Hindi'])
-        locale_generation_report = LocaleReportGenerator('Hindi', excel_df, json_df, pd.DataFrame())
+        en_data = {'maybe': 'Maybe', 'upto10': 'upto 10 years'}
+        locale_generation_report = LocaleReportGenerator('Hindi', excel_df, json_df, pd.DataFrame(), en_data)
 
         new_translation_content = locale_generation_report.find_updated_translations_content()
 
         self.assertEqual(expected, new_translation_content)
-
-    # def test_generate_report(self):
-    #     self.fail()

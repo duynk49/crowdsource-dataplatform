@@ -7,7 +7,7 @@ from helper.utils.utils import write_df_to_json, write_report, read_language_lis
 from modules.locale_generator.generator import LocaleGenerator
 from modules.locale_generator.excel_input import SingleExcelInput, MultiExcelInput
 
-from utils.localization.helper.unused_keys_cleaner import read_json
+from helper.unused_keys_cleaner import read_json
 
 
 def main():
