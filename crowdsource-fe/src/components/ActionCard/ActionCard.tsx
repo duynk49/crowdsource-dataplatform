@@ -84,7 +84,7 @@ const ActionCard = (props: ActionCardProps) => {
                       height="120"
                       loading="eager"
                       placeholder="blur"
-                      blurDataURL={`${nodeConfig.contextRoot}/images/${icon}`}
+                      blurDataURL={`${nodeConfig.contextRoot}/images/${icon}_blur`}
                     />
                   </div>
                 </div>
