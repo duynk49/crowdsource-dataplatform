@@ -2,11 +2,11 @@
 Tags: component
 
 * Open Website
-* Select "text_initiative_tab" from header
+* Select "Bolo India" from header
 
 ## Validate the Speaker Details pop-up
 * Select Contribution Language as "हिंदी"
-* Navigate to "Contribute" button and click "Contribute" button
+* Navigate to "Contribute" card
 * Username field, Mother Tongue dropdown ,Age drop down , Gender Radio buttons should be present
 * if a user enter username and click on Not you change user button , the field should be cleared
 * If user selects Other as gender, some more gender options should be visible
@@ -14,7 +14,7 @@ Tags: component
 
 ## Validate Contributor flow
 * Select Contribution Language as "ଓଡିଆ"
-* Navigate to "Contribute" button and click "Contribute" button
+* Navigate to "Contribute" card
 * And User enter random Username and selects Age , Mother tongue ,gender
 * When user click on Lets Go Button, user should "" see instructions to record
 * User should be able to close the Instructions , user should see a sentence , Skip button , Start Recording Button , username,Test Mic and speaker button
@@ -28,7 +28,7 @@ Tags: component
 
 ## Validate Contributor flow Thank you page
 * Change user name to "Dummy User1"
-* Navigate to "Contribute" button and click "Contribute" button
+* Navigate to "Contribute" card
 * user should "" see instructions to record
 * When user skips all the rest of the "5" sentences , User should see Thank you Page
 * Validate Thank you page content for Bolo India
@@ -36,13 +36,12 @@ Tags: component
 
 ## Validate Validator flow
 * Change user name to "Validate User"
-* Navigate to "Validate" button and click "Validate" button
+* Navigate to "Validate" card
 * user should "not" see instructions to record
 * "skip_button" should be enabled , "dislike_button" "like_button" buttons should be disabled
 * User plays the audio , "dislike_button","like_button" should be disabled
 * User clicks on "dislike_button" , he should see next sentence and "dislike_button" "like_button" buttons should be disabled
-* User skips the next "4" sentences user should land on Thank you page in ""
-//* User should see the "अधिक प्रमाणित करें" button
+* User skips the next "4" sentences user should land on Thank you page
 * User should see the "Validate More" button
 
 ## Check Dashboard Page
@@ -57,7 +56,7 @@ Tags: component
 * When user clicks on the close button , user should see the home page
 
 ## Validate Report feature
-* Navigate to "Contribute" button and click "Contribute" button
+* Navigate to "Contribute" card
 * And User enter random Username and selects Age , Mother tongue ,gender
 * user should "" see instructions to record
 * When user clicks on Report Button, user should see Report Content Dialog Box & Submit button should be disabled
@@ -68,5 +67,5 @@ Tags: component
 * Validate Bolo India content
 
 ## Check Terms and Condition links from Footer
-* Navigate to "Terms & Conditions" button and click "Terms & Conditions" button
+* Click "Terms & Conditions" link
 * Validate terms and condition content

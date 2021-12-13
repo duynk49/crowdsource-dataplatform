@@ -59,7 +59,7 @@ Union values('medium', 'text', '{
     "data": "ଏକଥା ସାରା ଗାଁ ଜାଣେ କମଳା 2",
     "type": "text",
     "language": "Odia"
-}'::jsonb, null, false, (select master_dataset_id from master_dataset where location='testMDSLocation5'))
+}'::jsonb, null, false, (select master_dataset_id from master_dataset where location='testMDSLocation5'));
 
 insert into contributions 
     ( dataset_row_id, contributed_by, media, is_system , date, action)

@@ -23,7 +23,6 @@ step("Validate Likho India content", async function () {
 
 step("User should see the top Language graph and other stats for Likho India", async function () {
   assert.ok(await text("Your language pair and top 3 contributed language pairs").exists());
-  assert.ok(await text("Total translations").exists());
   assert.ok(await text("Language pairs").exists());
   assert.ok(await text("People participated").exists());
   assert.ok(await text("Translations done").exists());
@@ -50,15 +49,6 @@ step("Close button should close the pop up and user should see Likho India Home 
 step("Validate Thank you page content for Likho India", async function () {
   assert.ok(await text('Thank you for contributing!').exists())
   assert.ok(await text('10000 translations').exists())
-});
-
-step("When User clicks on <type> field and type <txt> submit should be disabled and cancel button should be enabled", async function (type, txt) {
-  const editfield = taiko.textBox({ id: type })
-  await taiko.waitFor(500)
-  await write(txt, into(editfield))
-  await taiko.waitFor(500)
-  assert.ok(await button('Submit').isDisabled())
-  assert.ok(! await button('Cancel').isDisabled())
 });
 
 step("User should see an error message <msg>", async function (msg) {

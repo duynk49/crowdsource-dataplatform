@@ -3,7 +3,7 @@
 tags: component
 
 * Open Website
-* Select "asr_initiative_tab" from header
+* Select "Suno India" from header
 
 ## Check Home Page
 * Validate Suno India content
@@ -13,19 +13,18 @@ tags: component
 * User should store the progress bar for "Suno India"
 * Select Contribution Language as "ଓଡିଆ"
 * Navigate to "Transcribe" and add username "T User" then click Lets go
-//* When user clicks on Data Source button, popup should open and they should see source information
 * When user clicks on Play button, Pause button should appear and when user clicks on pause, resume should appear
-* User click on "addText" field and type "ହାଏ ଓଡିଆ ଓଡିଆ" submit and cancel button should be enabled
+* User click on "Add Text" field and type "ହାଏ ଓଡିଆ ଓଡିଆ" submit and cancel button should be enabled
 * When user clicks on submit button user should see " Thank you for contributing!"
 * User clicks on Play button, and then on pause button, then clicks on "addText" field and type "ହାଏ ଓଡିଆ ଓଡିଆ,", then resume, submit button should be disabled
-* User click on "addText" field and type "ହାଏ ଓଡିଆ ଓଡିଆ" submit and cancel button should be enabled
+* User click on "Add Text" field and type "ହାଏ ଓଡିଆ ଓଡିଆ" submit and cancel button should be enabled
 * When user clicks on submit button for Odia language user should see "Thank you for contributing!"
 * When user clicks on back button, user should land on home page
 
 ## Validate Transcribe flow
 * Select Contribution Language as "ಕನ್ನಡ"
 * Change user name to "T User"
-* Navigate to "Transcribe"
+* Navigate to "Transcribe" card
 * When user clicks on the Test Speaker button, user should see "speakerbtn"
 * When user clicks on the cross button , pop up should close and user should see the Test Mic and speaker button
 * When user clicks on Play button, Pause button should appear and when user clicks on pause, play should visible
@@ -47,44 +46,46 @@ tags: component
 * when user clicks on the Contribute More button, user should not see the Instructions page again
 * When user skips the rest of the "1" sentences , User should see Thank you Page
 * Validate Thank you page content for Suno India
-* When user clicks on Contribute more button , user should see no data available message for "Suno" India
+* When user clicks on Contribute more button , user should see no data available message for "Suno India"
 * When user clicks on back button, user should land on home page
 
 ## Validate Validate flow
 * Select Contribution Language as "ಕನ್ನಡ"
 * Change user name to "V User"
-* Navigate to "Validate"
+* Navigate to "Validate" card
 * "Skip" should be enabled , "Correct" "Needs Change" buttons should be disabled
 * User plays the audio , "Needs Change" should be enabled & "Correct" should be disabled
 * User clicks on "Correct" , he should see next sentence and "Needs Change" "Correct" buttons should be disabled
 * User plays the audio , "need_change" should be enabled & "like_button" should be disabled
 * User clicks on  "need_change" button user should see "Original Text" and "Your Edit" , "cancel-edit-button" should be  enabled
-* When User clicks on "addText" field and type "Hello" submit should be disabled and cancel button should be enabled
+* When User clicks on "Your Edit" field and type "Hello" submit should be disabled and cancel button should be enabled
 * User should see an error message "Please type in your chosen language"
 * User clears the edit field should disable the buttons again in validation
 * User should see an error message "Input field can not be empty"
-* When User clicks on "addText" field and type ";ನೀವು ಹೇಗಿದ್ದೀರಿ" submit should be disabled and cancel button should be enabled
+* When User clicks on "Your Edit" field and type ";ನೀವು ಹೇಗಿದ್ದೀರಿ" submit should be disabled and cancel button should be enabled
 * User should see an error message "Special characters are not allowed"
 * User clears the edit field should disable the buttons again in validation
 * User should see an error message "Input field can not be empty"
-* User click on "edit" field "submit-edit-button" should be enabled
-* User skips the next "4" sentences user should land on Thank you page in "English"
+* When User clicks on "Your Edit" field and type "ಗಹಹಜಲಲ" submit and cancel button should be enabled
+* User skips the next "4" sentences user should land on Thank you page
 * User should see the "Validate More" button
-* When user clicks on Validate more button , user should see no data available message for "Suno" India
+* When user clicks on Validate more button , user should see no data available message for "Suno India"
 * When user clicks on back button, user should land on home page
 
 ## Check the Validate flow for new user
 * Select Contribution Language as "ಕನ್ನಡ"
 * Change user name to "New V User"
-* Navigate to "Validate"
-* "skip_button" should be enabled , "like_button" "need_change" buttons should be disabled
+* Navigate to "Validate" card
+* "Skip" button should be enabled
+* "Correct" button should be enabled
+* "Needs Change" button should be enabled
 * User plays the audio , "need_change" should be enabled & "like_button" should be disabled
 * User clicks on "like_button" , he should see next sentence and "need_change" "like_button" buttons should be disabled
 * User clicks on Play button, and then on pause button, then clicks on "need_change", then clicks on "addText" field and type "ಕನ್ನಡ ಕನ್ನಡ ಕನ್ನಡ,", then resume, submit button should be disabled, then skip
 * User plays the audio , "need_change" should be enabled & "like_button" should be disabled
 * User clicks on  "need_change" button user should see "Original Text" and "Your Edit" , "cancel-edit-button" should be  enabled
-* User click on "edit" field "submit-edit-button" should be enabled
-* User skips the next "3" sentences user should land on Thank you page in "English"
+* When User clicks on "Your Edit" field and type "ಗಹಹಜಲಲ" submit and cancel button should be enabled
+* User skips the next "3" sentences user should land on Thank you page
 * User should see the "Validate More" button
 * Navigate to "Know more" button and click "Know more" button
 * "Validate 5 sentences in Kannada and earn Suno India Bronze Bhasha Samarthak badge" text exists on page

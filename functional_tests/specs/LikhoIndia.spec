@@ -44,17 +44,17 @@ Tags: component
 * When user clicks on back button, user should land on Likho India home page
 //* Validate the updated progress bar value with "2" for "Likho India"
 * Change user name to "V User"
-* Navigate to "Validate"
+* Navigate to "Validate" card
 * "skip_button" should be enabled , "like_button" "need_change" buttons should be enabled
 * User should see the text "Is the translation correct?"
 * User skips all "2" sentences user should land on Likho India Thank you page
-* When user clicks on Validate more button , user should see no data available message for "Likho" India
+* When user clicks on Validate more button , user should see no data available message for "Likho India"
 
 ## Validate Validate flow
 * Select "ଓଡିଆ" Language from "from-language"
 * Select "English" Language from "to-language"
 * Change user name to "V1 User"
-* Navigate to "Validate"
+* Navigate to "Validate" card
 * User should see add extension and watch video link
 * "skip_button" should be enabled , "like_button" "need_change" buttons should be enabled
 * User clicks on  "need_change" button user should see "" and "Your Edit" , "cancel-edit-button" should be  enabled

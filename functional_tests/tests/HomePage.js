@@ -14,11 +14,6 @@ const {
 	into
 } = require('taiko');
 
-step("Click <name> Button", async function (name) {
-	assert.ok(button(name).exists())
-	await click(button(name));
-});
-
 step("<page> page should be displayed", async function (page) {
 	const pageName = {
 		'About Us': 'about-us',

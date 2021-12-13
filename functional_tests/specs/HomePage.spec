@@ -28,7 +28,3 @@ Tags: page
 * Select "हिंदी" from localisation dropdown "localeDropdownMenuButton"
 * Section should have text "भाषा दान"
 * Select "English" from localisation dropdown "localeDropdownMenuButton"
-//* Clicking "देखो इंडिया" should navigate to "Dekho India" Page
-//* Select "likho_india_tab" from header
-//* Validate contribution language should be selected "हिंदी" from "from-language"
-//* Localisation "localeDropdownMenuButton" dropdown should have "English" & "हिंदी" value
