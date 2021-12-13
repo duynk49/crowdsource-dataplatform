@@ -26,7 +26,7 @@ import {
   pageSourceConstants4,
 } from 'constants/pageRouteConstants';
 import routePaths from 'constants/routePaths';
-import { useFetchWithInit } from 'hooks/useFetch';
+import useFetch, { useFetchWithInit } from 'hooks/useFetch';
 import useLocalStorage from 'hooks/useLocalStorage';
 import type { CumulativeDataByLanguage } from 'types/CumulativeDataByLanguage';
 import type { Initiative } from 'types/Initiatives';
@@ -98,9 +98,10 @@ const ThankYou = ({ initiative }: ThankYouProps) => {
     }
   );
 
-  const { data: cumulativeDataByLanguage, mutate: hrsMutate } = useFetchWithInit<
-    Array<CumulativeDataByLanguage>
-  >(apiPaths.cumulativeDataByLanguage, { revalidateOnMount: false });
+  const { data: cumulativeDataByLanguage, mutate: hrsMutate } = useFetch<Array<CumulativeDataByLanguage>>(
+    apiPaths.cumulativeDataByLanguage,
+    { revalidateOnMount: false }
+  );
 
   const translatedContributionLanguage = `${t(`${contributionLanguage?.toLowerCase()}`)}${
     initiative === INITIATIVES_MAPPING.likho ? `-${t(`${translatedLanguage?.toLowerCase()}`)}` : ''
