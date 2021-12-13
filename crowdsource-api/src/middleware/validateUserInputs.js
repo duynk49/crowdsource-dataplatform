@@ -219,22 +219,6 @@ const validateMediaTypeInput = (req, res, next) => {
     next();
 }
 
-const validateUserInfoForProfanity = (req, res, next) => {
-    const validLanguages = LANGUAGES.map((item) =>
-        item.value
-    )
-    if (!(req.params && req.params.type && MEDIA_TYPES.includes(req.params.type))) {
-        return res.status(400).send("Invalid params");
-    }
-    if (!req.query && !req.query.username) {
-        return res.status(400).send("Invalid username");
-    }
-    if (!validLanguages.includes(req.query.language)) {
-        return res.status(400).send("Invalid language");
-    }
-    next();
-}
-
 const validateReportInputs = (req, res, next) => {
     const userId = req.cookies.userId || '';
     const { sentenceId = '', reportText = '', language = '', userName = '' } = req.body;
@@ -287,4 +271,4 @@ function isLanguageInvalid(language) {
     return language && !validLanguages.includes(language);
 }
 
-module.exports = { validateUserInputAndFile, validateUserInfo, convertIntoMB, validateUserInputForFeedback, validateInputForSkip, validateRewardsInput, validateRewardsInfoInput, validateInputsForValidateEndpoint, validateGetContributionsInput, validateMediaTypeInput, validateUserInfoForProfanity, validateReportInputs }
+module.exports = { validateUserInputAndFile, validateUserInfo, convertIntoMB, validateUserInputForFeedback, validateInputForSkip, validateRewardsInput, validateRewardsInfoInput, validateInputsForValidateEndpoint, validateGetContributionsInput, validateMediaTypeInput, validateReportInputs }

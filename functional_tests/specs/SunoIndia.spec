@@ -96,12 +96,6 @@ tags: component
 * When user select "ಕನ್ನಡ" Language from dropdown then "Languages" should not visible
 * When user clicks on back button, user should land on home page
 
-//## Validate profanity configuration
-//* Select Contribution Language as "ગુજરાતી"
-//* Check "Transcribe" option should be "disabled" on Home page
-//* Check "Validate" option should be "disabled" on Home page
-
-
 ## Validate My Badge flow and check Badges
 * Change user name to "Badge User"
 * Select MyBadges from the dropdown

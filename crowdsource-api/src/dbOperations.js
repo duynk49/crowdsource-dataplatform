@@ -35,15 +35,6 @@ const {
     getUserRewardsQuery
 } = require('./dbQuery');
 
-const {
-    getSentencesForProfanityCheck,
-    updateSentenceWithProfanity,
-    releaseMediaQuery,
-    getSentencesForProfanityCheckForCorrection,
-    updateSentenceWithProfanityForCorrection,
-    releaseMediaQueryForCorrection
-} = require('./profanityCheckerQueries')
-
 const { KIDS_AGE_GROUP, ADULT, KIDS, BADGE_SEQUENCE } = require('./constants');
 
 const cacheOperation = require('./cache/cacheOperations')
@@ -51,8 +42,6 @@ const queueOperations = require('./event_queue/queueOperations')
 
 const envVars = process.env;
 const pgp = require('pg-promise')();
-
-const showUniqueMedia = envVars.UNIQUE_SENTENCES_FOR_CONTRIBUTION == 'true';
 
 let cn = {
     user: envVars.DB_USER,
@@ -466,34 +455,6 @@ const updateDbWithUserInput = async (
         });
 }
 
-const getSentencesForProfanityChecking = (username, type, language) => {
-    const currentTime = moment().utcOffset("+05:30").format()
-    return db.any(getSentencesForProfanityCheck, [username, currentTime, type, language])
-}
-
-const getSentencesForProfanityCheckingForCorrection = (username, type, language) => {
-    const currentTime = moment().utcOffset("+05:30").format()
-    return db.any(getSentencesForProfanityCheckForCorrection, [username, currentTime, type, language])
-}
-
-const updateProfanityStatus = (userName, sentenceId, profanityStatus) => {
-    const currentTime = moment().utcOffset("+05:30").format()
-    return db.any(updateSentenceWithProfanity, [profanityStatus, sentenceId, userName, currentTime])
-}
-
-const updateProfanityStatusForCorrection = (userName, sentenceId, profanityStatus) => {
-    const currentTime = moment().utcOffset("+05:30").format()
-    return db.any(updateSentenceWithProfanityForCorrection, [profanityStatus, sentenceId, userName, currentTime])
-}
-
-const releaseMedia = (dataset_id) => {
-    return db.any(releaseMediaQuery, [dataset_id])
-}
-
-const releaseMediaForCorrection = (dataset_id) => {
-    return db.any(releaseMediaQueryForCorrection, [dataset_id])
-}
-
 const userVerify = async (userName, role) => {
     let result = await db.any(userVerifyQuery, [userName, role]);
     if (result.length === 0) {
@@ -529,9 +490,6 @@ module.exports = {
     getContributionList,
     updateDbWithAudioPath,
     updateTablesAfterValidation,
-    getSentencesForProfanityCheckingForCorrection,
-    updateProfanityStatusForCorrection,
-    releaseMediaForCorrection,
     getMediaBasedOnAge,
     insertFeedback,
     saveReport,
@@ -539,9 +497,6 @@ module.exports = {
     getRewards,
     getRewardsInfo,
     updateDbWithUserInput,
-    getSentencesForProfanityChecking,
-    updateProfanityStatus,
-    releaseMedia,
     getUserRewards,
     addRemainingGenders
 };

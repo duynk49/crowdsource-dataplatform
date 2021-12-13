@@ -5,7 +5,6 @@ const fetch = require('node-fetch');
 
 const { uploader } = require('./uploader/objUploader');
 const { calculateSNR } = require('./audio_attributes/snr');
-const profanityApi = require('./profanityChecker');
 
 const helmet = require('helmet');
 const express = require('express');
@@ -110,17 +109,6 @@ app.use(function (req, res, next) {
 router.get('/get-userid', (req, res) => {
   // #swagger.ignore = true
   res.sendStatus(200);
-});
-
-router.get('/profanity/:type', function (req, res) {
-  // #swagger.ignore = true
-  const type = req.params.type;
-  if (!['asr', 'parallel', 'ocr', 'text'].includes(type)) {
-    res.redirect('/en/not-found.html');
-    return;
-  }
-  // res.redirect(`/en/profanity-home.html?type=${type}`);
-  res.redirect(`/en/profanity.html?type=${type}`);
 });
 
 router.post('/verify-user', async (req, res) => {
@@ -676,8 +664,6 @@ router.get('/user-rewards/:username?', async (req, res) => {
     res.status(502).send({ statusCode: 502, message: error.message });
   }
 });
-
-profanityApi(router);
 
 app.use('/', router);
 
