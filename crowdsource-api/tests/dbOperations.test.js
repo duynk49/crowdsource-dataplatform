@@ -99,13 +99,13 @@ describe("Running tests for dbOperations", () => {
         test('should call query with label medium for kids', () => {
             dbOperations.getMediaBasedOnAge(ageGroup, testUserId, testUsername, language, type, toLanguage)
 
-            expect(spyDBany).toHaveBeenCalledWith(getOrderedUniqueMediaQuery, [testUserId, testUsername, mediumLabel, language, type, expect.anything()]);
+            expect(spyDBany).toHaveBeenCalledWith(getOrderedUniqueMediaQuery, [testUserId, testUsername, mediumLabel, language, type]);
         });
 
         test('should call query with label medium for adults', () => {
             dbOperations.getMediaBasedOnAge(ageGroup, testUserId, testUsername, language, type, toLanguage)
 
-            expect(spyDBany).toHaveBeenCalledWith(getOrderedUniqueMediaQuery, [testUserId, testUsername, mediumLabel, language, type, expect.anything()]);
+            expect(spyDBany).toHaveBeenCalledWith(getOrderedUniqueMediaQuery, [testUserId, testUsername, mediumLabel, language, type]);
         })
     });
 
