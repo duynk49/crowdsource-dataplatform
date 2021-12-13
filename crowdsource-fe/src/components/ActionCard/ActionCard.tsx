@@ -10,7 +10,6 @@ import ImageBasePath from 'components/ImageBasePath';
 import InfoMessage from 'components/InfoMessage';
 import { INITIATIVE_ACTIONS } from 'constants/initiativeConstants';
 import localStorageConstants from 'constants/localStorageConstants';
-import nodeConfig from 'constants/nodeConfig';
 import routePaths from 'constants/routePaths';
 import useLocalStorage from 'hooks/useLocalStorage';
 import type SpeakerDetails from 'types/SpeakerDetails';
@@ -83,8 +82,6 @@ const ActionCard = (props: ActionCardProps) => {
                       width="120"
                       height="120"
                       loading="eager"
-                      placeholder="blur"
-                      blurDataURL={`${nodeConfig.contextRoot}/images/${icon}_blur`}
                     />
                   </div>
                 </div>
