@@ -183,6 +183,14 @@ describe('DekhoContribute', () => {
 
     expect(screen.getByRole('button', { name: 'cancel' })).toBeDisabled();
 
+    userEvent.type(screen.getByRole('textbox', { name: 'addText (hindi)' }), 'abc');
+
+    expect(screen.getByRole('button', { name: 'cancel' })).toBeEnabled();
+
+    userEvent.click(screen.getByRole('button', { name: 'cancel' }));
+
+    expect(screen.getByRole('button', { name: 'cancel' })).toBeDisabled();
+
     await waitFor(() => {
       expect(screen.getByRole('textbox', { name: 'addText (hindi)' })).toHaveValue('');
     });

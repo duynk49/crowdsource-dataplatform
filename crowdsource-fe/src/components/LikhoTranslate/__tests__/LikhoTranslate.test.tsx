@@ -191,6 +191,14 @@ describe('LikhoTranslate', () => {
 
     expect(screen.getByRole('button', { name: 'cancel' })).toBeDisabled();
 
+    userEvent.type(screen.getByRole('textbox', { name: 'english' }), 'बपपप');
+
+    expect(screen.getByRole('button', { name: 'cancel' })).toBeEnabled();
+
+    userEvent.click(screen.getByRole('button', { name: 'cancel' }));
+
+    expect(screen.getByRole('button', { name: 'cancel' })).toBeDisabled();
+
     await waitFor(() => {
       expect(screen.getByRole('textbox', { name: 'english' })).toHaveValue('');
     });

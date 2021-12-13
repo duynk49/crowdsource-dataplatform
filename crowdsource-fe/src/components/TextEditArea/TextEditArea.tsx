@@ -106,6 +106,7 @@ const TextEditArea = ({
     if (error) {
       setErrorMessage(t(error.errorTextKey));
       toggleError(true);
+      setTextValue(input);
     } else {
       toggleError(false);
       setTextValue(input);
