@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 
 import { Trans, useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import Spinner from 'react-bootstrap/Spinner';
 
 import CompareLanguages from 'components/CompareLanguages';
 import ContributeMore from 'components/ContributeMore';
@@ -86,8 +87,7 @@ const ThankYou = ({ initiative }: ThankYouProps) => {
   const [translatedLanguage] = useLocalStorage<string>(localStorageConstants.translatedLanguage);
 
   const [speakerDetails] = useLocalStorage<SpeakerDetails>(localStorageConstants.speakerDetails);
-
-  const { data: rewardData, mutate: rewardMutate } = useFetchWithInit<ThankYouReward>(
+  const { data: rewardData, mutate: rewardMutate, isValidating } = useFetchWithInit<ThankYouReward>(
     `${apiPaths.rewards}?type=${
       INITIATIVES_MEDIA_MAPPING[initiative]
     }&language=${contributionLanguage}&source=${pageSourceConstants[route.asPath]}&userName=${
@@ -128,7 +128,7 @@ const ThankYou = ({ initiative }: ThankYouProps) => {
     contributedLanguage || 'English'
   );
 
-  return (
+  return !isValidating ? (
     <Fragment>
       <div className={`${styles.root} mx-auto`} data-testid="ThankYou">
         {rewardData?.isNewBadge && <h2 className="text-center">{t('congratulationText')}</h2>}
@@ -303,6 +303,8 @@ const ThankYou = ({ initiative }: ThankYouProps) => {
         />
       </section>
     </Fragment>
+  ) : (
+    <Spinner data-testid="Loader" animation="border" className="loader" />
   );
 };
 

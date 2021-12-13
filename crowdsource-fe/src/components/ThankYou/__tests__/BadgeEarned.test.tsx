@@ -3,23 +3,31 @@ import { render, userEvent, verifyAxeTest, screen } from 'utils/testUtils';
 import BadgeEarned from '../BadgeEarned';
 
 describe('BadgeEarned', () => {
-  const setup = () =>
+  const setup = (language: any, rank: any) =>
     render(
       <BadgeEarned
         initiative="suno"
         badgeType="Bronze"
         contributionCount={5}
-        language="Hindi"
+        language={language}
         source="contribute"
         winningBadge={[]}
-        rank={2}
+        rank={rank}
       />
     );
 
-  verifyAxeTest(setup());
+  verifyAxeTest(setup('Hindi', 2));
 
   it('should render the component and matches it against stored snapshot', () => {
-    const { asFragment } = setup();
+    const { asFragment } = setup('Hindi', 2);
+
+    userEvent.click(screen.getByRole('button', { name: 'download download-image' }));
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render the component without language and matches it against stored snapshot', () => {
+    const { asFragment } = setup(undefined, undefined);
 
     userEvent.click(screen.getByRole('button', { name: 'download download-image' }));
 
