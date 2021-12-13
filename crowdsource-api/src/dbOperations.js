@@ -137,13 +137,11 @@ const getMediaBasedOnAge = function (
         languageLabel = KIDS;
     }
 
-    const launchIds = envVars.LAUNCH_IDS || '';
-
     let query = getOrderedUniqueMediaQuery;
-    let params = [userId, userName, languageLabel, language, type, launchIds.split(', ')];
+    let params = [userId, userName, languageLabel, language, type];
     if (type === 'parallel') {
         query = getOrderedUniqueMediaForParallel;
-        params = [userId, userName, languageLabel, language, type, toLanguage, launchIds.split(', ')]
+        params = [userId, userName, languageLabel, language, type, toLanguage]
     }
 
     return (db.any(query, params));
