@@ -1,77 +1,82 @@
 const taiko = require('taiko');
 const assert = require('assert');
 
-const {
-    text,
-    link,
-    scrollTo,
-    scrollUp,
-    click,
-} = require('taiko');
+const { text, scrollUp, click } = require('taiko');
 
-step("Validate language dropdown, initiative tab, badges level & participation radios exist", async function () {
+let selectors;
+beforeSpec(async () => {
+  const badgePageSelectors = {
+    languageDropdown: taiko.dropDown({ id: 'languageDropDown' }),
+    asrLink: taiko.button('Suno India', taiko.below(taiko.dropDown({ id: 'languageDropDown' }))),
+    asrActiveLink: taiko.button('Suno India', { class: 'active' }),
+    textLink: taiko.button('Bolo India', taiko.below(taiko.dropDown({ id: 'languageDropDown' }))),
+    parallelLink: taiko.button('Likho India', taiko.below(taiko.dropDown({ id: 'languageDropDown' }))),
+    ocrLink: taiko.button('Dekho India', taiko.below(taiko.dropDown({ id: 'languageDropDown' }))),
+    bronzeMedalImage: taiko.image('Medal', taiko.above('Bronze')),
+    silverMedalImage: taiko.image('Medal', taiko.above('Silver')),
+    goldMedalImage: taiko.image('Medal', taiko.above('Gold')),
+    platinumMedalImage: taiko.image('Medal', taiko.above('Platinum')),
+    contributionRadioButton: taiko.radioButton({ id: 'action1' }),
+    validationRadioButton: taiko.radioButton({ id: 'action2' }),
+  };
+  selectors = badgePageSelectors;
+});
+
+step(
+  'Validate language dropdown, initiative tab, badges level & participation radios exist',
+  async function () {
     await taiko.waitFor(1000);
-    await text("How can you win Bhasha Samarthak Badges").exists();
-    assert.ok(await taiko.dropDown({ id: 'languages' }).exists());
+    await text('How can you win Bhasha Samarthak Badges').exists();
+    assert.ok(await selectors.languageDropdown.exists());
 
-    assert.ok(await taiko.link({ id: 'asr' }).exists());
-    assert.ok(await taiko.link({ id: 'text' }).exists());
-    assert.ok(await taiko.link({ id: 'parallel' }).exists());
-    assert.ok(await taiko.link({ id: 'ocr' }).exists());
+    assert.ok(await selectors.asrLink.exists());
+    assert.ok(await selectors.textLink.exists());
+    assert.ok(await selectors.parallelLink.exists());
+    assert.ok(await selectors.ocrLink.exists());
 
-    assert.ok(await taiko.image({ id: 'badge_1' }).exists());
-    assert.ok(await taiko.image({ id: 'badge_2' }).exists());
-    assert.ok(await taiko.image({ id: 'badge_3' }).exists());
-    assert.ok(await taiko.image({ id: 'badge_4' }).exists());
+    assert.ok(await selectors.bronzeMedalImage.exists());
+    assert.ok(await selectors.silverMedalImage.exists());
+    assert.ok(await selectors.goldMedalImage.exists());
+    assert.ok(await selectors.platinumMedalImage.exists());
 
-    assert.ok(await taiko.radioButton({id:'contribute-radio'}).exists());
-    assert.ok(await taiko.radioButton({id:'validate-radio'}).exists());
+    assert.ok(await selectors.contributionRadioButton.exists());
+    assert.ok(await selectors.validationRadioButton.exists());
 
     await taiko.text('Please keep contributing actively to stand a chance to get recognised.').exists();
     await taiko.text('Levels and badges may take upto 48 hours to update.').exists();
+  }
+);
+
+step('Validate default selected values', async function () {
+  await taiko.waitFor(1000);
+  assert.ok((await selectors.languageDropdown.value()) === 'English');
+  assert.ok(await selectors.asrActiveLink.exists());
 });
 
-step("Validate default selected values", async function() {
-	await taiko.waitFor(1000);
-    assert.ok(await taiko.dropDown({ id: 'languages' }).value() === 'English');
-    assert.ok(await taiko.link({ id: 'asr',class: 'active' }).exists());
-    assert.ok(await taiko.$('#badge_1_participation_badge', '.bg-white').exists());
+step('User should select <arg> language from dropdown', async function (arg) {
+  await selectors.languageDropdown.select(arg);
 });
 
-step("User should select <arg> language from dropdown", async function (arg) {
-    await taiko.dropDown({ id: 'languages' }).select(arg);
+step('Select <initiative> initiative from tab', async function (initiative) {
+  await taiko.waitFor(2000);
+  await scrollUp(5000);
+  await click(selectors[`${initiative}Link`]);
 });
 
-step("User should select <arg> initiative from tab", async function (arg) {
-    await taiko.waitFor(2000)
-    await scrollUp(5000);
-   // await scrollTo(taiko.link({ id: arg }),{ alignments: { block: 'center', inline: 'center' }})
-    //await scrollTo(taiko.link({ id: arg }))
-    await click(taiko.link({ id: arg }));
-});
-step("should select <radioButton> radio button, <contributionMsg> text & <bronzeImg>,<silverImg>,<goldImg>,<platinumImg> image exist by default", async function(radioButton, contributionMsg, bronzeImg, silverImg, goldImg, platinumImg) {
-	await taiko.waitFor(1000);
-    if(radioButton== ""){
-
-    } else {
-        assert.ok(await taiko.radioButton({id:radioButton}).exists());
-        await click(taiko.radioButton({ id: radioButton }))
-        await taiko.waitFor(1000);
-    }
-
-    assert.ok(await taiko.text(contributionMsg).isVisible());
-    const bronzeBadge = taiko.image({ id: bronzeImg });
-    assert.ok(await bronzeBadge.exists());
-    const silverBadge = taiko.image({ id: silverImg });
-    assert.ok(await silverBadge.exists());
-    const goldBadge = taiko.image({ id: goldImg });
-    assert.ok(await goldBadge.exists());
-    const platinumBadge = taiko.image({ id: platinumImg });
-    assert.ok(await platinumBadge.exists());
+step('Select <type> radio button', async type => {
+  let radioBtn;
+  if (type == 'contribution') {
+    radioBtn = selectors.contributionRadioButton;
+  } else radioBtn = selectors.validationRadioButton;
+  await radioBtn.exists();
+  await click(radioBtn);
 });
 
-step("User select <badgeLevel> badge level", async function(badgeLevel) {
-    assert.ok(await taiko.$(`#${badgeLevel}`).exists());
-	await click(taiko.$(`#${badgeLevel}`));
+step('<text> text exists on page', async text => {
+  assert.ok(await taiko.text(text).isVisible());
 });
 
+step('User select <type> badge', async function (type) {
+  assert.ok(await selectors[`${type}MedalImage`].exists());
+  await click(selectors[`${type}MedalImage`]);
+});
