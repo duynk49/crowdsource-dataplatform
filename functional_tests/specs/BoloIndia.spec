@@ -18,7 +18,7 @@ Tags: component
 * And User enter random Username and selects Age , Mother tongue ,gender
 * When user click on Lets Go Button, user should "" see instructions to record
 * User should be able to close the Instructions , user should see a sentence , Skip button , Start Recording Button , username,Test Mic and speaker button
-* When user clicks on the Test Microphone Speaker button, user should see "play-speaker" and "test-mic-button" buttons
+* When user clicks on the Test Microphone Speaker button, user should see "speakerbtn" and "testMicButton" buttons
 * When user clicks on the cross button , pop up should close and user should see the Test Mic and speaker button
 * When user clicks on "Start Recording" button, "Stop Recording" button should appear
 * When user clicks on "Stop Recording" button, "Re-record" button should appear
@@ -38,9 +38,9 @@ Tags: component
 * Change user name to "Validate User"
 * Navigate to "Validate" card
 * user should "not" see instructions to record
-* "skip_button" should be enabled , "dislike_button" "like_button" buttons should be disabled
-* User plays the audio , "dislike_button","like_button" should be disabled
-* User clicks on "dislike_button" , he should see next sentence and "dislike_button" "like_button" buttons should be disabled
+* "Skip" should be enabled , "Incorrect" "Correct" buttons should be disabled
+* User plays the audio , "Incorrect","Correct" should be disabled
+* User clicks on "Incorrect" , he should see next sentence and "Incorrect" "Correct" buttons should be disabled
 * User skips the next "4" sentences user should land on Thank you page
 * User should see the "Validate More" button
 
