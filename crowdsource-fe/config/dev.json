@@ -25,6 +25,7 @@
       "kok"
     ],
     "autoValidation": true,
-    "appUrl": "https://dev-ui.vakyansh.in"
+    "appUrl": "https://dev-ui.vakyansh.in",
+    "brand": "vakyansh"
   }
 }

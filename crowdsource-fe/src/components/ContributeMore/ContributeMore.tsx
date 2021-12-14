@@ -11,6 +11,7 @@ import { INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
 import { LOCALE_LANGUAGES } from 'constants/localesConstants';
 import localStorageConstants from 'constants/localStorageConstants';
 import { MEDALS } from 'constants/medalConstants';
+import nodeConfig from 'constants/nodeConfig';
 import { pageSourceConstants } from 'constants/pageRouteConstants';
 import routePaths from 'constants/routePaths';
 import useLocalStorage from 'hooks/useLocalStorage';
@@ -85,7 +86,9 @@ const ContributeMore = ({
               className={`${styles.medal} d-flex mx-2 flex-shrink-0`}
             >
               <ImageBasePath
-                src={`/images/${currentContributionAlias}/badges/${currentContributionAlias}_${initiative}_${item.grade.toLowerCase()}_${source}.svg`}
+                src={`/images/${
+                  nodeConfig.brand
+                }/${currentContributionAlias}/badges/${currentContributionAlias}_${initiative}_${item.grade.toLowerCase()}_${source}.svg`}
                 width="48"
                 height="60"
                 alt={`${item.grade.toLowerCase()}Download`}
@@ -129,7 +132,9 @@ const ContributeMore = ({
                   }  d-flex mx-2 flex-shrink-0`}
                 >
                   <ImageBasePath
-                    src={`/images/${currentContributionAlias}/badges/${currentContributionAlias}_${initiative}_${item.type.toLowerCase()}_${source}.svg`}
+                    src={`/images/${
+                      nodeConfig.brand
+                    }/${currentContributionAlias}/badges/${currentContributionAlias}_${initiative}_${item.type.toLowerCase()}_${source}.svg`}
                     width="48"
                     height="60"
                     alt={`Bronze Badge`}

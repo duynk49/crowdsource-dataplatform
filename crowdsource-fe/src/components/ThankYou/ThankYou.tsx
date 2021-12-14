@@ -17,6 +17,7 @@ import {
 } from 'constants/initiativeConstants';
 import { LOCALE_LANGUAGES } from 'constants/localesConstants';
 import localStorageConstants from 'constants/localStorageConstants';
+import nodeConfig from 'constants/nodeConfig';
 import {
   pageSourceConstants,
   pageSourceConstants2,
@@ -48,7 +49,7 @@ const YourBadge = (props: any) => {
       <h5 className="fw-light mb-3">{t('yourBadge')}</h5>
       <div className={`${styles.badgeBg} p-3`}>
         <ImageBasePath
-          src={`/images/${currentContributionAlias}/badges/${currentContributionAlias}_${
+          src={`/images/${nodeConfig.brand}/${currentContributionAlias}/badges/${currentContributionAlias}_${
             props.initiative
           }_${props.badgeType.toLowerCase()}_${props.source}.svg`}
           width="94"

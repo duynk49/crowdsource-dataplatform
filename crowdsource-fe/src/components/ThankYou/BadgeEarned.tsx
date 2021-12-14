@@ -9,6 +9,7 @@ import TwoColumn from 'components/TwoColumn';
 import { INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
 import { LOCALE_LANGUAGES } from 'constants/localesConstants';
 import localStorageConstants from 'constants/localStorageConstants';
+import nodeConfig from 'constants/nodeConfig';
 import useLocalStorage from 'hooks/useLocalStorage';
 import type { Initiative } from 'types/Initiatives';
 import { capitalizeFirstLetter, downloadBadge } from 'utils/utils';
@@ -32,7 +33,7 @@ const BadgeImage = ({ initiative, badgeType, source }: DownloadBadgeProps) => {
   return (
     <div className={`${styles.medal} mx-auto`}>
       <ImageBasePath
-        src={`/images/${currentContributionAlias}/badges/${currentContributionAlias}_${initiative}_${badgeType}_${source}.svg`}
+        src={`/images/${nodeConfig.brand}/${currentContributionAlias}/badges/${currentContributionAlias}_${initiative}_${badgeType}_${source}.svg`}
         width="140"
         height="180"
         alt={`Bronze Badge english`}

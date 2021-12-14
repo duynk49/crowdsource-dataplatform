@@ -12,6 +12,7 @@ import apiPaths from 'constants/apiPaths';
 import { INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
 import { LOCALE_LANGUAGES } from 'constants/localesConstants';
 import { MEDALS, MEDALS_MAPPING } from 'constants/medalConstants';
+import nodeConfig from 'constants/nodeConfig';
 import { sourceConstants } from 'constants/pageRouteConstants';
 import { useFetchWithInit } from 'hooks/useFetch';
 import type { Initiative } from 'types/Initiatives';
@@ -133,7 +134,9 @@ const InitiativeBadgeDetail = ({
             >
               <div className={styles.medalImg}>
                 <ImageBasePath
-                  src={`/images/${languageCode}/badges/${languageCode}_${initiative}_${selectedMedal}_${participatedAction.toLowerCase()}.svg`}
+                  src={`/images/${
+                    nodeConfig.brand
+                  }/${languageCode}/badges/${languageCode}_${initiative}_${selectedMedal}_${participatedAction.toLowerCase()}.svg`}
                   width="250"
                   height="320"
                   alt={`Bronze Badge ${language}`}

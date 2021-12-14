@@ -12,6 +12,7 @@ interface CrowdsourceFENodeConfig {
     enabled_languages: string[];
     autoValidation: boolean;
     appUrl: string;
+    brand: string;
   };
 }
 

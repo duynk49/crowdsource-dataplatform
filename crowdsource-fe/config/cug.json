@@ -32,6 +32,7 @@
       "mai"
     ],
     "autoValidation": false,
-    "appUrl": "https://uat-ui.vakyansh.in"
+    "appUrl": "https://uat-ui.vakyansh.in",
+    "brand": "meity"
   }
 }

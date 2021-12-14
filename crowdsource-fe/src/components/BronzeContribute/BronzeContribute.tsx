@@ -9,6 +9,7 @@ import ImageBasePath from 'components/ImageBasePath';
 import Link from 'components/Link';
 import TriColorBorder from 'components/TriColorBorder';
 import { INITIATIVES } from 'constants/initiativeConstants';
+import nodeConfig from 'constants/nodeConfig';
 import routePaths from 'constants/routePaths';
 
 import styles from './BronzeContribute.module.scss';
@@ -22,7 +23,7 @@ const BronzeContribute = () => {
         <Row>
           <Col xs="12" md="2">
             <ImageBasePath
-              src={`/images/${currentLocale}/badges/${currentLocale}_bolo_bronze_contribute.svg`}
+              src={`/images/${nodeConfig.brand}/${currentLocale}/badges/${currentLocale}_bolo_bronze_contribute.svg`}
               width="125"
               height="160"
               alt={`Bronze Badge ${currentLocale}`}

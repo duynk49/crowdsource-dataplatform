@@ -25,6 +25,7 @@
       "kok"
     ],
     "autoValidation": true,
-    "appUrl": "https://bhashini.gov.in"
+    "appUrl": "https://bhashini.gov.in",
+    "brand": "meity"
   }
 }

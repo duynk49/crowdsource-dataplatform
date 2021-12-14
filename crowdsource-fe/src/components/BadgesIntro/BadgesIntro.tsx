@@ -10,6 +10,7 @@ import Link from 'components/Link';
 import { INITIATIVES_MEDIA } from 'constants/initiativeConstants';
 import { RAW_LANGUAGES } from 'constants/localesConstants';
 import { MEDALS } from 'constants/medalConstants';
+import nodeConfig from 'constants/nodeConfig';
 import routePaths from 'constants/routePaths';
 
 import styles from './BadgesIntro.module.scss';
@@ -37,7 +38,7 @@ const BadgesIntro = () => {
             return (
               <div key={badge} className={`${styles.badge} mx-3`}>
                 <ImageBasePath
-                  src={`/images/${currentLocale}/badges/${currentLocale}_bolo_${badge}_contribute.svg`}
+                  src={`/images/${nodeConfig.brand}/${currentLocale}/badges/${currentLocale}_bolo_${badge}_contribute.svg`}
                   width="140"
                   height="180"
                   alt={`${badge} Badge ${currentLocale}`}

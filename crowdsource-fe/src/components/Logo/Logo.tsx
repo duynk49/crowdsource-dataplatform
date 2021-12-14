@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import ImageBasePath from 'components/ImageBasePath';
 import Link from 'components/Link';
+import nodeConfig from 'constants/nodeConfig';
 import routePaths from 'constants/routePaths';
 
 import styles from './Logo.module.scss';
@@ -17,7 +18,7 @@ const Logo = () => {
     <div data-testid="Logo" className="d-flex">
       <a href={routePaths.root} className="d-flex align-items-center d-md-none">
         <ImageBasePath
-          src={`/images/${currentLocale}/logos/${currentLocale}-logo-sm.svg`}
+          src={`/images/${nodeConfig.brand}/${currentLocale}/logos/${currentLocale}-logo-sm.svg`}
           alt="Bhashini Logo"
           width="48"
           height="48"
@@ -25,7 +26,7 @@ const Logo = () => {
       </a>
       <a href={routePaths.root} className="d-none align-items-center d-md-flex ms-0 ms-lg-3">
         <ImageBasePath
-          src={`/images/${currentLocale}/logos/${currentLocale}-logo.svg`}
+          src={`/images/${nodeConfig.brand}/${currentLocale}/logos/${currentLocale}-logo.svg`}
           alt="Bhashini Logo"
           width="192"
           height="70"

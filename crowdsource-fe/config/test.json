@@ -25,6 +25,7 @@
       "kok"
     ],
     "autoValidation": false,
-    "appUrl": "https://test-ui.vakyansh.in"
+    "appUrl": "https://test-ui.vakyansh.in",
+    "brand": "meity"
   }
 }
