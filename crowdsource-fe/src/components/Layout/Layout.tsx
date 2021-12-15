@@ -38,18 +38,22 @@ const Layout = ({ children }: LayoutProps) => {
         <meta name="twitter:site" content={`${t('bhasha')} ${t('daan')}`} />
         <meta
           name="twitter:image"
-          content={`${nodeConfig.appUrl}${nodeConfig.contextRoot}/images/favicon.png`}
+          content={`${nodeConfig.appUrl}${nodeConfig.contextRoot}/images/${nodeConfig.brand}/favicon.png`}
         />
         <meta
           name="twitter:image:src"
-          content={`${nodeConfig.appUrl}${nodeConfig.contextRoot}/images/favicon.png`}
+          content={`${nodeConfig.appUrl}${nodeConfig.contextRoot}/images/${nodeConfig.brand}/favicon.png`}
         />
         <meta
           name="image"
           property="og:image"
-          content={`${nodeConfig.appUrl}${nodeConfig.contextRoot}/images/favicon.png`}
+          content={`${nodeConfig.appUrl}${nodeConfig.contextRoot}/images/${nodeConfig.brand}/favicon.png`}
         />
-        <link rel="icon" type="image/png" href={`${nodeConfig.contextRoot}/images/favicon.png`} />
+        <link
+          rel="icon"
+          type="image/png"
+          href={`${nodeConfig.contextRoot}/images/${nodeConfig.brand}/favicon.png`}
+        />
       </Head>
       {router.pathname !== '/404' && <Header />}
       <main className="d-flex flex-column flex-grow-1">{children}</main>
