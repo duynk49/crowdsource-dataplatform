@@ -5,10 +5,11 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 import LanguageMedals from 'components/LanguageMedals';
+import type { Initiative } from 'types/Initiatives';
 import { groupBy } from 'utils/utils';
 
 interface BadgeSectionProps {
-  initiative: string;
+  initiative: Initiative;
   initiativeBadge: Array<any>;
 }
 

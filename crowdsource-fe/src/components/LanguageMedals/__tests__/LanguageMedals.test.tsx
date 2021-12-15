@@ -5,11 +5,11 @@ import LanguageMedals from '../LanguageMedals';
 describe('LanguageMedals', () => {
   const setup = (
     props: {
-      initiative: string;
+      initiative: 'suno' | 'bolo' | 'likho' | 'dekho';
       language: string;
       languageBadges: any;
     } = {
-      initiative: 'title',
+      initiative: 'bolo',
       language: 'Bengali',
       languageBadges: [
         {

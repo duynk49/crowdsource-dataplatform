@@ -38,7 +38,7 @@ const BadgesIntro = () => {
             return (
               <div key={badge} className={`${styles.badge} mx-3`}>
                 <ImageBasePath
-                  src={`/images/${nodeConfig.brand}/${currentLocale}/badges/${currentLocale}_bolo_${badge}_contribute.svg`}
+                  src={`/images/${nodeConfig.brand}/${currentLocale}/badges/${currentLocale}_asr_${badge}_contribute.svg`}
                   width="140"
                   height="180"
                   alt={`${badge} Badge ${currentLocale}`}

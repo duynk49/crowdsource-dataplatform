@@ -14,6 +14,7 @@ import apiPaths from 'constants/apiPaths';
 import {
   CONTRIBUTION_MAPPING,
   INITIATIVES_MAPPING,
+  INITIATIVES_MAPPING_2,
   INITIATIVES_MEDIA_MAPPING,
 } from 'constants/initiativeConstants';
 import { LOCALE_LANGUAGES } from 'constants/localesConstants';
@@ -51,7 +52,7 @@ const YourBadge = (props: any) => {
       <div className={`${styles.badgeBg} p-3`}>
         <ImageBasePath
           src={`/images/${nodeConfig.brand}/${currentContributionAlias}/badges/${currentContributionAlias}_${
-            props.initiative
+            INITIATIVES_MAPPING_2[props.initiative as Initiative]
           }_${props.badgeType.toLowerCase()}_${props.source}.svg`}
           width="94"
           height="120"

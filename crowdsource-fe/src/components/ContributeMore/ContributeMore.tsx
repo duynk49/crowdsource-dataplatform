@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import Button from 'components/Button';
 import ImageBasePath from 'components/ImageBasePath';
 import Link from 'components/Link';
-import { INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
+import { INITIATIVES_MAPPING_2, INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
 import { LOCALE_LANGUAGES } from 'constants/localesConstants';
 import localStorageConstants from 'constants/localStorageConstants';
 import { MEDALS } from 'constants/medalConstants';
@@ -88,7 +88,9 @@ const ContributeMore = ({
               <ImageBasePath
                 src={`/images/${
                   nodeConfig.brand
-                }/${currentContributionAlias}/badges/${currentContributionAlias}_${initiative}_${item.grade.toLowerCase()}_${source}.svg`}
+                }/${currentContributionAlias}/badges/${currentContributionAlias}_${
+                  INITIATIVES_MAPPING_2[initiative]
+                }_${item.grade.toLowerCase()}_${source}.svg`}
                 width="48"
                 height="60"
                 alt={`${item.grade.toLowerCase()}Download`}
@@ -134,7 +136,9 @@ const ContributeMore = ({
                   <ImageBasePath
                     src={`/images/${
                       nodeConfig.brand
-                    }/${currentContributionAlias}/badges/${currentContributionAlias}_${initiative}_${item.type.toLowerCase()}_${source}.svg`}
+                    }/${currentContributionAlias}/badges/${currentContributionAlias}_${
+                      INITIATIVES_MAPPING_2[initiative]
+                    }_${item.type.toLowerCase()}_${source}.svg`}
                     width="48"
                     height="60"
                     alt={`Bronze Badge`}

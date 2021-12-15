@@ -9,6 +9,13 @@ export const INITIATIVES_MAPPING = {
   dekho: 'dekho',
 } as const;
 
+export const INITIATIVES_MAPPING_2 = {
+  [INITIATIVES_MAPPING.suno]: 'tts',
+  [INITIATIVES_MAPPING.bolo]: 'asr',
+  [INITIATIVES_MAPPING.likho]: 'translation',
+  [INITIATIVES_MAPPING.dekho]: 'ocr',
+} as const;
+
 export const INITIATIVES_MEDIA = {
   asr: 'asr',
   text: 'text',

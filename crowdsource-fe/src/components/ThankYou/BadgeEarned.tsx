@@ -6,7 +6,7 @@ import Button from 'components/Button';
 import ContributionDetails from 'components/ContributionDetails';
 import ImageBasePath from 'components/ImageBasePath';
 import TwoColumn from 'components/TwoColumn';
-import { INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
+import { INITIATIVES_MAPPING_2, INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
 import { LOCALE_LANGUAGES } from 'constants/localesConstants';
 import localStorageConstants from 'constants/localStorageConstants';
 import nodeConfig from 'constants/nodeConfig';
@@ -18,7 +18,7 @@ import ShareOn from './ShareOn';
 import styles from './ThankYou.module.scss';
 
 interface DownloadBadgeProps {
-  initiative: string;
+  initiative: Initiative;
   badgeType: string;
   source: string;
   winningBadge?: any;
@@ -33,7 +33,7 @@ const BadgeImage = ({ initiative, badgeType, source }: DownloadBadgeProps) => {
   return (
     <div className={`${styles.medal} mx-auto`}>
       <ImageBasePath
-        src={`/images/${nodeConfig.brand}/${currentContributionAlias}/badges/${currentContributionAlias}_${initiative}_${badgeType}_${source}.svg`}
+        src={`/images/${nodeConfig.brand}/${currentContributionAlias}/badges/${currentContributionAlias}_${INITIATIVES_MAPPING_2[initiative]}_${badgeType}_${source}.svg`}
         width="140"
         height="180"
         alt={`Bronze Badge english`}

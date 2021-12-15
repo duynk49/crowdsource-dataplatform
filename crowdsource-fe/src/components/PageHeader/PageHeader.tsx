@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 import ImageBasePath from 'components/ImageBasePath';
 import TriColorBorder from 'components/TriColorBorder';
-import { INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
+import { INITIATIVES_MAPPING_2, INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
 import nodeConfig from 'constants/nodeConfig';
 import type { Initiative } from 'types/Initiatives';
 
@@ -25,7 +25,7 @@ const PageHeader = ({ initiative }: PageHeaderProps) => {
         <div className="d-flex">
           <div className={`${styles.pageHeaderImg} d-flex align-items-center`}>
             <ImageBasePath
-              src={`/images/${nodeConfig.brand}/${currentLocale}/logos/${currentLocale}-${initiative}IndiaLogo.svg`}
+              src={`/images/${nodeConfig.brand}/${currentLocale}/logos/${currentLocale}-${INITIATIVES_MAPPING_2[initiative]}InitiativeLogo.svg`}
               alt={t(`${initiative}Logo`)}
               width="84"
               height="76"

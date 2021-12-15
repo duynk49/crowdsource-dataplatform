@@ -23,7 +23,7 @@ const BronzeContribute = () => {
         <Row>
           <Col xs="12" md="2">
             <ImageBasePath
-              src={`/images/${nodeConfig.brand}/${currentLocale}/badges/${currentLocale}_bolo_bronze_contribute.svg`}
+              src={`/images/${nodeConfig.brand}/${currentLocale}/badges/${currentLocale}_asr_bronze_contribute.svg`}
               width="125"
               height="160"
               alt={`Bronze Badge ${currentLocale}`}

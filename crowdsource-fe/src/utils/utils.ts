@@ -2,7 +2,7 @@ import { jsPDF } from 'jspdf';
 import { i18n } from 'next-i18next';
 
 import { ErrorStatusCode } from 'constants/errorStatusCode';
-import { INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
+import { INITIATIVES_MAPPING_2, INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
 import {
   TEXT_INPUT_ERROR_CONFIG,
   LANGUAGE_UNICODE,
@@ -11,6 +11,7 @@ import {
 } from 'constants/Keyboard';
 import nodeConfig from 'constants/nodeConfig';
 import type { CumulativeDataByLanguage } from 'types/CumulativeDataByLanguage';
+import type { Initiative } from 'types/Initiatives';
 import type { InitiativeType } from 'types/InitiativeType';
 
 import apiPaths from '../constants/apiPaths';
@@ -167,14 +168,14 @@ export const getBrowserInfo = () => {
 
 export const downloadBadge = (
   locale: string | undefined,
-  initiative: string,
+  initiative: Initiative,
   source: string,
   badgeType: string,
   badgeId: string
 ) => {
   const pdf = new jsPDF();
   const img = new Image();
-  img.src = `${nodeConfig.contextRoot}/images/${nodeConfig.brand}/${locale}/badges/${locale}_${initiative}_${badgeType}_${source}.png`;
+  img.src = `${nodeConfig.contextRoot}/images/${nodeConfig.brand}/${locale}/badges/${locale}_${INITIATIVES_MAPPING_2[initiative]}_${badgeType}_${source}.png`;
   img.crossOrigin = 'Anonymous';
   img.onload = function () {
     pdf.addImage(img, 50, 10, 105, 130);

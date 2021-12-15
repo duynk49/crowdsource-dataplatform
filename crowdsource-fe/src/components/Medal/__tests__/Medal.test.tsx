@@ -10,14 +10,14 @@ describe('Medal', () => {
     props: {
       medal: string;
       action: string;
-      initiative: string;
+      initiative: 'suno' | 'bolo' | 'likho' | 'dekho';
       language: string;
       selectedMedal?: string | '';
       handleClick?: () => void;
     } = {
       medal: 'testmedal',
       action: 'testaction',
-      initiative: 'initiative',
+      initiative: 'suno',
       language: 'language',
       selectedMedal: '',
     }

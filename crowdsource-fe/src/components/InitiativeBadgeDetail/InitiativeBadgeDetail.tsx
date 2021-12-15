@@ -9,7 +9,7 @@ import ImageBasePath from 'components/ImageBasePath';
 import Medal from 'components/Medal';
 import TriColorGradientBg from 'components/TriColorGradientBg';
 import apiPaths from 'constants/apiPaths';
-import { INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
+import { INITIATIVES_MAPPING_2, INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
 import { LOCALE_LANGUAGES } from 'constants/localesConstants';
 import { MEDALS, MEDALS_MAPPING } from 'constants/medalConstants';
 import nodeConfig from 'constants/nodeConfig';
@@ -134,9 +134,9 @@ const InitiativeBadgeDetail = ({
             >
               <div className={styles.medalImg}>
                 <ImageBasePath
-                  src={`/images/${
-                    nodeConfig.brand
-                  }/${languageCode}/badges/${languageCode}_${initiative}_${selectedMedal}_${participatedAction.toLowerCase()}.svg`}
+                  src={`/images/${nodeConfig.brand}/${languageCode}/badges/${languageCode}_${
+                    INITIATIVES_MAPPING_2[initiative]
+                  }_${selectedMedal}_${participatedAction.toLowerCase()}.svg`}
                   width="250"
                   height="320"
                   alt={`Bronze Badge ${language}`}

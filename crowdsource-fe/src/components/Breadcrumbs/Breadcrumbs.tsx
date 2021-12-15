@@ -5,13 +5,15 @@ import { useRouter } from 'next/router';
 
 import ImageBasePath from 'components/ImageBasePath';
 import Link from 'components/Link';
+import { INITIATIVES_MAPPING_2 } from 'constants/initiativeConstants';
 import nodeConfig from 'constants/nodeConfig';
 import routePaths from 'constants/routePaths';
+import type { Initiative } from 'types/Initiatives';
 
 import styles from './Breadcrumbs.module.scss';
 
 interface BreadcrumbsPorpsInterface {
-  initiative: string;
+  initiative: Initiative;
   path: string;
 }
 
@@ -28,7 +30,7 @@ const Breadcrumbs = ({ initiative, path }: BreadcrumbsPorpsInterface) => {
           <div className="d-flex align-items-center cursor-pointer">
             <div className={`${styles.icon} d-flex`}>
               <ImageBasePath
-                src={`/images/${nodeConfig.brand}/${currentLocale}/logos/${currentLocale}-${initiative}IndiaLogo.svg`}
+                src={`/images/${nodeConfig.brand}/${currentLocale}/logos/${currentLocale}-${INITIATIVES_MAPPING_2[initiative]}InitiativeLogo.svg`}
                 alt={t(`${initiative}Logo`)}
                 width="47"
                 height="42"

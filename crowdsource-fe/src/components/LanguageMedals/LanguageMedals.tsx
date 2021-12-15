@@ -4,12 +4,13 @@ import Row from 'react-bootstrap/Row';
 
 import Medal from 'components/Medal';
 import MedalPlaceholder from 'components/MedalPlaceholder';
+import type { Initiative } from 'types/Initiatives';
 import { groupBy } from 'utils/utils';
 
 import styles from './LanguageMedals.module.scss';
 
 interface LanguageMedalsProps {
-  initiative: string;
+  initiative: Initiative;
   language: string;
   languageBadges: any;
 }

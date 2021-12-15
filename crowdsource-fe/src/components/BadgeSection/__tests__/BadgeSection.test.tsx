@@ -5,10 +5,10 @@ import BadgeSection from '../BadgeSection';
 describe('BadgeSection', () => {
   const setup = (
     props: {
-      initiative: string;
+      initiative: 'suno' | 'bolo' | 'likho' | 'dekho';
       initiativeBadge: Array<any>;
     } = {
-      initiative: 'test',
+      initiative: 'suno',
       initiativeBadge: [
         {
           asr: [

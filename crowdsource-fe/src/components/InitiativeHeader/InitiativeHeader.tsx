@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 import ImageBasePath from 'components/ImageBasePath';
-import { INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
+import { INITIATIVES_MAPPING_2, INITIATIVES_MEDIA_MAPPING } from 'constants/initiativeConstants';
 import nodeConfig from 'constants/nodeConfig';
 import type { Initiative } from 'types/Initiatives';
 
@@ -26,7 +26,7 @@ const InitiativeHeader = ({ initiative }: PageHeaderProps) => {
         <Col xs="12" md="4" className="d-flex justify-content-center">
           <div className={styles.initiativeHeaderImg}>
             <ImageBasePath
-              src={`/images/${nodeConfig.brand}/${currentLocale}/logos/${currentLocale}-${initiative}IndiaLogo.svg`}
+              src={`/images/${nodeConfig.brand}/${currentLocale}/logos/${currentLocale}-${INITIATIVES_MAPPING_2[initiative]}InitiativeLogo.svg`}
               alt={t(`${initiative}Logo`)}
               width="126"
               height="103"
